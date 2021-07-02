@@ -1,0 +1,342 @@
+\input{../../template.tex}
+\usepackage[
+backend=biber,
+style=nature,
+sorting=ynt
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Used to make references its own section
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\thebibliography}{%
+\chapter*{\bibname}\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}{%
+\section{References}}{}{}
+\makeatother
+
+
+\title{\textbf{MSc Project: Representations of Finite Groups}}
+\author{Eva Lott (2599097L)\\Supervised by Gwyn Bellamy\\
+	{University of Glasgow}\\ \today}
+\date{}
+
+\rhead{\thepage}
+\chead{}
+\lhead{Representations of Finite Groups $|$ \headsection}
+\cfoot{} % get rid of the page number
+
+
+\begin{document}
+\clearpage
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
+\setcounter{page}{1}
+\section{Introduction}
+
+\newpage
+\section{Representation Theory}
+\subsection{The Linear Algebra Rep and the General Linear Group}
+
+\begin{defi}[Endomorphisms and Automorphisms]
+	Given a space $V$ with an algebraic structure, an endomorphism is defined to be a homomorphism from $V$ to itself. We denote $\End(V) \coloneqq \Hom(V,V)$ to be the set of all endomorphisms on $V$. An automorphism is an endomorphism which is also an isomorphism, and we denote $\Aut(V) \coloneqq \Brace{\phi \in \End(V)\;|\;\phi \text{ is an isomorphism}}$ as the set of all automorphisms on $V$.\\
+
+	In this project, we focus on vector space endomorphisms - linear maps from a space to itself.
+\end{defi}
+
+
+
+
+\begin{defi}[General linear group \cite{repint}]
+	Let $V$ be a vector space. We define
+	$$\GL(V) \coloneqq \Aut(V)$$
+	to be the set of invertable linear endomorphisms over $V$. We prove this is a group under composition.\label{1}
+\end{defi}
+
+\begin{proo*}
+	\textbf{Associativity:} Composition is always associative.\\
+	\textbf{Existance of inverse elements:} $\phi$ an isomorphism $\iff$ $\phi$ invertible. Hence every element of $\Aut(V)$ has an inverse.\\
+	\textbf{Closedness:} The composition of linear maps is linear, and the composition of bijective maps is bijective. Therefore $\Aut(V)$ is closed under composition.\\
+	\textbf{Existence of identity:} The identity map is linear and bijective, hence in $\Aut(V)$. $\blacksquare$
+\end{proo*}
+
+\begin{prop}
+	 If $V$ is an $n$-dimensional vector space over $\mathbb{C}$ then there is a group isomorphism
+	$$\GL(V) \cong \GL_n(\mathbb{C}) \coloneqq \Brace{A \in \M_n(\mathbb{C}) \;|\; A \text{ is invertable}},$$
+	the group of invertable $n \times n$ matrices.
+\end{prop}
+\begin{proo*}
+	Let $V$ be an $n$-dimensional vector space over $\mathbb{C}$ and fix a basis $e = \Brace{e_1,\dots,e_n}$. Recall that the result of a linear transformation is entirely determined by its result on basis elements (once a basis is chosen). Then for $L : V \to V$, we can write the result of $L$ on basis element $e_k$ as $L(e_k) = \alpha^1_ke_1 + \cdots + \alpha^n_ke_n$. Let $\phi : \Aut(V) \to \M_n(\mathbb{C})$ such that
+	$$\phi(L) =
+	\begin{bmatrix} 
+	    \alpha^1_1 & \alpha^1_2 & \dots & \alpha^1_n \\
+	    \alpha^2_1 & \alpha^2_2 & \cdots & \alpha^2_n \\
+	    \vdots & \vdots& \ddots & \vdots\\
+	    \alpha^n_1 & \alpha^n_2  &\dots & \alpha^n_n 
+	\end{bmatrix}.$$
+	Any matrix has a corresponding linear map which sends the $k$th basis vector to another vector with the basis coefficients made up of the scalars in the $k$th column. Also, since any linear map is determined by the vectors that the basis elements are mapped to, there is a unique linear map with columns as the coefficients. Then $\phi$ is a bijection.\\
+
+	Now we show that $\phi$ is an homomorphism. Given $L_1(e_k) = \alpha^1_ke_1 + \cdots + \alpha^n_ke_n$ and $L_2(e_k) = \beta^1_ke_1 + \cdots + \beta^n_ke_n$, we have
+	\begin{align*}
+	L_2 \circ L_1(e_k) &= L_2(\alpha^1_ke_1 + \cdots + \alpha^n_ke_n) = \alpha_k^1L_2(e_1) + \cdots + \alpha_k^nL_2(e_n)\\
+	&= \alpha^1_k(\beta^1_1e_1 + \cdots + \beta^n_1e_n) + \cdots + \alpha^n_k(\beta^1_ne_1 + \cdots + \beta^n_ne_n)\\
+	&= e_1(\alpha^1_k\beta^1_1 + \cdots + \alpha^n_k\beta^1_n) + \cdots e_n(\alpha^1_k\beta^n_1 + \cdots +\alpha^n_k\beta^n_n).
+	\end{align*}
+	Therefore
+	\begin{align*}
+		\phi(L_2 \circ L_1) &= 
+		\begin{bmatrix} 
+	    (\alpha^1_1\beta^1_1 + \cdots +\alpha^n_1\beta^1_n) & (\alpha^1_2\beta^1_1 + \cdots + \alpha^n_2\beta^1_n) & \dots & (\alpha^1_n\beta^1_1 + \cdots +\alpha^n_n\beta^1_n) \\
+	    (\alpha^1_1\beta^2_1 + \cdots +\alpha^n_1\beta^2_n) & (\alpha^1_2\beta^2_1 + \cdots + \alpha^n_2\beta^2_n) & \cdots & (\alpha^1_n\beta^2_1 + \cdots +\alpha^n_n\beta^2_n) \\
+	    \vdots & \vdots& \ddots & \vdots\\
+	    (\alpha^1_1\beta^n_1 + \cdots +\alpha^n_1\beta^n_n) & (\alpha^1_2\beta^n_1 + \cdots + \alpha^n_2\beta^n_n) &\dots & (\alpha^1_n\beta^n_1 + \cdots +\alpha^n_n\beta^n_n) 
+		\end{bmatrix}\\
+		&= \begin{bmatrix} 
+	    \beta^1_1 & \beta^1_2 & \dots & \beta^1_n \\
+	    \beta^2_1 & \beta^2_2 & \cdots & \beta^2_n \\
+	    \vdots & \vdots& \ddots & \vdots\\
+	    \beta^n_1 & \beta^n_2  &\dots & \beta^n_n 
+	\end{bmatrix} \times
+\begin{bmatrix} 
+	    \alpha^1_1 & \alpha^1_2 & \dots & \alpha^1_n \\
+	    \alpha^2_1 & \alpha^2_2 & \cdots & \alpha^2_n \\
+	    \vdots & \vdots& \ddots & \vdots\\
+	    \alpha^n_1 & \alpha^n_2  &\dots & \alpha^n_n 
+	\end{bmatrix}
+		= \phi(L_2) \times \phi(L_1). \; \blacksquare
+	\end{align*}
+\end{proo*}
+
+\begin{defi}[Unitary map]
+	A linear map $L : V \to W$ between inner product spaces $V,W$ is said to be unitary if and only if $\langle v_1, v_2\rangle  = \langle L(v_1), L(v_2) \rangle\;\forall v_1,v_2 \in V$.
+	We denote the unitary maps of a vector space $V$ as $\U(V)$, and for maps over an $n$-dimensional vector space over $\mathbb{C}$, we have $U(V) \cong U_n(\mathbb{C}) \coloneqq \Brace{A \in M_n(\mathbb{C}) \;\vert\; A^* = A^{-1}}$ where $A^*$ is the standard conjugate transpose.
+\end{defi}
+
+We will denote the invertable elements of a ring $R$ as $R^*$, then $\GL_1(\mathbb{C}) = \mathbb{C}^*$. Then $\mathbb{C}^* = \mathbb{C}\backslash \{0\}$ and not the dual space of $\mathbb{C}$ as is traditional.
+
+\begin{exam}[\cite{repint}]
+	For the maps $\GL_1(\mathbb{C}) = \mathbb{C}^*$, a complex number $z$ is unitary if $\bar{z} = z^1 \implies z\bar{z} = \abs{z}^2 = 1 \implies z \in \mathbb{T}$, where $\mathbb{T} = \Brace{z \in \mathbb{C}\;\vert\;\abs{z} = 1}$ is the unit circle. Then $U_1(\mathbb{C}) = \mathbb{T}$
+\end{exam}
+
+\begin{theo}[Caley-Hamilton \cite{repint}]
+	Let $A$ be a matrix with characteristic polynomial $p_A(x)$. Then $p_A(A) = 0$.
+\end{theo}
+
+\begin{defi}[Minimal polynomial \cite{repint}]
+	For an endomorphism $A \in \End(V)$, the minimal polynomial of $A$, $m_A(x)$ is the smallest degree monic polynomial $f(x)$ such that $f(A) = 0$
+\end{defi}
+
+\begin{theo}[\cite{repint}]
+	A matrix $A \in M_n(\mathbb{C})$ is diagonalizable if and only if all factors of $m_A(x)$ have multiplicity $1$.
+\end{theo}
+
+\begin{theo}[Spectral theorem \cite{repint}]
+	For a self adjoint $A \in M_n(\mathbb{C})$, there exists a unitary matrix $U \in U_n(\mathbb{C})$ such that $U^* AU$ is diagonal. The eigenvalues of $A$ are real.
+\end{theo}
+
+TODO prove
+
+\newpage
+\subsection{Group Representations}
+We will see that there are two main ways to define a group representation:
+
+\begin{defi}[Group representation \cite{repint}]
+	A representation of a group $G$ is a group homomorphism $\phi : G \to \GL(V)$ for some finite dimensional vector space $V$. The degree of $\phi$ is defined to be the dimension of $V$.
+\end{defi}
+
+\begin{defi}[Trivial representation \cite{repint}]
+	Any group can be given the trivial representation $\phi : G \to \GL_1(\mathbb{C})$ such that $\phi(g) = 1 \;\forall g \in G$. 
+\end{defi}
+
+\begin{defi}[Zero representation \cite{repint}]
+	Any group can be given the zero representation $\phi : G \to \GL_1(\mathbb{C})$ such that $\phi(g) = 0 \; \forall g \in G$.
+\end{defi}
+
+
+\begin{exam}[\cite{repint}]
+	$\phi : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ such that $\phi([m]) = e^{2\pi i m/n} \;\forall [m] \in \mathbb{Z}/n\mathbb{Z}$ is a representation.
+\end{exam}
+
+\begin{defi}[Representation equivalence \cite{repint}]
+	Two representations $\phi : G \to \GL(V)$ and $\psi : G \to \GL(W)$ are said to be equivalent $\phi \sim \psi$ if there exists a linear isomorphism $T : V \to W$ such that $\psi(g)T =T\phi(g)\;\forall g \in G$, and we have the following commutative diagram
+	$$
+	\begin{tikzcd}
+		V \arrow{r}{\phi(g)} \arrow[swap]{d}{T} & V \arrow{d}{T} \\%
+		W \arrow{r}{\psi(g)}&W 
+	\end{tikzcd}
+	$$
+\end{defi}
+
+\begin{exam}[\cite{repint}]
+	Let $\phi : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
+	$$\phi([m]) = \begin{bmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{bmatrix},$$
+	the rotation matrix by angle $2\pi m/n$, and let $\psi : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
+	$$\psi([m]) = \begin{bmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{bmatrix}.$$
+	We have $\phi \sim \psi$.
+\end{exam}
+
+\begin{proo*}[\cite{repint}]
+	Let $T = \begin{bmatrix}i & -i\\1 & 1\end{bmatrix}$. Then
+\begin{align*}	
+	\psi([m])T = &\begin{bmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{bmatrix} \begin{bmatrix}i & -i\\1 & 1\end{bmatrix} = \begin{bmatrix}e^{2 \pi i m/n}i & -e^{2 \pi i m/n}i \\ e^{-2 \pi i m/n} & e^{-2 \pi i m/n}\end{bmatrix}\\ = &\begin{bmatrix}-\sin(2\pi i m/n) + i\cos(2\pi i m/n) & \sin(2\pi i m/n) - i\cos(2\pi i m/n)\\ \cos(2\pi i m/n) - i \sin(2\pi i m/n) & \cos(2\pi i m/n) - i \sin(2\pi i m/n)\end{bmatrix}\\
+	= & \begin{bmatrix}i & -i\\1 & 1\end{bmatrix}\begin{bmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{bmatrix} =  T\phi([m]).\; \blacksquare
+\end{align*}
+\end{proo*}
+
+We will now use the notation $\phi_g \coloneqq \phi(g)$ for a representation $\phi$, to allow us to write the corresponding linear map acting on a vector more clearly.
+
+\begin{defi}[Symmetric Group]
+	Recall that the symmetric group $S_n$ is the group of all bijections from a set of $n$ elements to itself, with the group operation of composition of bijections. The group is of order $n!$ since there are $n!$ permutations of $n$ elements.\\
+
+	We write elements of $S_n$ in cycle notation: for example when $n=6$\; $\sigma = (2\;1\;3)(4)(5\;6)$ is the element which sends the $3$rd element to the 1st\; 1st to the 2nd\; 2nd to the 3rd\; 4th to 4th\; and 5th to 6th (and vice versa). Then we can write
+	$\sigma(1,2,3,4,5,6) = (\sigma(1),\sigma(2),\sigma(3),\sigma(4),\sigma(5),\sigma(6)) = (3,1,2,4,6,5)$.
+\end{defi}
+
+\begin{exam}[Standard representation of $S_n$ \cite{repint}]
+	Let $\phi : S_n \to \GL_n(\mathbb{C})$ such that $\phi_\sigma(e_i) = e_{\sigma(i)}$ $\forall \sigma \in S_n$\; $1 \leqslant i \leqslant n$. The matrix for $\phi_\sigma$ is given by permuting the columns of $I$ by $\sigma$\; for example when $n = 4$\; $\sigma = (1\;4\;3\;2)$ gives
+	$$\phi_\sigma = \begin{bmatrix} 0 & 1 & 0 & 0 \\
+									0 & 0 & 1 & 0\\
+									0 & 0 & 0 & 1\\
+									1 & 0 & 0 & 0\end{bmatrix}.$$
+	Notice that $\phi_{\sigma}(e_1 + e_2 + \cdots + e_n) = e_{\sigma(1)} + e_{\sigma(2)} + \cdots + e_{\sigma(n)} = e_1 + e_2 + \cdots + e_n\; \forall \sigma \in S_n$ since addition is commutative. Then by scalability of linear $\phi_\sigma$, we have $\phi_\sigma(\alpha(e_1 + e_2 + \cdots + e_n)) = \alpha(e_1 + e_2 + \cdots + e_n)\; \forall \alpha \in \mathbb{C},\;\sigma \in S_n$. Hence $\mathbb{C}(e_1 + e_2 + \cdots + e_n)$ is invariant under $\phi_\sigma\;\forall \sigma \in S_n$.
+\end{exam}
+
+\begin{defi}[$G$-invariant subspace \cite{repint}]
+	For a representation $\phi : G \to \GL(V)$, a (linear) subspace $W \leqslant V$ is said to be $G$-invariant if and only if $\phi_g(w) \in W$ $\forall g \in G,\, w \in W$.
+\end{defi}
+
+\begin{defi}[Direct sum of representations \cite{repint}]
+	Given representations $\phi^1 : G \to \GL(V_1)$ and $\phi^2 : G \to \GL(V_2)$, we can find another representation $\phi^1 \oplus \phi^2 : G \to \GL(V_1 \oplus V_2)$ given by $(\phi^1 \oplus \phi^2)_g(v_1,v_2) = (\phi^1_g(v_1),\phi^2_g(v_2))\;\forall g\in G,\,v_1 \in V_1, v_2 \in V_2$.\\
+
+	If $V_1$ is of dimension $n_1$ and $V_2$ is of dimension $n_2$, and both are over $\mathbb{C}$ such that $\phi^1 : G \to \GL_{n_1}(\mathbb{C})$ and $\phi^2 : G \to \GL_{n_2}(\mathbb{C})$, then
+	$$\phi^1 \oplus \phi^2 : G \to \GL_{n_1 + n_2}(V_1 \oplus V_2)$$
+	with matrix form
+	$$ (\phi^1 \oplus \phi^2)_g =
+	\begin{bmatrix}
+		\phi^1_g & 0\\ 0 & \phi^2_g	
+	\end{bmatrix},$$
+	which is the $(n_1 + n_2)$ square matrix formed by stacking $\phi_g$ and $\psi_g$ next to each other on the diagonal, with $0$ in the other entries.
+\end{defi}
+
+\begin{exam}[ \cite{repint}]
+	Let $\phi^1 : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ and $\phi^2 : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ such that $\phi^1_{[m]} = e^{2\pi i m/n}$ and $\phi^2_{[m]} = e^{-2\pi i m/n}$. Then
+	$$(\phi^1 \oplus \phi^2)_{[m]} = \begin{bmatrix}e^{2\pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{bmatrix}.$$
+\end{exam}
+
+\begin{lemm}[\cite{repint}]
+	If a group $G$ is generated by a set $S$ then a representation on $G$ is determined by its values on $S$, since representations are a homeomorphism.
+\end{lemm}
+\begin{proo*}
+	For $G = \langle S = \Brace{s_1,s_2,\dots} \rangle$, and $x = \prod\limits_{i \in I_S} s_i$ a product of elements in $S$, a representation $\phi : G \to \GL(V)$ gives
+	$\phi_x = \prod\limits_{i \in I_S} \phi_{s_i}$.
+\end{proo*}
+
+\begin{exam}[ \cite{repint}]
+	\label{1}
+	$S_3$ can be generated by two elements: $S_3 = \langle (1\;2\;3),(1\;2)\rangle.$\\
+
+	Let $\phi : S_3 \to \GL_2(\mathbb{C})$ be the representation such that 
+	$$\phi_{(1\;2)} = \begin{bmatrix}-1 & -1\\0 & 1\end{bmatrix},\quad \phi_{(1\;2\;3)} = \begin{bmatrix}-1 & -1\\ 1 & 0\end{bmatrix},$$
+	and let $\psi : S_3 \to \mathbb{C}^*$ be the trivial representation $\phi_\sigma = 1\;\forall \sigma \in S_3$. Then
+	$$(\phi \oplus \psi)_{(1\;2)} = \begin{bmatrix}-1 & -1 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{bmatrix},\quad (\phi \oplus \psi)_{(1\;2\;3)} = \begin{bmatrix}-1 & -1 & 0\\1 & 0 & 0\\0 & 0 & 1\end{bmatrix}.$$
+\end{exam}
+
+\begin{defi}[Subrepresentation \cite{repint}]
+	For a representation $\phi : G \to \GL(V)$ and a $G$-invariant subspace $W \leqslant V$, a representation $\phi\vert_W : G \to \GL(W)$ can be obtained by restricting $\phi$ to $W$ with $(\phi\vert_W)_g(w) = \phi_g(w) \in W$ $\forall w \in W,\;g \in G$. We say that $\phi\vert_W$ is a subrepresentation of $\phi$.
+\end{defi}
+TODO explain external direct sum bit
+
+\begin{defi}[Irreducible representation \cite{repint}]
+	A non-zero representation $\phi : G \to \GL(V)$ of a group $G$ is irreducible if and only if the only $G$-invariant subspaces of $V$ are $\Brace{0}$ and $V$.
+\end{defi}
+
+Irreducible representations are analagous to prime numbers in number theory, or simple groups in group theory. 
+
+\begin{lemm}[\cite{repint}]
+	Any degree 1 representation $\phi : G \to \mathbb{C}^*$ is irreducible since $\mathbb{C}$ has no proper subspaces.
+\end{lemm}
+
+\begin{prop}[\cite {repint}]
+	For a degree 2 representation $\phi : G \to \GL(V)$, $\phi$ is irreducible if and only if there is no common eigenvector $v$ $\forall \phi_g,\;g \in G$.
+\end{prop}
+
+\begin{defi}[Completely reducible \cite{repint}]
+	A representation $\phi : G \to \GL(V)$ is completely reducible if and only if $V = V_1 \oplus V_2 + \cdots + V_n$, where $V_i$ are $G$-invariant subspaces and $\phi\vert_{V_i}$ are irreducible $\forall 1 \leqslant i \leqslant n$.
+\end{defi}
+
+\begin{prop}[\cite{repint}]
+	The following are equivalent:
+	\begin{enumerate}
+		\item $\phi : G \to \GL(V)$ is completely reducible.
+		\item $\phi \sim \phi^1 \oplus \phi^2 \oplus \cdots \oplus \phi^n$ where $\phi^i$ is irreducible $\forall 1 \leqslant i \leqslant n$.
+	\end{enumerate}
+\end{prop}
+
+\begin{defi}[Decomposable representation \cite{repint}]
+	Let $\phi : G \to \GL(V)$ be a non-zero representation. $\phi$ is decomposable if and only if $V = V_1 \oplus V_2$ where $V_1,V_2$ are non-zero $G$-invariant subspaces. Otherwise $\phi$ is said to be indecomposable.
+\end{defi}
+
+\begin{lemm}[\cite{repint}]
+	If $\phi : G \to \GL(V)$ is equivalent to a decomposable representation then $\phi$ is decomposable.
+\end{lemm}
+
+\begin{lemm}[\cite{repint}]
+	If $\phi : G \to \GL(V)$ is equivalent to an indecomposable representation then $\phi$ is indecomposable.
+\end{lemm}
+
+\begin{lemm}[\cite{repint}]
+	If $\phi : G \to \GL(V)$ is equivalent to a completely reducible representation then $\phi$ is completely reducible.
+\end{lemm}
+
+
+
+\newpage
+\section{Maschke's Theorem}
+\begin{defi}[Unitary representation \cite{repint}]
+	A representation $\phi : G \to \GL(V)$ where $V$ is an inner product space is said to be unitary if and only if $\phi_g$ is unitary $\forall g \in G$. Since $U_1(\mathbb{C}) = \mathbb{T}$, a one dimensional unitary representation is a homomorphism $\phi : G \to \mathbb{T}$.
+\end{defi}
+
+\begin{exam}[\cite{repint}]
+	Let $\phi : \mathbb{R} \to \mathbb{T}$ such that $\phi_t = e^{2 \pi i t}$. Then $\phi_{t+s} = e^{2 \pi i (t+s)} = \phi_t\phi_s$, hence $\phi$ is a representation.
+\end{exam}
+
+\begin{prop}[\cite {repint}]
+	A unitary representation $\phi : G \to \GL(V)$ is either irreducible or decomposable.
+\end{prop}
+
+\begin{prop}[\cite {repint}]
+	Every representation of a finite group $G$ is equivalent to a unitary representation.
+\end{prop}
+
+\begin{coro}[\cite{repint}]
+	Every  non-zero representation $\phi : G \to \GL(V)$ of a finite group is either irreducible or decomposable.
+\end{coro}
+
+\begin{prop}[\cite {repint}]
+	Every irreducible representation is indecomposable, though the contrary is not true in general.
+\end{prop}
+
+\begin{theo}[Maschke \cite{repint}]
+	Every representation of a finite group is completely reducible.
+\end{theo}
+\begin{proo*}[\cite{repint}]
+	Let $\phi : G \to \GL(V)$ be a representation of a finite group $G$. We proceed by induction on the degree of $\phi$. If $\dim V = 1$ then $\phi$ is irreducible since $V$ has no non-zero proper subspaces. We assume true our inductive hypothesis that $\phi$ is irreducible if $\dim V = k \in \mathbb{N}$.
+\end{proo*}
+
+\newpage
+\section{Character Theory}
+
+\newpage
+\section{Orthogonality Relations}
+
+\newpage
+\section{Character Tables}
+
+\newpage
+\section{Conclusion}
+\newpage
+\section{References}
+\printbibliography[heading=none]
+\end{document}

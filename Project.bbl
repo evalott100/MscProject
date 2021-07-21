@@ -1,0 +1,129 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{2}{book}{}
+      \name{author}{2}{}{%
+        {{hash=edd39085ad668628baaaf4fb67477bcb}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Gordon},
+           giveni={G\bibinitperiod}}}%
+        {{hash=38f3d43a3a8e23af3e1e75dc77c7ae1c}{%
+           family={Liebeck},
+           familyi={L\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{9d3a77fc723d54e622f7bd440e6a029d}
+      \strng{fullhash}{9d3a77fc723d54e622f7bd440e6a029d}
+      \strng{bibnamehash}{9d3a77fc723d54e622f7bd440e6a029d}
+      \strng{authorbibnamehash}{9d3a77fc723d54e622f7bd440e6a029d}
+      \strng{authornamehash}{9d3a77fc723d54e622f7bd440e6a029d}
+      \strng{authorfullhash}{9d3a77fc723d54e622f7bd440e6a029d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{052100392X}
+      \field{title}{Representations and Characters of Groups}
+      \field{year}{2001}
+    \endentry
+    \entry{1}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8d5284399bf71b2b4215ea708b8141f2}{%
+           family={Steinberg},
+           familyi={S\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{fullhash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{bibnamehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{authorbibnamehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{authornamehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{authorfullhash}{8d5284399bf71b2b4215ea708b8141f2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781461407751}
+      \field{title}{Represesenation Theory of Finite Groups}
+      \field{year}{2012}
+    \endentry
+    \entry{3}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e44e8aa84e9f28cddf6f819a6cd007e5}{%
+           family={Chua},
+           familyi={C\bibinitperiod},
+           given={Dexter},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Class}%
+      }
+      \strng{namehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
+      \strng{fullhash}{e44e8aa84e9f28cddf6f819a6cd007e5}
+      \strng{bibnamehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
+      \strng{authorbibnamehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
+      \strng{authornamehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
+      \strng{authorfullhash}{e44e8aa84e9f28cddf6f819a6cd007e5}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Part III notes}
+      \field{year}{2015}
+    \endentry
+    \entry{4}{book}{}
+      \name{author}{1}{}{%
+        {{hash=425fe599f8ceab54c238fad5c81c0301}{%
+           family={Grillet},
+           familyi={G\bibinitperiod},
+           given={Pierre\bibnamedelima Antoine},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{425fe599f8ceab54c238fad5c81c0301}
+      \strng{fullhash}{425fe599f8ceab54c238fad5c81c0301}
+      \strng{bibnamehash}{425fe599f8ceab54c238fad5c81c0301}
+      \strng{authorbibnamehash}{425fe599f8ceab54c238fad5c81c0301}
+      \strng{authornamehash}{425fe599f8ceab54c238fad5c81c0301}
+      \strng{authorfullhash}{425fe599f8ceab54c238fad5c81c0301}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{139780387715674}
+      \field{title}{GTM Abstract Algebra}
+      \field{year}{2007}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

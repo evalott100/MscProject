@@ -1,0 +1,123 @@
+\documentclass[../Project.tex]{subfiles}
+\begin{document}
+\newpage
+\section{Character Theory}
+\subsection{Basic Definitions and Results}
+\begin{defi}[Character \cite{2}]
+	Let $V$ be a $\mathbb{C}G$-module with basis $\mathcal{B}$. The character of $V$ is the function $\chi : G \to \mathbb{C}$ with
+	$$\chi(g) = \Tr\Brack{g}_\mathcal{B}.$$
+	Given our connection between $FG$-modules and representations, we can see the character of an element $g \in G$ with respect to a representation $\phi : G \to \GL(V)$ is $\chi(g) = \Tr(\phi_g)$.\\
+\end{defi}
+
+\begin{prop}[\cite{2}]
+$\chi$ is invariant under choice and change of basis, since
+$\Brack{g}_{\mathcal{B}'} = T^{-1}\Brack{g}_\mathcal{B}T$ by theorem \ref{5} $\implies \Tr(\Brack{g}_{\mathcal{B}'}) = \Tr(T^{-1}\Brack{g}_\mathcal{B}T) = \Tr(\Brack{g}_\mathcal{B})$ by proposition \ref{7}.
+\end{prop}
+
+\begin{defi}[Irreducible character \cite{2}]
+	We say that $\chi$ is a character of $G$ if $\chi$ is the character a $\mathbb{C}G$-module. $\chi$ is called an irreducible character of $G$ if $\chi$ is the character of an irreducible $\mathbb{C}G$-module, and $\chi$ is reducible if it is the character of a reducible $\mathbb{C}G$-module.
+\end{defi}
+
+\begin{defi}[Trivial character \cite{2}]
+	The trivial character of a group $G$ is the character $\chi$ such that $\chi(g) = 1 \in \mathbb{C}$ $\forall g \in G$.
+\end{defi}
+
+
+\begin{prop}[\cite{2}]
+	If $V,W$ are isomorphic $\mathbb{C}G$-modules then they have the same character.
+\end{prop}
+\begin{proo*}[\cite{2}]
+	Since $V\cong W$, by Proposition \ref{6} there is are bases $\mathcal{B}_V$ of $V$ and $\mathcal{B}_W$ of $W$ such that $\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}\;\forall g \in G$. Then $\Tr(\Brack{g}_{\mathcal{B}_V}) = \Tr(\Brack{g}_{\mathcal{B}_W})$. $\blacksquare$
+\end{proo*}
+
+\begin{defi}[Degree of a character \cite{2}]
+	Let $\chi$ be the character of a $\mathbb{C}G$-module $V$, the degree of $\chi$ is the dimension of $V$.
+\end{defi}
+
+\begin{prop}[\cite{1}]
+	Let $V$ be a $\mathbb{C}G$-module, and $g \in G$ an element with order $n$. Then
+	\begin{enumerate}
+		\item $\chi(1) = \dim(V)$,
+		\item $\chi(g)$ is the sum of all $n$th roots of unity,
+		\item $\chi(g^{-1}) = \bar{\chi}(g)$ the complex conjugate of $\chi(g)$,
+		\item TODO check if we need conjugate stuff
+	\end{enumerate}
+\end{prop}
+\begin{proo*}[\cite {2}]~ %%%
+	\vspace{-\topsep}
+	\begin{enumerate}
+	\item Let $\mathcal{B}$ be a chosen basis of $V$, and $n = \dim(V)$. Then $\chi(1) = \Tr[1]_\mathcal{B} = \Tr[1]_\mathcal{B} = \Tr(I) = n$.
+	\item TODO rest
+	\end{enumerate}
+\end{proo*}
+
+\begin{defi}[Kernel of a character \cite{2}]
+	Let $\chi : G \to F$ be a character. Then the kernel of $\chi$ is given by $\Ker(\chi) = \Brace{g \in G \;\vert\; \chi(g) = \chi(1)}$.
+\end{defi}
+
+\begin{defi}[Faithful character \cite{2}]
+	A character $\chi$ is faithful if it has trivial kernel $\Ker(\chi) = \Brace{1}$.
+\end{defi}
+
+\begin{theo}[\cite{2}]
+	Given a representation $\phi : G \to \GL_n(\mathbb{C})$, and a character $\chi : G \to \mathbb{C}$, we have $\abs{\chi(g)} = \chi(1) \iff \exists \,\alpha \in \mathbb{C}$ such that $\phi_g = \alpha I$.
+	\label{8}
+\end{theo}
+\begin{proo*}[\cite{2}]
+TODO
+\end{proo*}
+\begin{theo}[\cite{2}]
+	Given a representation $\phi : G \to \GL_n(\mathbb{C})$, and a character $\chi : G \to \mathbb{C}$, $\Ker(\chi) = \Ker(\phi)$. $\blacksquare$
+\end{theo}
+
+\begin{proo*}[\cite{2}]
+	Choosing a basis $\mathcal{B}$ of $V$,
+	For $g \in \Ker(\phi)$, then $\phi_g = I \implies \chi(g) = n = \chi(1) \implies g \in \Ker(\chi)$. For $g \in \Ker(\chi)$, by theorem \ref{8} we have $\phi_g = \alpha I$ for some $\alpha \in \mathbb{C}$. Then $\chi(g) = \alpha \chi(1)$, hence $\alpha = 1$. Then $\phi_g = I$ and $g \in \Ker(\phi)$. $\blacksquare$
+\end{proo*}
+
+\begin{coro}
+	Since the kernel of a homomorphism is a normal subgroup, $\Ker(\phi) = \Ker(\chi)\,\triangleleft\,G$.
+\end{coro}
+
+\begin{prop}[\cite{2}]
+	For a character $\chi$ of $G$, $\overline{\chi}$ is also a character of $G$. $\chi$ is irreducible $\iff$ $\overline{\chi}$ is irreducible.
+\end{prop}
+
+\begin{proo*}
+	Let $V$ be $n$-dimensional over $\mathbb{C}$ and let $\phi : G \to \GL(V)$ be a representation of $G$. Then for choosing a basis $\mathcal{B}$ of $V$, let $\Brack{g}_\mathcal{B} = \phi_g$ and
+	$$\chi(g) = \Tr(\Brack{g}_\mathcal{B}).$$
+	For a matrix $A \in \M_n(\mathbb{C})$, let $\overline{A}$ be the matrix such that $A^i_j \in A \implies \overline{A}^i_j \in \overline{A}$, that is each entry in $\overline{A}$ is the complex conjugate of the corresponding entry in $A$. Notice that since for $z,z' \in \mathbb{C}$ we have $\overline{z} \times \overline{z}' = \overline{z \times z'}$, for $A,A' \in \M_n(\mathbb{C})$ we also have $\overline{A\times A'} = \overline{A}\times\overline{A'}$.\\
+
+	This implies that the function $\overline{\phi} : G \to \GL(V)$ obtained from taking the conjugate of $\phi$ defined by $\overline{\phi}_g = \overline{(\phi_g)}$ is a representation. Then since 
+	$$\Tr({\overline{\Brack{g}_\mathcal{B}}}) = \overline{\Tr(\Brack{g}_\mathcal{B})} = \overline{\chi(g)},$$
+	the character of $\overline{\phi}$ is $\overline{\chi}$. Clearly if $\phi$ is reducible then $\overline{\phi}$ is reducible, then if $\chi$ is irreducible so is $\overline{\chi}$. $\blacksquare$
+\end{proo*}
+
+\newpage
+\subsection{The Regular Character}
+\begin{defi}[Regular character \cite{2}]
+	Let $V$ be the regular $\mathbb{C}G$-module with basis $\mathcal{B} = G$. We write the regular character as $\chi_{\reg}$.
+\end{defi}
+
+\begin{prop}[\cite{2}]
+	Let $V$ be a $\mathbb{C}G$-module, which is completely reducible with
+	$$V = W_1 \oplus \cdots \oplus W_n,$$
+	where $W_i$ is irreducible for all $1 \leqslant i \leqslant n$.
+	Then $\chi(V) = \chi(W_1 \oplus \cdots \oplus W_n) = \chi(W_1) + \cdots + \chi(W_n)$.
+\end{prop}
+
+\begin{proo*}
+	This follows clearly from Definition \ref{directsumoffg}. Given $FG$-modules $V,W_1,\dots,W_n$ with $V = W_1 \oplus \cdots \oplus W_n$, and bases $\mathcal{B}_V,{\mathcal{B}_{W_1}},\dots,{\mathcal{B}_{W_n}}$ respectively, we have
+	$$\Tr([g]_{\mathcal{B}_V}) = \Tr \begin{pmatrix} 
+	    [g]_{\mathcal{B}_{W_1}}& 0 & \dots & 0 \\
+	    0 & [g]_{\mathcal{B}_{W_2}} & \cdots & 0 \\
+	    \vdots & \vdots& \ddots & \vdots\\
+	    0 & 0  &\dots & [g]_{\mathcal{B}_{W_n}} \end{pmatrix} = \Tr([g]_{\mathcal{B}_{W_1}}) + \cdots + \Tr([g]_{\mathcal{B}_{W_n}}). \;\blacksquare$$
+\end{proo*}
+
+
+\newpage
+\subsection{Inner products of Characters}
+
+
+\end{document}

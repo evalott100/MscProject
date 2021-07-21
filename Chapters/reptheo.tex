@@ -1,0 +1,227 @@
+\documentclass[../Project.tex]{subfiles}
+\begin{document}
+\newpage
+\section{Representation Theory}
+\subsection{Group Representations}
+\begin{defi}[Group representation \cite{1}]
+	A representation of a group $G$ is a group homomorphism $\phi : G \to \GL(V)$ for some finite dimensional vector space $V$. The degree of $\phi$ is defined to be the dimension of $V$.
+\end{defi}
+
+\begin{rema}
+	Recall the group action on a set $X$ is a map $\textasteriskcentered \cdot \textasteriskcentered : G \times X \to X$ such that
+	\begin{enumerate}
+		\item $1 \cdot x = x$ $\forall x \in X$,
+		\item $g \cdot (g' \cdot x) = gg' \cdot x$ $\forall g,g' \in G,\,x \in X$.
+	\end{enumerate}
+
+	We can then regard a representation as a form of group action since for a representation $\phi : G \to \GL(V)$ we satisfy the axioms of a group action
+	\begin{enumerate}
+		\item $\phi(1)v = Iv = v$ $\forall v \in V$, where $1$ and $I$ are the identities of $G$ and $GL(V)$ respectively,
+		\item $\phi(g)\phi(g')v = \phi(gg')$ $\forall g,g' \in G,\,v \in V$.
+	\end{enumerate}
+\end{rema}
+
+\begin{defi}[Trivial representation \cite{1}]
+	Any group can be given the trivial representation $\phi : G \to \GL_1(\mathbb{C})$ such that $\phi(g) = 1 \;\forall g \in G$. 
+\end{defi}
+
+\begin{defi}[Zero representation \cite{1}]
+	Any group can be given the zero representation $\phi : G \to \GL_1(\mathbb{C})$ such that $\phi(g) = 0 \; \forall g \in G$.
+\end{defi}
+
+\begin{exam}[\cite{1}]
+	$\phi : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ such that $\phi([m]) = e^{2\pi i m/n} \;\forall [m] \in \mathbb{Z}/n\mathbb{Z}$ is a representation.
+\end{exam}
+
+\begin{defi}[Representation equivalence \cite{1}]
+	Two representations $\phi : G \to \GL(V)$ and $\psi : G \to \GL(W)$ are said to be equivalent $\phi \sim \psi$ if there exists a linear isomorphism $T : V \to W$ such that $\psi(g)T =T\phi(g)\;\forall g \in G$, and we have the following commutative diagram
+	$$
+	\begin{tikzcd}
+		V \arrow{r}{\phi(g)} \arrow[swap]{d}{T} & V \arrow{d}{T} \\%
+		W \arrow{r}{\psi(g)}&W 
+	\end{tikzcd}
+	$$
+\end{defi}
+
+\begin{prop}[\cite{2}]
+	Representation equivalence is an equivalence relation.
+\end{prop}
+
+\begin{proo*}
+		Let $\phi^1 : G \to \GL(V_1)$, $\phi^2 : G \to \GL(V_2)$, and $\phi^3 : G \to \GL(V_3)$ be representations.
+	\begin{itemize}
+		\item Reflexive: Let $\Id$ be the identity map $\Id(e_i) = e_i$, which is a linear isomorphism. Then $\phi_g \Id = \Id\phi_g \forall g \in G$ and $\phi \sim \phi$.
+		\item Symmetric: Suppose $\phi^1 \sim \phi^2$ with linear isomorphism $T$, then $\exists T^{-1}$ which is also an isomorphism and $\phi^1_g T = T\phi^2_g \implies \phi^2_gT^{-1} = T^{-1}\phi^1_g \implies \phi^2 \sim \phi^1$.
+		\item Transitive: Let $\phi^1 \sim \phi^2$ with isomorphism $T_{12}$ and $\phi^2 \sim \phi^3$ with $T_{23}$. Then $T_{12} \circ T_{23}$ is also a linear isomorphism and $\phi^1_gT_{12}T_{23} = T_{12}\phi^2_g T_{23} = T_{12} T_{23} \phi^3_g\; \forall g \in G\implies \phi^1 \sim \phi^3$. $\blacksquare$
+	\end{itemize}
+\end{proo*}
+
+\begin{exam}[\cite{1}]
+	Let $\phi : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
+	$$\phi([m]) = \begin{pmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{pmatrix},$$
+	the rotation matrix by angle $2\pi m/n$, and let $\psi : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
+	$$\psi([m]) = \begin{pmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix}.$$
+	We have $\phi \sim \psi$.
+\end{exam}
+
+\begin{proo*}[\cite{1}]
+	Let $T = \begin{pmatrix}i & -i\\1 & 1\end{pmatrix}$. Then
+\begin{align*}	
+	\psi([m])T = &\begin{pmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix} \begin{pmatrix}i & -i\\1 & 1\end{pmatrix} = \begin{pmatrix}e^{2 \pi i m/n}i & -e^{2 \pi i m/n}i \\ e^{-2 \pi i m/n} & e^{-2 \pi i m/n}\end{pmatrix}\\ = &\begin{pmatrix}-\sin(2\pi i m/n) + i\cos(2\pi i m/n) & \sin(2\pi i m/n) - i\cos(2\pi i m/n)\\ \cos(2\pi i m/n) - i \sin(2\pi i m/n) & \cos(2\pi i m/n) - i \sin(2\pi i m/n)\end{pmatrix}\\
+	= & \begin{pmatrix}i & -i\\1 & 1\end{pmatrix}\begin{pmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{pmatrix} =  T\phi([m]). \;\blacksquare
+\end{align*}
+\end{proo*}
+
+
+\begin{defi}[Symmetric Group]
+	Recall that the symmetric group $S_n$ is the group of all bijections from a set of $n$ elements to itself, with the group operation of composition of bijections. The group is of order $n!$ since there are $n!$ permutations of $n$ elements.\\
+
+	We write elements of $S_n$ in cycle notation: for example when $n=6$\; $\sigma = (2\;1\;3)(4)(5\;6)$ is the element which sends the $3$rd element to the 1st\; 1st to the 2nd\; 2nd to the 3rd\; 4th to 4th\; and 5th to 6th (and vice versa). Then we can write
+	$\sigma(1,2,3,4,5,6) = (\sigma(1),\sigma(2),\sigma(3),\sigma(4),\sigma(5),\sigma(6)) = (3,1,2,4,6,5)$.
+\end{defi}
+
+\begin{exam}[Standard representation of $S_n$ \cite{1}]
+	Let $\phi : S_n \to \GL_n(\mathbb{C})$ such that $\phi_\sigma(e_i) = e_{\sigma(i)}$ $\forall \sigma \in S_n$\; $1 \leqslant i \leqslant n$. The matrix for $\phi_\sigma$ is given by permuting the columns of $I$ by $\sigma$\; for example when $n = 4$\; $\sigma = (1\;4\;3\;2)$ gives
+	$$\phi_\sigma = \begin{pmatrix} 0 & 1 & 0 & 0 \\
+									0 & 0 & 1 & 0\\
+									0 & 0 & 0 & 1\\
+									1 & 0 & 0 & 0\end{pmatrix}.$$
+	Notice that $\phi_{\sigma}(e_1 + e_2 + \cdots + e_n) = e_{\sigma(1)} + e_{\sigma(2)} + \cdots + e_{\sigma(n)} = e_1 + e_2 + \cdots + e_n\; \forall \sigma \in S_n$ since addition is commutative. Then by scalability of linear $\phi_\sigma$, we have $\phi_\sigma(\alpha(e_1 + e_2 + \cdots + e_n)) = \alpha(e_1 + e_2 + \cdots + e_n)\; \forall \alpha \in \mathbb{C},\;\sigma \in S_n$. Hence $\mathbb{C}(e_1 + e_2 + \cdots + e_n)$ is invariant under $\phi_\sigma\;\forall \sigma \in S_n$.
+\end{exam}
+
+\begin{defi}[$G$-invariant subspace \cite{1}]
+	For a representation $\phi : G \to \GL(V)$, a (linear) subspace $W \leqslant V$ is said to be $G$-invariant if and only if $\phi_g(w) \in W$ $\forall g \in G,\, w \in W$.
+\end{defi}
+
+\begin{defi}[Subrepresentation \cite{1}]
+	For a representation $\phi : G \to \GL(V)$ and a $G$-invariant subspace $W \leqslant V$, a representation $\phi\vert_W : G \to \GL(W)$ can be obtained by restricting $\phi$ to $W$ with $(\phi\vert_W)_g(w) = \phi_g(w) \in W$ $\forall w \in W,\;g \in G$. We say that $\phi\vert_W$ is a subrepresentation of $\phi$.
+\end{defi}
+
+\begin{defi}[Proper subrepresentation]
+	A subrepresentation $\phi^W : G \to \GL(W)$ of $\phi^V : G \to \GL(V)$ is said to be proper if $W \neq \Paren{0},V$.
+\end{defi}
+
+\begin{defi}[Direct sum of representations \cite{1}]
+\label{directsumofrep}
+	Given representations $\phi^1 : G \to \GL(V_1)$ and $\phi^2 : G \to \GL(V_2)$, we can find another representation $\phi^1 \oplus \phi^2 : G \to \GL(V_1 \oplus V_2)$ given by $(\phi^1 \oplus \phi^2)_g(v_1,v_2) = (\phi^1_g(v_1),\phi^2_g(v_2))\;\forall g\in G,\,v_1 \in V_1, v_2 \in V_2$.\\
+
+	If $V_1$ is of dimension $n_1$ and $V_2$ is of dimension $n_2$, and both are over $\mathbb{C}$ such that $\phi^1 : G \to \GL_{n_1}(\mathbb{C})$ and $\phi^2 : G \to \GL_{n_2}(\mathbb{C})$, then
+	$$\phi^1 \oplus \phi^2 : G \to \GL_{n_1 + n_2}(V_1 \oplus V_2)$$
+	with matrix form
+	$$ (\phi^1 \oplus \phi^2)_g =
+	\begin{pmatrix}
+		\phi^1_g & 0\\ 0 & \phi^2_g	
+	\end{pmatrix},$$
+	which is the $(n_1 + n_2)$ square matrix formed by stacking $\phi_g$ and $\psi_g$ next to each other on the diagonal, with $0$ in the other entries.
+\end{defi}
+
+\begin{exam}[ \cite{1}]
+	Let $\phi^1 : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ and $\phi^2 : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ such that $\phi^1_{[m]} = e^{2\pi i m/n}$ and $\phi^2_{[m]} = e^{-2\pi i m/n}$. Then
+	$$(\phi^1 \oplus \phi^2)_{[m]} = \begin{pmatrix}e^{2\pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix}.$$
+\end{exam}
+
+\begin{lemm}[\cite{1}]
+	If a group $G$ is generated by a set $S$ then a representation on $G$ is determined by its values on $S$, since representations are a homeomorphism.
+\end{lemm}
+\begin{proo*}
+	For $G = \langle S = \Brace{s_1,s_2,\dots} \rangle$, and $x = \prod\limits_{i \in I_S} s_i$ a product of elements in $S$, a representation $\phi : G \to \GL(V)$ gives
+	$\phi_x = \prod\limits_{i \in I_S} \phi_{s_i}$. $\blacksquare$
+\end{proo*}
+
+\begin{exam}[ \cite{1}]
+	\label{1}
+	$S_3$ can be generated by two elements: $S_3 = \langle (1\;2\;3),(1\;2)\rangle.$\\
+
+	Let $\phi : S_3 \to \GL_2(\mathbb{C})$ be the representation such that 
+	$$\phi_{(1\;2)} = \begin{pmatrix}-1 & -1\\0 & 1\end{pmatrix},\quad \phi_{(1\;2\;3)} = \begin{pmatrix}-1 & -1\\ 1 & 0\end{pmatrix},$$
+	and let $\psi : S_3 \to \mathbb{C}^*$ be the trivial representation $\phi_\sigma = 1\;\forall \sigma \in S_3$. Then
+	$$(\phi \oplus \psi)_{(1\;2)} = \begin{pmatrix}-1 & -1 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{pmatrix},\quad (\phi \oplus \psi)_{(1\;2\;3)} = \begin{pmatrix}-1 & -1 & 0\\1 & 0 & 0\\0 & 0 & 1\end{pmatrix}.$$
+\end{exam}
+
+\begin{defi}[Faithful representation \cite{1}]
+	A representation $\phi : G \to \GL(V)$ is faithful if and only if it is injective: $\phi_g = I \implies g = 1$ where $I$ is the identity of $\GL(V)$ and 1 is the identity of $G$.
+\end{defi}
+
+\newpage
+\subsection{Maschke's Theorem and Reducibility}
+\begin{defi}[Irreducible representation \cite{1}]
+	A non-zero representation $\phi : G \to \GL(V)$ is irreducible if and only if the only $G$-invariant subspaces of $V$ are $\Brace{0}$ and $V$.
+\end{defi}
+
+Irreducible representations are analagous to prime numbers in number theory, or simple groups in group theory. 
+
+\begin{lemm}[\cite{1}]
+	Any degree 1 representation $\phi : G \to \mathbb{C}^*$ is irreducible since $\mathbb{C}$ has no proper subspaces.
+\end{lemm}
+
+\begin{prop}[\cite {1}]
+	For a degree 2 representation $\phi : G \to \GL(V)$, $\phi$ is irreducible if and only if there is no common eigenvector $v$ $\forall \phi_g,\;g \in G$.
+\end{prop}
+
+\begin{defi}[Completely reducible \cite{1}]
+	A representation $\phi : G \to \GL(V)$ is completely reducible if and only if $V = V_1 \oplus V_2 + \cdots + V_n$, where $V_i$ are $G$-invariant subspaces and $\phi\vert_{V_i}$ are irreducible $\forall 1 \leqslant i \leqslant n$.
+\end{defi}
+
+\begin{prop}[\cite{1}]
+	The following are equivalent:
+	\begin{enumerate}
+		\item $\phi : G \to \GL(V)$ is completely reducible.
+		\item $\phi \sim \phi^1 \oplus \phi^2 \oplus \cdots \oplus \phi^n$ where $\phi^i$ is irreducible $\forall 1 \leqslant i \leqslant n$.
+	\end{enumerate}
+\end{prop}
+
+
+\begin{defi}[Decomposable representation \cite{1}]
+	Let $\phi : G \to \GL(V)$ be a non-zero representation. $\phi$ is decomposable if and only if $V = V_1 \oplus V_2$ where $V_1,V_2$ are non-zero $G$-invariant subspaces. Otherwise $\phi$ is said to be indecomposable.
+\end{defi}
+
+\begin{lemm}[\cite{1}]
+	If $\phi : G \to \GL(V)$ is equivalent to a decomposable representation then $\phi$ is decomposable.
+\end{lemm}
+
+\begin{lemm}[\cite{1}]
+	If $\phi : G \to \GL(V)$ is equivalent to an indecomposable representation then $\phi$ is indecomposable.
+\end{lemm}
+
+\begin{lemm}[\cite{1}]
+	If $\phi : G \to \GL(V)$ is equivalent to a completely reducible representation then $\phi$ is completely reducible.
+\end{lemm}
+
+
+\begin{defi}[Unitary representation \cite{1}]
+	A representation $\phi : G \to \GL(V)$ where $V$ is an inner product space is said to be unitary if and only if $\phi_g$ is unitary $\forall g \in G$. Since $U_1(\mathbb{C}) = \mathbb{T}$, a one dimensional unitary representation is a homomorphism $\phi : G \to \mathbb{T}$.
+\end{defi}
+
+\begin{exam}[\cite{1}]
+	Let $\phi : \mathbb{R} \to \mathbb{T}$ such that $\phi_t = e^{2 \pi i t}$. Then $\phi_{t+s} = e^{2 \pi i (t+s)} = \phi_t\phi_s$, hence $\phi$ is a representation.
+\end{exam}
+
+\begin{prop}[\cite {1}]
+	A unitary representation $\phi : G \to \GL(V)$ is either irreducible or decomposable.
+\end{prop}
+
+\begin{prop}[\cite {1}]
+	Every representation of a finite group $G$ is equivalent to a unitary representation.
+\end{prop}
+
+\begin{coro}[\cite{1}]
+\label{2}
+	Every  non-zero representation $\phi : G \to \GL(V)$ of a finite group is either irreducible or decomposable.
+\end{coro}
+
+\begin{prop}[\cite {1}]
+	Every irreducible representation is indecomposable, though the contrary is not true in general.
+\end{prop}
+
+\begin{theo}[Maschke \cite{1}]
+	Every representation of a finite group is completely reducible. \label{4}
+\end{theo}
+\begin{proo*}[\cite{1}]
+	Let $\phi : G \to \GL(V)$ be a representation of a finite group $G$. We proceed by induction on the degree of $\phi$. If $\dim V = 1$ then $\phi$ is irreducible since $V$ has no non-zero proper subspaces. We assume true our inductive hypothesis that $\phi$ is irreducible for some $\dim V = k \in \mathbb{N}$. Then let $\phi : G \to \GL(V)$ for $\dim V = k +1$. If $\phi$ is irreducible then it is completely reducible, if not it is decomposable by Corollary \ref{2}. Then $V = V_1 \oplus V_2$ with $0 \neq V_1,V_2$ are $G$-invariant subspaces, and by the inductive hypothesis $\dim V_1,\dim V_2 < \dim V \implies \phi\vert_{V_1},\phi\vert_{V_2}$ are completely reducible. Then $V_1 = U_1 \oplus \cdots \oplus U_{n_U}$ and $V_2 = W_1 \oplus \cdots \oplus W_{n_W}$ where $U_i$ and $W_j$ are $G$-invariant and the subrepresentations $\phi\vert_{U_i},\phi\vert_{W_j}$ are irreducible $\forall\, 1 \leqslant i \leqslant n_U,\;1\leqslant j \leqslant n_W$. Then $V = U_1 \oplus \cdots \oplus U_{n_U} \oplus W_1 \oplus \cdots \oplus W_{n_W}$ and $\phi$ is completely reducible. $\blacksquare$
+\end{proo*}
+
+\begin{exam}
+	By Maschke's theorem, every representation of $\mathbb{Z}/n\mathbb{Z}$ is completely reducible $\forall n \in \mathbb{N}$.
+\end{exam}
+\end{document}
+

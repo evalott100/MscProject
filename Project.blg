@@ -1,0 +1,17 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[1] Config.pm:315> INFO - Logfile is '/home/eva/Dropbox/Uni/Glasgow/Project/Latex/Project.blg'
+[194] biber:330> INFO - === Fri Jul 16, 2021, 19:46:20
+[271] Biber.pm:415> INFO - Reading '/home/eva/Dropbox/Uni/Glasgow/Project/Latex/Project.bcf'
+[425] Biber.pm:952> INFO - Found 4 citekeys in bib section 0
+[443] Biber.pm:4334> INFO - Processing section 0
+[461] Biber.pm:4523> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[463] bibtex.pm:1682> INFO - LaTeX decoding ...
+[471] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[557] Utils.pm:395> WARN - ISBN '139780387715674' in entry '4' is invalid - run biber with '--validate_datamodel' for details.
+[570] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[570] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[570] Biber.pm:4162> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[570] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[576] bbl.pm:651> INFO - Writing '/home/eva/Dropbox/Uni/Glasgow/Project/Latex/Project.bbl' with encoding 'UTF-8'
+[579] bbl.pm:754> INFO - Output to /home/eva/Dropbox/Uni/Glasgow/Project/Latex/Project.bbl
+[580] Biber.pm:128> INFO - WARNINGS: 1

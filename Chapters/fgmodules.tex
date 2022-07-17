@@ -2,312 +2,434 @@
 \begin{document}
 \newpage
 \section{$FG$-Modules}
+In this section we will develop $FG$-modules, which are closely related to representations. It will often be more concise to describe results about representations in the form of results about $FG$-modules.
+
 \subsection{Basic Definitions}
-We will generalize the results so far in terms of $FG$-modules.
-\begin{defi}[$FG$-module \cite{2}]
-	For a vector space $V$ over a field $F$, and a group $G$, we say $V$ is an $FG$-module with respect to a multiplication operation $g \cdot v$ for $v \in V,\;g \in G$ if the following axioms are satisfied:
-	\begin{enumerate}
+In this subsection we will generalize the results so far in terms of $FG$-modules.
+\begin{defi}[$FG$-module {\cite[Definition 4.2]{2}}]
+	For a vector space $V$ over a field $F$, and a group $G$, we say $V$ is a \textit{$FG$-module} with respect to an operation $\textasteriskcentered \cdot \textasteriskcentered : G \times V \to V$ if the following axioms are satisfied for all $v,v' \in V$, $\alpha \in F$, and $g,g' \in G$:
+	\begin{menum}
 		\item $g \cdot v \in V$,
 		\item $(gg') \cdot v = g \cdot (g' \cdot v)$,
-		\item $1 \cdot v = v$ (where $1$ is the identity element of $G$),
+		\item $1_G \cdot v = v$,
 		\item $g \cdot (\alpha v) = \alpha(g \cdot v)$,
 		\item $g \cdot (v + v') = g\cdot v + g \cdot v'$,
-	\end{enumerate}
-	$\forall$ $v,v' \in V,\;g,g' \in G$. As with group operations we will neglect the `$\cdot$' for ease of reading: $gv \coloneqq g \cdot v$.
+	\end{menum}
+	As with group operations we will neglect the `$\cdot$' for ease of reading: $gv \coloneqq g \cdot v$.
 \end{defi}
 
-Note that axioms $(1)$,$(4)$,$(5)$ imply that $g \;\cdot : V \to G$ such that $v \mapsto gv$ is a linear endomorphism \cite{2}.
+Note that axioms $(1)$,$(4)$,$(5)$ imply that given an element $g \in G$, the map $g \cdot \textasteriskcentered : V \to V$ such that $v \mapsto gv$ is a linear endomorphism. Then choosing a basis for $V$, we can consider such endomorphisms as matrix transformations as the following definition demonstrates.
 
-\begin{defi}[$FG$-module with chosen basis \cite{2}]
-	Given an $FG$-module $V$ with a finite $n$ dimensional basis $\mathcal{B}$, we denote the matrix of the endomorphism $v \mapsto gv$ with respect to $\mathcal{B}$ as $\Brack{g}_\mathcal{B}$.\\
+\begin{defi}[$FG$-module with chosen basis {\cite[Definition 4.3]{2}}]
+	Given an $FG$-module $V$ with an $n$-dimensional basis $\mathcal{B}$, we denote the matrix of the endomorphism $v \mapsto gv$ with respect to $\mathcal{B}$ as $\Brack{g}_\mathcal{B}$.\\
 \end{defi}
 
-\begin{theo}[\cite{2}]
-	Let $V$ be an $n$ dimensional vector space over $F$, and $\phi : G \to \GL(V)$ be a group representation. $V$ becomes an $FG$-module by defining multiplication with $gv = \phi_g(v) \;\forall g\in G,\;v \in V$.\\
+Throughout this project, we will examine the symmetric group $S_n$ heavily. 
 
-	We can see that given a basis $\mathcal{B}$ we have $\phi_g = \Brack{g}_\mathcal{B}$.
+\begin{defi}[Permutation module {\cite[Definition 4.10]{2}}]
+	Let $G \leqslant S_n$ be a subgroup of the symmetric group on $n$ elements. Let $V$ be the $FG$-module with basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$ and action
+	$$\sigma e_i = e_{\sigma(i)} \quad \text{ for all } 1 \leqslant i \leqslant n,\;\sigma \in G.$$
+	We call $V$ the \textit{permutation module} of $G$ over $F$. Operating with a permuation element on vector simply permutes the basis elements.
+\end{defi}
+
+The following theorem demonstrates that a representation can intuitively be seen to be an $FG$-module.
+
+\begin{theo}[{\cite[Theorems 4.4(1)]{2}}]
+\label{meh1}
+	Let $V$ be an $n$-dimensional vector space over $F$, and $\rho : G \to \GL(V)$ be a representation of a group $G$. The representation $\rho$ becomes an $FG$-module by defining multiplication with $gv = \rho_g(v)$ for all $g\in G,\;v \in V$.
 \end{theo}
 
-\begin{proo*}[\cite{2}]
-	Given an $n$ dimensional vector space $V$ over $F$, and a representation $\phi : G \to \GL(V)$ we have
-	\begin{enumerate}
-		\item $\phi_g(v) \in V$,
-		\item $\phi_{gg'}(v) = \phi_g\phi_{g'}(v)$,
-		\item $\phi_1{v} = v$ (since $\phi$ is a homomorphism it maps identity to identity),
-		\item $\phi_g(\alpha v) = \alpha(\phi_g v)$,
-		\item $\phi_g(v + v') = \phi_g(v) + \phi_g(v')$,
-	\end{enumerate}
-	$\,\forall v,v' \in V,\; \alpha \in F,\; g \in G$. Hence $gv \coloneqq \phi_g(v)$ allows $V \cong F^n$ becomes $FG$-module. $\blacksquare$
+\begin{proo*}
+	Given an $n$-dimensional vector space $V$ over $F$, and our representation $\rho : G \to \GL(V)$ for all $v,v' \in V,\; \alpha \in F,\; g \in G$ we have:
+	\begin{menum}
+		\item $\rho_g(v) \in V$,
+		\item $\rho_{gg'}(v) = \rho_g\rho_{g'}(v)$,
+		\item $\rho_{1_G}{v} = v$, 
+		\item $\rho_g(\alpha v) = \alpha(\rho_g v)$,
+		\item $\rho_g(v + v') = \rho_g(v) + \rho_g(v')$,
+	\end{menum}
+	Hence $gv \coloneqq \rho_g(v)$ allows $V$ to become an $FG$-module. \hfill$\blacksquare$
 \end{proo*}
 
-
-
-\begin{theo}[\cite{2}]
-	Given and $FG$-module $V$ with basis $\mathcal{B}$, the function $g \mapsto \Brack{g}_\mathcal{B}$ is a representation of of $G$.
+\begin{theo}[{\cite[Theorems 4.4(2)]{2}}]
+\label{meh2}
+	Given an $FG$-module $V$ with basis $\mathcal{B}$, and a group $G$, the function $g \mapsto \Brack{g}_\mathcal{B}$ is a representation of $G$.
 \end{theo}
-\begin{proo*}[\cite{2}]
-	Given an $FG$-module with basis $\mathcal{B}$. Since $(gg')v = g(g'v)\;\forall g,g' \in G,\;v \in V$, we have $[gg']_\mathcal{B} = [g]_\mathcal{B}[g']_\mathcal{B}$, then $\Brack{gg^{-1}}_\mathcal{B} = [1]_\mathcal{B} = [g]_\mathcal{B}[g']_\mathcal{B}$, and so $g \mapsto [g]_\mathcal{B}$ is a homomorphism from $G$ to $\GL_n(F)$.\;$\blacksquare$
+\begin{proo*}[{\cite[Theorems 4.4(2)]{2}}]
+	Since $(gg')v = g(g'v)$ for all $g,g' \in G,\;v \in V$, we have $[gg']_\mathcal{B} = [g]_\mathcal{B}[g']_\mathcal{B}$. Also, $\Brack{gg^{-1}}_\mathcal{B} = [1_G]_\mathcal{B} = [g]_\mathcal{B}[g]_\mathcal{B}^{-1}$ which implies $[g^{-1}]_\mathcal{B} = [g]^{-1}_\mathcal{B}$. So $g \mapsto [g]_\mathcal{B}$ is a homomorphism from $G$ to $\GL_n(F)$. \hfill$\blacksquare$
 \end{proo*}
 
-\begin{defi}[Direct sum of $FG$-modules]
+Theorems \ref{meh1} and \ref{meh2} demonstrate the connection between $FG$-modules and representations. For a group representation $\rho : G \to \GL(V)$ we can describe $\rho_g$ as $g \cdot \textasteriskcentered$.  For the remainder of the project we will occasionally alternate between using $FG$-modules and representations when showing results. Some of the definitions in this section will be restating the results on representations from the last section in terms of results on $FG$-modules.\\
+
+$FG$-modules can be direct summed analogous to the direct sum of representations. This is inherent from the properies of the vector space direct sum and the module operation. Given the direct sum of vector spaces $V = U \oplus W$, with the bases $\mathcal{B}_U = \Brace{u_1,\dots,u_{n_U}}$ of $U$ and $\mathcal{B}_W = \Brace{w_1,\dots,w_{n_W}}$ of $W$, for an element $v \in V$ and $g \in G$ we have
+\begin{align*}
+gv &= g(\alpha_1u_1 + \cdots + \alpha u_{n_U} + \beta_1w_1 + \cdots + \beta_{n_W}w_{n_W}) \\&= \alpha_1gu_1 + \cdots + \alpha_{n_U}gu_{n_U} + \beta_1gw_1 + \cdots + \beta_{n_W}gw_{n_W})
+\end{align*}
+where $\alpha_i,\beta_i \in F$ for all $i$. In the below definition we describe the endomorphism $g \mapsto gv$ in matrix form $\Brack{g}_{\mathcal{B}_V}$ where $\mathcal{B}_V$ is the basis of $V$.\\
+
+\begin{defi}[Direct sum of $FG$-modules {\cite[page 66]{2}}]
 	\label{directsumoffg}
-	Our direct sum of representations in Definition \ref{directsumofrep} extends to $FG$-modules, that is if we have $V = U \oplus W$ for $FG$-modules $V,U,W$ with chosen bases $\mathcal{B}_V,\mathcal{B}_W,\mathcal{B}_U$ respectively, then
+	 Let $G$ be a group and $U,W$ be $FG$-modules with chosen bases $\mathcal{B}_W$,$\mathcal{B}_U$ respectively. If $V = U \oplus W$ is the direct sum of the vector spaces, then $V$ has basis $\mathcal{B}_V = \mathcal{B}_W\cup\mathcal{B}_U$. Then endomorphisms of $V$ are of the form
 	$$\Brack{g}_{\mathcal{B}_V} = \begin{pmatrix}\Brack{g}_{\mathcal{B}_U} & 0 \\ 0 & \Brack{g}_{\mathcal{B}_W}\end{pmatrix}.$$
 
-More generally, given $FG$-modules $V,W_1,\dots,W_n$ with $V = W_1 \oplus \cdots \oplus W_n$, and bases $\mathcal{B}_V,{\mathcal{B}_{W_1}},\dots,{\mathcal{B}_{W_n}}$ respectively, we have
-$$\begin{pmatrix} 
-		[g]_{\mathcal{B}_V} = 
-	    [g]_{\mathcal{B}_{W_1}}& 0 & \dots & 0 \\
-	    0 & [g]_{\mathcal{B}_{W_2}} & \cdots & 0 \\
-	    \vdots & \vdots& \ddots & \vdots\\
-	    0 & 0  &\dots & [g]_{\mathcal{B}_{W_n}}
-\end{pmatrix}.$$
+More generally, given $FG$-modules $W_1,\dots,W_n$ with $V = W_1 \oplus \cdots \oplus W_n$, and bases $\mathcal{B}_V,{\mathcal{B}_{W_1}},\dots,{\mathcal{B}_{W_n}}$ respectively, we have $\mathcal{B}_V ={\mathcal{B}_{W_1}}\cup \cdots\cup {\mathcal{B}_{W_n}}$ and the diagonal matrix
+$$[g]_{\mathcal{B}_V} = \begin{pmatrix} 
+	    [g]_{\mathcal{B}_{W_1}}&  & \text{\Large{0}} \\
+	    & \ddots& \\
+	    \text{\Large{0}} & & [g]_{\mathcal{B}_{W_n}}
+\end{pmatrix}.$$\\
 \end{defi}
 
-
-
-\begin{defi}[Trivial $FG$-module \cite{2}]
-	The trivial $FG$-module is the 1-dimensional vector space $V$ over $F$ such that
-	$gv = v\;\forall\,v \in V, g \in G$.
+\begin{defi}[Trivial $FG$-module {\cite[Definitions 4.8(1)]{2}}]
+	The \textit{trivial} $FG$-module is the 1-dimensional vector space $V$ over $F$ such that
+	$gv = v$ for all $v \in V, g \in G$.
 \end{defi}
 
-\begin{defi}[Faithful $FG$-module \cite{2}]
-	An $FG$-module $V$ is said to be faithful if and only if it is injective: $gv = v \implies g = 1\; \forall v \in V$.
+\begin{defi}[Faithful $FG$-module {\cite[Definitions 4.8(2)]{2}}]
+	An $FG$-module $V$ is said to be \textit{faithful} if it is injective, i.e it has trivial kernel: $gv = v$ implies $g = 1_G$ for all $v \in V$.\\
 \end{defi}
 
+The regular $FG$-module is an important module which will be employed within proofs later in the project.
 
-\begin{defi}[Regular $FG$-module \cite{2}]
-	Let $G$ be a finite group of order $n$ and $F = \mathbb{C}$ or $\mathbb{R}$. The regular $FG$-module $V$ is the vector space over $F$ obtained using elements of $g$ as a basis, that is 
-	$$V = \Brace{\sum_{i \in I}f_ig_i \;\vert\; f_i \in F,\,g_i \in G, I \subseteq \{1,\dots n\}},$$
-	the set of finite sums of elements of $G$ with coefficients in $F$.
-	It has the natural multiplication $vg = \sum\limits_{i \in I}f_ig_ig$.
-	TODO verify this is a vector space
+\begin{defi}[Regular $FG$-module {\cite[Definition 6.5]{2}}]
+	Let $G$ be a finite group of order $n$ and $F = \mathbb{C}$ or $\mathbb{R}$. The \textit{regular $FG$-module} $V$ is the vector space over $F$ obtained using elements of $g$ as a basis, that is 
+	$$V \coloneqq \Brace{\sum_{i \in I}f_ig_i \;:\; f_i \in F,\,g_i \in G, I \subseteq \{1,\dots n\}},$$
+	the set of finite sums of elements of $G$ with coefficients in $F$. This clearly satisfies the axioms of a vector space with a basis given by elements of the group, and as such it is standard to write $e_g$ for element $g$ of the group.\\
 
-	Notice that the regular $FG$-module has dimension $\#G$.
+	For a general element $v = \sum\limits_{i \in I}f_ie_{g_i}$, we have the natural module operation induced from the group operation: $vg = \sum\limits_{i \in I}f_ie_{g_ig}$.\\
+
+	We can see this operation as permuting the basis group elements.
 \end{defi}
 
-\begin{defi}[Regular representation \cite{2}]
-	Let $G = \Brace{g_1 = 1_G,g_2, \dots, g_n}$ be a finite group of order $n$. The representation of the regular $FG$-module $V$ with basis $\mathcal{B} = G$ given by $g \mapsto \Brack{g}_\mathcal{B}$ is called the regular representation of $G$ over $F$.
-\end{defi}
-
-\begin{prop}[\cite{2}]
-	The regular representation is faithful.
+\begin{prop}[{\cite[Proposition 6.6]{2}}]
+	The regular ${F}G$-module is faithful.
 \end{prop}
-\begin{proo*}
-	Let $g \in G$, then $\forall v = \sum\limits_{i \in I}f_ig_i \in V$, suppose $vg = \sum\limits_{i \in I}f_ig_ig = \sum\limits_{i \in I}f_ig_i  = v$, then an identity basis term in a sum has $f1_Gg = f1_G$, so $g = 1_G$.
+\begin{proo*}[{\cite[Proposition 6.6]{2}}]
+	Let $g \in G$, and $V$ the regular $FG$-module. Then for all $v = \sum\limits_{i \in I}f_ie_{{g_i}} \in V$, suppose $vg = \sum\limits_{i \in I}f_ie_{g_ig} = \sum\limits_{i \in I}f_ie_{g_i}  = v$, then by uniqueness of identity $g = 1_G$. \hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{theo}[\cite{2}]
+A nice outcome of using $FG$-modules to describe representations is that equivalent representations give rise to the same underlying $FG$-module with a different choice of basis, as the following theorem demonstrates.
+
+\begin{theo}[{\cite[Theorem 4.12]{2}}]
 \label{5}
-	Let $V$ be an $FG$-module with basis $\mathcal{B}$ and let $\phi$ be a representation $\phi : G \to \GL(V)$ such that $\phi_g = \Brack{g}_\mathcal{B}$.
-	\begin{enumerate}
-	\item If $\mathcal{B}'$ is another basis of $V$, and we have another representation $\psi : G \to \GL(V)$ such that $\psi_g = \Brack{g}_{\mathcal{B}'}$, then $\phi \sim \psi$.
-	\item Conversely, if $\psi$ is a representation equivalent to $\phi$ then there is a basis $\mathcal{B}'$ of $V$ such that $\psi_g = \Brack{g}_{\mathcal{B}'}$.
-	\end{enumerate}
+	Let $G$ be a group, let $V$ be an $FG$-module with finite basis $\mathcal{B}$ and let $\rho : G \to \GL(V)$ be the representation such that $\rho_g = \Brack{g}_\mathcal{B}$ for all $g \in G$.
+	\begin{menum}
+	\item If $\mathcal{B}'$ is another basis of $V$, and we have another representation $\rho' : G \to \GL(V)$ such that $\rho'_g = \Brack{g}_{\mathcal{B}'}$, then $\rho \sim \rho'$.
+	\item Conversely, if $\rho'$ is a representation equivalent to $\rho$ then there is a basis $\mathcal{B}'$ of $V$ such that $\rho'_g = \Brack{g}_{\mathcal{B}'}$.
+	\end{menum}
 \end{theo}
 
-\begin{proo*}[\cite{2}]~ %%%
+\begin{proo*}[{\cite[Proposition 6.6]{2}}]~ %%%
 \vspace{-\topsep}
-	\begin{enumerate}
-		\item There exists a change of basis matrix $T$ such that $\Brack{g}_\mathcal{B} = T^{-1}\Brack{g}_{\mathcal{B}'}T$.
-		\item Since $\phi \sim \psi$, $\exists T$ such that $\phi_g = T^{-1}\psi_gT\;\forall g \in G$. Let $\mathcal{B}'$ be a basis of $V$ such that the change of basis matrix from $\mathcal{B}$ to $\mathcal{B}'$ is $T$, then $\Brack{g}_\mathcal{B} = T^{-1}\Brack{g}_{\mathcal{B}'}T\;\forall g \in G$, and $\psi_g = \Brack{g}_{\mathcal{B}'}$.
-	\end{enumerate}
-	$\blacksquare$
+	\begin{menum}
+		\item There exists a change of basis matrix $T$ such that $\Brack{g}_\mathcal{B} = T\Brack{g}_{\mathcal{B}'}T^{-1}$.
+		\item Since $\rho \sim \rho'$, there exists $T$ such that $\rho_g = T\rho'_gT^{-1}$ for all $g \in G$. Let $\mathcal{B}'$ be a basis of $V$ such that the change of basis matrix from $\mathcal{B}$ to $\mathcal{B}'$ is $T$, then $\Brack{g}_\mathcal{B} = T\Brack{g}_{\mathcal{B}'}T^{-1}$ for all $g \in G$, and $\rho'_g = \Brack{g}_{\mathcal{B}'}$.\hfill $\blacksquare$
+	\end{menum}
 \end{proo*}
 
 
-
-We will now examine reducibility through the lense of $FG$-modules.
-
-\begin{defi}[$FG$-submodule \cite{2}]
-	Let $V$ be an $FG$-module. A subspace $W \leqslant V$ is an $FG$-submodule of $V$ is $gw \in W$ $\forall\,g \in G,\,w \in W$.
+\begin{defi}[$FG$-submodule {\cite[Definition 5.1]{2}}]
+	Let $V$ be an $FG$-module. A subspace $W \leqslant V$ is called a \textit{$FG$-submodule} of $V$ if $gw \in W$ for all $g \in G,\,w \in W$. An $FG$-submodule $W \leqslant V$ is said to be proper if $W \neq V$.
 \end{defi}
 
-\begin{defi}[Proper submodule \cite{2}]
-	Every $FG$-module $V$ has at least two $FG$-submodules: $\Paren{0}$ and $V$. An $FG$-submodule $W < V$ is said to be proper if $W \neq \Paren{0},V$.
+From the definition it is clear that every $FG$-module $V$ has at least two $FG$-submodules, both $\Brace{0}$ and $V$.\\
+
+We would like a way to show that two $FG$-modules share algebraic structure, since it is possible for the module action to differ between isomorphic vector spaces, a linear map is not enough to determine this. $FG$-homorphisms are linear maps which preserve the strucure of an $FG$-module.
+\begin{defi}[$FG$-homomorphism {\cite[Definition 7.1]{2}}]
+	Let  $V$ and $W$ be $FG$-modules. An \textit{$FG$-homomorphism} is a a linear function $\theta : V \to W$ such that $\theta(gv) = g\theta(v)$ for all $g \in G, v \in V$. If $\theta$ is a bijection then we say it is an $FG$-isomorphism, and write $V \cong W$.
 \end{defi}
 
-\begin{defi}[\cite{2}]
-A nonzero $FG$-module $V$ is irreducible if and only if it has no proper $FG$-submodules.
-\end{defi}
 
-We remark that the zero $FG$-module $V = \Paren{0}$ is regarded as neither reducible or irreducible, analogous to $1 \in \mathbb{N}$ being neither composite nor prime. (ASK)
-
-\begin{defi}[$FG$-homomorphism \cite{2}]
-	Let  $V$ and $W$ be $FG$-modules. An $FG$-homomorphism is a a linear function $\lambda : V \to W$ such that $\lambda(gv) = g\lambda(v)\;\forall g \in G, v \in V$. If $\lambda$ is a bijection then we say it is an $FG$-isomorphism, and $V \cong W$.
-\end{defi}
-
-\begin{prop}[\cite{2}]
+\begin{prop}[{\cite[Fact 7.7]{2}}]
 \label{6}
 Let $V,W$ be $FG$-modules. Then $V \cong W$ if and only if there exists a basis $\mathcal{B}_V$ of $V$ and $\mathcal{B}_W$ of $W$ such that
 $$\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}.$$
 \end{prop}
-\begin{proo*}
-TODO
+\begin{proo*}[{\cite[Fact 7.7]{2}}]
+	Suppose $V \cong W$ with the $FG$-isomorphism $\theta : V \to W$. Let $\mathcal{B}_V = \Brace{v_1,\dots,v_n}$ be the chosen basis of $V$, then $\Brace{\theta(v_1),\dots,\theta(v_n)}$ is a basis $\mathcal{B}_W$ of $W$. Since $g\theta(v_i) = \theta(gv_i)$ for all $1 \leqslant i \leqslant n$, we have $\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}$ for all $g \in G$.  Conversely, assume $\mathcal{B}_V = \Brace{v_1,\dots,v_n}$ and $\mathcal{B}_W = \Brace{w_1,\dots,w_n}$ such that  $\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}$ for all $g \in G$. Let $\theta : V \to W$ be the linear map such that $\theta(v_i) = w_i$ for all $1 \leqslant i \leqslant n$. We have $\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}$, implying $\theta(gv_i) = g \theta(v_i)$ for all $g \in G$ and $1 \leqslant i \leqslant n$. Then $\theta$ is an isomorphism and $V \cong W$. \hfill$\blacksquare$
 \end{proo*}
 
-\begin{defi}[$FG$-module projection \cite{2}]
-	Given an $FG$-module $V$ and a collection of $FG$-submodules $\Brace{W_i}_{1 \leqslant i \leqslant n}$ such that $V = W_1 \oplus \cdots \oplus W_n$, for any vector $v = w_1 + \cdots + w_n$ where $v \in V$, $w_i \in W$ we define the projection $\pi_i : V \to W_i$ such that $\pi_i(v) = w_i$. This is a projection since $\pi_i^2(v) = \pi_i(w_i) = w_i$, $\Im(\pi_i) = W_i$, $\pi_i\mid_{W_i} = \Id_{W_i}$.
+$FG$-module projections are a unique kind of $FG$-homomorphism which will enable us to prove intersting properties of $FG$-submodules in later subsections.
+
+\begin{defi}[$FG$-module projection {\cite[Proposition 7.11]{2}}]
+	Given an $FG$-module $V$ and a collection of $FG$-submodules $\Brace{W_i}_{1 \leqslant i \leqslant n}$ such that \\$V = W_1 \oplus \cdots \oplus W_n$. Let $v \in V$ be any vector, then we can write $v = w_1 + \cdots + w_n$ where $w_i \in W$ for all $1 \leqslant i \leqslant n$. For each $1 \leqslant i \leqslant n$ we define the \textit{$FG$-module projection} $\pi_i : V \to W_i$ such that $\pi_i(v) = w_i$ . This is a projection of vector spaces since $\pi_i^2(v) = \pi_i(w_i) = w_i$, the image is contained in $W_i$, and the restriction to $W_i$ is the identity $\pi_i\mid_{W_i} = \Id_{W_i}$.
 \end{defi}
 
-\begin{prop}[\cite{2}]
+We validate that the above projection is structure preserving.
+
+\begin{prop}[{\cite[Proposition 7.11]{2}}]
 \label{projishom}
 	The above projection is an $FG$-module homorphism.
 \end{prop}
-\begin{proo*}
-	$\pi_i : V \to W_i$ is linear since given $v,v' \in V$ and scalars $\alpha,\alpha' \in F$ we have $\pi_i(\alpha v + \alpha'v') = \pi(\alpha w_1 + \alpha'w_1' + \cdots + \alpha w_n + \alpha'w_n') = \alpha w_i + \alpha'w_i' = \alpha \pi_i(v) + \alpha'\pi_i(v')$ where $w_j,w_j' \in W_j$ $\forall 1 \leqslant j \leqslant n$. It's structure preserving since given $\pi_i(gv) = \pi_i(gw_1+ \cdots + gw_n) = gw_i = g\pi_i(v)$.
+\begin{proo*}[{\cite[Proposition 7.11]{2}}]  
+	Let $V = W_1 \oplus \cdots W_n$ be an $FG$-module. We verify that $\pi_i : V \to W_i$ is linear for each $1 \leqslant i \leqslant n$. Given two vectors in $V$:
+	$$v = w_1 + \cdots + w_n,\;v' = w_1' + \cdots + w_n', \quad \text{with }w_i,w_i' \in W_i \text{ for all } 1 \leqslant i \leqslant n,$$
+	and scalars $\alpha,\alpha' \in F$, we have $\pi_i(\alpha v + \alpha'v') = \pi(\alpha w_1 + \alpha'w_1' + \cdots + \alpha w_n + \alpha'w_n') = \alpha w_i + \alpha'w_i' = \alpha \pi_i(v) + \alpha'\pi_i(v')$. It is also structure preserving since given $g \in G$ we have $\pi_i(gv) = \pi_i(gw_1+ \cdots + gw_n) = gw_i = g\pi_i(v)$, since $gw_i \in W_i$ for all $1 \leqslant j \leqslant n$.\hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{defi}[Image and kernel of $FG$-homomorphism]
-	Like with other homomorphisms, given a $FG$-homomorphism $\phi : V \to W$
-	$$\Im(\phi) = \Brace{\phi(v) \in W\;\vert\; v \in V},\quad \Ker(\phi) = \Brace{v \in V\;\vert\;\phi(v) = 0 \in W}.$$
-\end{defi}
 
+As with structure preserving maps of other algebraic structures the reader may have studied, the Image and Kernel of an $FG$-homomorphism are $FG$-submodules. We will use this basic result in proofs in this section.
 \begin{prop}
-	For a $FG$-homomorphism $\phi : V \to W$, $\Im(\phi)$ is a $FG$-submodule of $W$ and $\Ker(\phi)$ is an $FG$-submodule of $V$.
+	For an $FG$-homomorphism $\theta : V \to W$, $\Im(\theta)$ is a $FG$-submodule of $W$ and $\Ker(\theta)$ is an $FG$-submodule of $V$.
 \label{ImKerSub}
 \end{prop}
 \begin{proo*}
-	Let $w = \phi(v) \in \Im(\phi)$. Then $\forall\,g \in G$, $gw = g\phi(v) = \phi(gv) \implies gw \in \Im(\phi)$. Let $v \in \Ker(\phi)$. Then $\forall\, g \in G$, $\phi(gv) = g\phi(v) = 0 \implies gv \in \Ker(\phi)$.
+	Let $w = \theta(v) \in \Im(\theta)$. Then for all $g \in G$, we have $gw = g\theta(v) = \theta(gv)$ implies $gw \in \Im(\theta)$. Let $v \in \Ker(\theta)$. Then for all $g \in G$, we have $\theta(gv) = g\theta(v) = 0$ implies $gv \in \Ker(\theta)$.\hfill $\blacksquare$
 \end{proo*}
 
 
 
 \newpage
-\subsection{Maschke's Theorem for $FG$-Modules}
-In the last section we covered Maschke's theorem in the case of a vector space over a field $F$ with $\Char F = 0$.
-We use a more general case of Maschke's theorem in terms of $FG$-modules.
+\subsection{Maschke's Theorem}
+In this subsection we examine Maschke's Theorem, and expand on the results on reducibility we developed in Section 2. Maschke's Theorem provides us with the specific conditions for a reducible representation to be decomposable - as mentioned in the last section an indecomposable representation is not neccessarily irreducible.\\
+
+We will now restate reducibility through the lense of $FG$-modules.
+
+\begin{defi}[Irreducible $FG$-module {\cite[Definition 5.3]{2}}]
+A non-zero $FG$-module $V$ is called \textit{irreducible} if it has no non-zero proper $FG$-submodules.
+\end{defi}
+
+We remark that the zero $FG$-module $V = \Brace{0}$ is regarded as neither reducible or irreducible, analogous to $1 \in \mathbb{N}$ being neither composite nor prime.\\
+
+We also rephrase complete reducibility and decomposability in terms of $FG$-modules.
+
+\begin{defi}[Completely reducible $FG$-module {\cite[Definition 8.6]{2}}]
+	Let $V$ be an $FG$-module. We call $V$ \textit{completely reducible} if $V = U_1 \oplus \cdots \oplus U_k$ where $U_i$ is an irreducible proper $FG$-submodule of $V$ for all $1 \leqslant i \leqslant k$.\\
+\end{defi}
+Note that in the definition above there is no requirement for elements in the direct sum $U_1 \oplus \cdots \oplus U_k$ to be non-isomorphic, i.e the same irreducible $FG$-submodule can appear multiple times.\\
+
+\begin{defi}[Decomposable $FG$-module]
+	Let $V$ be an $FG$-module. We call $V$ \textit{decomposable} if there exist non-zero proper $FG$-submodules $U,W < V$ such that $V = U \oplus W$. If $V$ is not decomposable then it is called \textit{indecomposable}.\\
+\end{defi}
 
 
-\begin{theo}[Maschke \cite{2}]
-	Let $V$  be an $FG$-module where $G$ is a finite group, and $F$ a field of a characteristic such that $\Char(F) \nmid \#{G}$. If there exists an $FG$-submodule $W < V$ then there exists an $FG$-submodule $U$ such that $V = W \oplus U$. \label{3}
+Maschke's Theorem gives the conditions on $\Char(F)$, $\abs{G}$ such that reducibility implies decomposability.
+\begin{theo}[Maschke {\cite[Theorem 8.1]{2}}]
+	Let $V$  be an $FG$-module where $G$ is a finite group, and $F$ a field of a characteristic $\Char(F)$ such that $\Char(F) \nmid \abs{G}$. If there exists a non-zero proper $FG$-submodule $W < V$ then there exists an $FG$-submodule $U$ such that $V = W \oplus U$. \label{3}\\
 \end{theo}
 
 
-\begin{defi}[Completely reducible $FG$-module \cite{2}]
-	Let $V$ be an $FG$-module. $V$ is said to be completely reducible if and only if $V = W_1 \oplus \cdots \oplus W_k$ where $U_i$ is an irreducible $FG$-submodule of $V\;\forall\,1 \leqslant i \leqslant k$.
-\end{defi}
-
-\begin{prop}
-	Maschke's theorem \ref{3} implies our earlier description Maschke's theorem \ref{4} where the field is $\mathbb{C}$.
-\end{prop}
-
-\begin{proo*}[\cite{2}]
-	We have that $\Char\mathbb{C} = 0$. Let $V$ be an $n$-dimensional non-zero $FG$-module, with finite $G$, and $F = \mathbb{C}$. We proceed by induction on $\dim V$. Suppose $\dim V = 1$, then $V$ is trivially irreducible. Suppose $V$ is completely reducible up to $\dim V = k$. Then for $\dim V = k+1$, if $V$ is irreducible then the result holds, else $\exists W < V$ such that $W \neq \Brace{0},V$. By Maschke's theorem \ref{3} $\exists U < V$ with $U \neq \Brace{0},V$ such that $V = W \oplus U$. Since $\dim W, \dim U \leqslant k < \dim V$, both $W$ and $U$ are completely reducible by the inductive hypothesis, then
-	$$V = W_1 \oplus \cdots \oplus W_{i_W} \oplus U_1 \oplus \cdots \oplus U_{i_U}$$
-	where $i_W,i_U \in \mathbb{N}$ and $W_j,U_j$ are irreducible $\forall j$. $\blacksquare$
+To prove Maschke's Theorem we will require the following key fact about projections.
+\begin{theo}
+	Given a projection $\pi$ of $V$ onto a subspace $W$, we have $V = \Ker(\pi) \oplus \Im(\pi)$.
+	\label{projtheo}
+\end{theo}
+\begin{proo*}
+	Let $v \in V$, then $v = v + \pi(v) - \pi(v)$. Clearly $\pi(v) \in \Im(v)$. By linearity $\pi(v - \pi(v)) = \pi(v) - \pi^2(v) = \pi(v) - \pi(v) = 0$, then $v - \pi(v) \in \Ker(\pi)$. Then each $V = \Ker(\pi) + \Im(\pi)$. Now we need to prove that this is a direct sum. Let $v \in \Ker(\pi) \cap \Im(\pi)$, then $\pi(v) = 0$ and there exists some $w \in V$ such that $v = \pi(w)$. Then
+	$\pi(v) = \pi^2(w) = \pi(w) = v = 0$, then $\Ker(\pi) \cap \Im(\pi) = \Brace{0}$ and $V = \Ker(\pi) \oplus \Im(\pi)$.\hfill $\blacksquare$\\
 \end{proo*}
 
-With these results out the way, we proove Maschke's theorem for $FG$-modules.
-\begin{proo*}[Maschke \cite{3}]
-	We have a finite group $G$ and an $FG$-module $V$ over field $F$ with characteristic such that $\Char(F)\;\nmid\;\#G$. Let $W$ be an $FG$-submodule of $V$. We define $\pi_W : V \to W$ be the projection onto $W$ as a vector space. Take $\tilde{\pi}_W : V \to W$ such that
-	$$\tilde{\pi}_W(v) \coloneqq \frac{1}{\#G}\sum_{g \in G}g\pi_W(g^{-1}v).$$
+Now we can prove Maschke's Theorem.
 
-	We will verify that this is an $FG$-homomorphism, even though $\pi_W$ on its own is just a projection of vector spaces. Linearity follows from linearity of $\pi_W$ with
+\begin{proo*}[Maschke {\cite[page 12]{3}}]
+	We have a finite group $G$ and an $FG$-module $V$ over field $F$ with characteristic such that $\Char(F)\;\nmid\;\abs{G}$. Let $W$ be an $FG$-submodule of $V$. We define $\pi_W : V \to W$ be the projection onto $W$ as a vector space. Take $\tilde{\pi}_W : V \to W$ such that
+	$$\tilde{\pi}_W(v) \coloneqq \frac{1}{\abs{G}}\sum_{g \in G}g\pi_W(g^{-1}v).$$
+
+	We will verify that this is an $FG$-homomorphism, even though $\pi_W$ on its own is just a projection of vector spaces. Linearity follows from linearity of $\pi_W$. Given $v,v' \in V, \alpha \in F$ we have
 	\begin{align*}
-		&\frac{1}{\#G}\sum_{g \in G}g\pi_W(g^{-1}(v + v')) = \frac{1}{\#G}\sum_{g \in G}g\pi_W(g^{-1}v) + \frac{1}{\#G}\sum_{g \in G}g\pi_W(g^{-1}v'),\\
-		&\frac{1}{\#G}\sum_{g \in G}g\pi_W(\alpha g^{-1}v) = \alpha\frac{1}{\#G}\sum_{g \in G}g\pi_W(g^{-1}v).
+		&\frac{1}{\abs{G}}\sum_{g \in G}g\pi_W(g^{-1}(v + v')) = \frac{1}{\abs{G}}\sum_{g \in G}g\pi_W(g^{-1}v) + \frac{1}{\abs{G}}\sum_{g \in G}g\pi_W(g^{-1}v'),\\
+		&\frac{1}{\abs{G}}\sum_{g \in G}g\pi_W(\alpha g^{-1}v) = \frac\alpha{\abs{G}}\sum_{g \in G}g\pi_W(g^{-1}v).
 	\end{align*}
-	 Now we demonstrate that $\tilde{\pi}_W(w) = w$. Clearly $g^{-1}w \in W$ since $W$ is a submodule, which implies $\pi(g^{-1}w) = g^{-1}w$, then
-	$$\tilde{\pi}_W(w) = \frac{1}{\#G}\sum_{g \in G}g\pi_W(g^{-1}w) = \frac{1}{\#G}\sum_{g \in G}gg^{-1}w = \frac{1}{\#G}\sum_{g \in G}w = w.$$
+	 Now we demonstrate that given $w \in W$, we have $\tilde{\pi}_W(w) = w$. Clearly $g^{-1}w \in W$ for all $g \in G$, since $W$ is a submodule, which then implies $\pi(g^{-1}w) = g^{-1}w$, then
+	$$\tilde{\pi}_W(w) = \frac{1}{\abs{G}}\sum_{g \in G}g\pi_W(g^{-1}w) = \frac{1}{\abs{G}}\sum_{g \in G}gg^{-1}w = \frac{1}{\abs{G}}\sum_{g \in G}w = w.$$
 	Also, since $\pi_W$ has its image in $W$, $\tilde{\pi}_W$ also has its image in $W$. Then $\tilde{\pi}_W$ is a projection.\\
 
 	We verify structure presevation, given an element $h \in G$,
-	$$h\tilde{\pi}_W(v) = \frac{1}{\#G}\sum_{g \in G}hg\pi_W(g^{-1}v) = \frac{1}{\#G}\sum_{g \in G}(hg)\pi_W((hg)^{-1}hv).$$
+	$$h\tilde{\pi}_W(v) = \frac{1}{\abs{G}}\sum_{g \in G}hg\pi_W(g^{-1}v) = \frac{1}{\abs{G}}\sum_{g \in G}(hg)\pi_W((hg)^{-1}hv).$$
 	Now let $g' = hg$. Then summing over all $g$ is the same as summing over all $g'$ so
-	$$\frac{1}{\#G}\sum_{g \in G})(hg)\pi_W((hg)^{-1}hv) = \frac{1}{\#G}\sum_{g' \in G}g'\pi_W(g'^{-1}hv) = \tilde{\pi}_W(hv)$$
+	$$\frac{1}{\abs{G}}\sum_{g \in G})(hg)\pi_W((hg)^{-1}hv) = \frac{1}{\abs{G}}\sum_{g' \in G}g'\pi_W(g'^{-1}hv) = \tilde{\pi}_W(hv)$$
 	and $\tilde{\pi}_W$ is structure preserving, and hence an $FG$-homomorphism.\\
 
 	By Proposition \ref{ImKerSub}, $\Ker(\tilde{\pi}_W)$ is an $FG$-submodule. By Theorem \ref{projtheo} we have
-	$$V = \Im(\tilde{\pi}_W) \oplus \Ker(\tilde{\pi}_W) = W \oplus \Ker(\tilde{\pi}_W). \;\blacksquare$$ 
+	$$V = \Im(\tilde{\pi}_W) \oplus \Ker(\tilde{\pi}_W) = W \oplus \Ker(\tilde{\pi}_W).$$
+	\hfill $\blacksquare$
 	\end{proo*}
-	
-	Notice that the finite $G$ condition is required for $\dfrac{1}{\#G}$ to be defined, also if  $\Char(F) \mid \#G$ then $\dfrac{1}{\#G}$ is undefined since $\#G \equiv 0$ in $F$.\\
 
-	While this proof requires this condition on $\#G$, a  natural question would be if Maschke's theorem will ever hold for $\Char(F) \mid \#G$. As it turns out the answer is no.
+		Notice that the finite $G$ condition is required for $\dfrac{1}{\abs{G}}$ to be defined, also if  $\Char(F) \mid \abs{G}$ then $\dfrac{1}{\abs{G}}$ is undefined since $\abs{G} \equiv 0$ in $F$.\\
+
+
+
+\begin{prop}[{\cite[Theorem 8.7]{2}}]
+	\label{maschkecompred}
+	Maschke's Theorem \ref{3} implies Theorem \ref{4} where the field is $\mathbb{C}$ i.e a $\mathbb{C}G$-module $V$, where $G$ is finite, is completely reducible.
+\end{prop}
+
+\begin{proo*}[{\cite[Theorem 8.7]{2}}]
+	We have that $\Char(\mathbb{C}) = 0$. Let $V$ be an $n$-dimensional non-zero $\mathbb{C}G$-module for a finite group $G$. We proceed by induction on $\dim(V)$. Suppose $\dim(V) = 1$, then $V$ is trivially irreducible. Suppose $V$ is completely reducible up to $\dim(V) = k$. Then for $\dim(V) = k+1$, if $V$ is irreducible then the result holds, else there exists some non-zero proper $\mathbb{C}G$-submodule $W < V$. By Maschke's Theorem \ref{3} there exists another $\mathbb{C}G$-submodule $U < V$ such that $V = W \oplus U$. Since $\dim(W), \dim(U) \leqslant k < \dim V$, both $W$ and $U$ are completely reducible by the inductive hypothesis, then
+	$$V = W_1 \oplus \cdots \oplus W_{i_W} \oplus U_1 \oplus \cdots \oplus U_{i_U}$$
+	for some $i_W,i_U \in \mathbb{N}$, and $W_r,U_s$ are irreducible for all $1 \leqslant r \leqslant i_W$, $1 \leqslant s \leqslant i_U$. $\hfill \blacksquare$
+\end{proo*}
+
+While the proof of Maschke's Theorem requires the divisibility condition on $\abs{G}$, a  natural question would be if Maschke's Theorem will ever hold for $\Char(F) \mid \abs{G}$. As it turns out the answer is no. We provide Example \ref{meh10} to demonstrate this. We first require the following theorem.
+\begin{theo}
+	If $V$ is a finite-dimensional vector space over an algebraically closed field $F$, and $L : V \to V$ is a linear map, then $L$ has at least one eigenvector.
+	\label{eigenvectheo}
+\end{theo}
+\begin{proo*}
+	Let $V$ be $n$-dimensional. Since $F$ is an algebraically closed field, by the Fundamental Theorem of Algebra, the characteristic polynomial $\Ch_L(z)$ has a root $\lambda$, then $\Ch_L(\lambda) = \det(L - \lambda\Id_v) = 0$. Since this determinant is $0$ the map $(L - \lambda\Id_V)$ is non-invertible and hence has non-trivial kernel. Then there exists some non-zero $v \in \Ker(L - \lambda\Id_V)$ with
+	$$(L - \lambda\Id_V)v = 0.$$
+	Then $L(v) = \lambda v$. $\hfill\blacksquare$
+\end{proo*}
+
+
+The following example shows a reducible representation which is also indecomposable.
 
 \begin{exam}
-	We present an example of a group and representation such that $\Char(F) \mid \#{G}$ and Maschke's theorem does not hold. For the purpose of contradiction assume Maschke's theorem holds for $FG$-modules for fields of all characteristics.\\
+	\label{meh10}
+	We present an example of a group and representation such that $\Char(F) \mid \abs{G}$ and Maschke's Theorem does not hold. For the purpose of contradiction assume Maschke's Theorem holds for $FG$-modules for fields of all characteristics.\\
 
-	Let $C_3 = \Brace{1, g, g^2}$ be the cyclic group and $\overline{\mathbb{F}}_3 = \bigcup\limits_{n \in \mathbb{N}}\mathbb{F}_{3^n}$ be the algebraic closure of the finite field of three elements. Then $\Char(\overline{\mathbb{F}}_3) = 3\mid 3 = \# C_3$.
-	We define the representation $\phi : C_3 \to \GL(V)$ with vector space $V$ over $\overline{\mathbb{F}}_3$ and basis $\mathcal{B} = \Brace{e_1,e_2,e_3}$ such that in matrix form we have the following linear maps
-	$$\phi_1 = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix},\quad \phi_g = \begin{pmatrix}0 & 0 & 1\\1 & 0 & 0\\0 & 1 & 0\end{pmatrix},\quad \phi_{g^2} = \begin{pmatrix}0 & 1 & 0\\0 & 0 & 1\\1 & 0 & 0\end{pmatrix},$$
+	Let $C_3 = \Brace{1, g, g^2}$ be the cyclic group of order $4$ and $\overline{F}_3 = \bigcup\limits_{n \in \mathbb{N}}F_{3^n}$ be the algebraic closure of the finite field of three elements $F_3$. Then $\Char(\overline{F}_3) = 3\mid 3 = \abs{C_3}$.
+	We define the representation $\rho : C_3 \to \GL(V)$ with vector space $V$ over $\overline{F}_3$ and basis $\mathcal{B} = \Brace{e_1,e_2,e_3}$ such that in matrix form we have the following linear maps
+	$$\rho_1 = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix},\quad \rho_g = \begin{pmatrix}0 & 0 & 1\\1 & 0 & 0\\0 & 1 & 0\end{pmatrix},\quad \rho_{g^2} = \begin{pmatrix}0 & 1 & 0\\0 & 0 & 1\\1 & 0 & 0\end{pmatrix},$$
 	or more specifically
 	\begin{align*}
-	&\phi_1(\alpha_1e_1 + \alpha_2e_2 + \alpha_3e_3) = (\alpha_1e_1+\alpha_2e_2 + \alpha_3e_3)\\
-	&\phi_g(\alpha_1e_1+\alpha_2e_2+\alpha_3e_3) = (\alpha_3e_1+\alpha_1e_2+\alpha_2e_3),\\
-	&\phi_{g^2}(\alpha_1e_1 + \alpha_2e_2 + \alpha_3e_3) = (\phi_g)^2(\alpha_1e_1,\alpha_2e_2,\alpha_3e_3) = (\alpha_2e_1 + \alpha_3e_2 + \alpha_1e_3)\\
-	\forall\,\alpha_i \in \overline{\mathbb{F}}_3.
+	&\rho_1(\alpha_1e_1 + \alpha_2e_2 + \alpha_3e_3) = (\alpha_1e_1+\alpha_2e_2 + \alpha_3e_3)\\
+	&\rho_g(\alpha_1e_1+\alpha_2e_2+\alpha_3e_3) = (\alpha_3e_1+\alpha_1e_2+\alpha_2e_3),\\
+	&\rho_{g^2}(\alpha_1e_1 + \alpha_2e_2 + \alpha_3e_3) = (\rho_g)^2(\alpha_1e_1,\alpha_2e_2,\alpha_3e_3) = (\alpha_2e_1 + \alpha_3e_2 + \alpha_1e_3)\\
 	\end{align*}
+	for all $\alpha_1,\alpha_2,\alpha_3 \in \overline{F}_3$.\\
 
-	Let $W = \overline{\mathbb{F}}_3\Brace{e_1+e_2+e_3}$. Then $\forall \alpha \in \overline{\mathbb{F}}_3$, $\phi_g(\alpha(e_1 + e_2 + e_3)) = \alpha\phi_g(e_1 + e_2 + e_3) = \alpha(e_1 + e_2 + e_3) \implies \phi_{g^2}(\alpha(e_1 + e_2 + e_3)) = \alpha(e_1 + e_2 + e_3)$. So $\forall w \in W$, $\phi_g(w) = w \implies \phi_{g^2}(w) = w$, and $W$ is a $C_3$-invariant subspace, hence by Maschke's theorem there exists another $C_3$-invariant subspace $U$ such that $V = W \oplus U$.\\
+	Let $W = \overline{F}_3\Brace{e_1+e_2+e_3}$. Then for all $\alpha \in \overline{F}_3$, we have $\rho_g(\alpha(e_1 + e_2 + e_3)) = \alpha\rho_g(e_1 + e_2 + e_3) = \alpha(e_1 + e_2 + e_3)$, which implies $\rho_{g^2}(\alpha(e_1 + e_2 + e_3)) = \alpha(e_1 + e_2 + e_3)$. So for all $w \in W$, we have $\rho_g(w) = w$ implying $\rho_{g^2}(w) = w$, and $W$ is a $C_3$-invariant subspace, hence by Maschke's Theorem there exists another $C_3$-invariant subspace $U$ such that $V = W \oplus U$.\\
 
-	By theorem \ref{eigenvectheo}, both $W$ and $U$ have at least one eigenvector for $\phi_g$, and hence $V$ must have at least two eigenvectors for $\phi_g$. Then calculating the eigenvectors of $\phi_g$ we have
+	By Theorem \ref{eigenvectheo}, both $W$ and $U$ have at least one eigenvector for $\rho_g$, and hence $V$ must have at least two eigenvectors for $\rho_g$. Then calculating the eigenvectors of $\rho_g$ we have
 	\begin{align*}
-		\det{\begin{pmatrix}-\lambda & 0 & 1\\1 & -\lambda & 0\\0 & 1 & -\lambda \end{pmatrix}} = 0 \implies
-		-(\lambda^3 + 1) = -(\lambda - 1)^3 = 0 \implies \lambda = 1.
+		\det{\begin{pmatrix}-\lambda & 0 & 1\\1 & -\lambda & 0\\0 & 1 & -\lambda \end{pmatrix}} = 0 \text{ implies }
+		-(\lambda^3 + 1) = -(\lambda - 1)^3 = 0 \text{ implies } \lambda = 1.
 	\end{align*}
-	TODO finish with eigenvectors
-
-\iffalse
-	Then we find there is only one eigenvector corresponding to the single eigenvalue
-	$$\begin{pmatrix}0 & 0 & 1\\1 & 0 & 0\\0 & 1 & 0\end{pmatrix}\begin{pmatrix}\alpha_1\\\alpha_2\\\alpha_3\end{pmatrix} = \begin{pmatrix}0\\0\\0\end{pmatrix} \implies \begin{pmatrix}\alpha_1\\\alpha_2\\\alpha_3\end{pmatrix} = \begin{pmatrix}0\\0\\0\end{pmatrix}.$$
-
-	Hence Maschke's theorem does not hold.
-	\fi
+	Calculating the corresponding eigenvectors we have
+	$$\begin{pmatrix}0 & 0 & 1\\1 & 0 & 0\\0 & 1 & 0 \end{pmatrix}v = \lambda v = v \text{ implies } v = \begin{pmatrix}1\\1\\1\end{pmatrix}.$$
+	With only one eigenvector we have a contradiction, and Maschke's Theorem does not hold.\\
 \end{exam}
 
+In the following example we completely reduce a $\mathbb{C}D_6$-module.
+
+\begin{exam}[Completely reducing a $\mathbb{C}D_6$-module \cite{2}]
+	\label{D6decomp}
+	Let $G = D_6 = \gen{x,y\;\vert\;x^3,\, y^2,\,(yx)^2}$ and $V$ be a $\mathbb{C}G$-module. We can decompose $V$ into a direct sum of irreducible $\mathbb{C}G$-submodules.\\
+
+	We define the rotation $\zeta_3 = e^{2\pi i / 3}$ and
+	\begin{align*}
+		&v_0 = 1_G + x + x^2, \quad\quad\;\; w_0 = yv_0,\\
+		&v_1 = 1_G + \zeta_3^2x + \zeta_3 x^2, \quad w_1 = yv_1,\\
+		&v_2 = 1_G + \zeta_3 x + \zeta_3^2 x^2, \quad w_2 = yv_2.
+	\end{align*}
+	Notice that for $i = 0,1,2$, we have $v_ix = \zeta_3^iv_i$. Then $U_1 = \Span(v_i)$ and $U_2 = \Span(w_i)$ are $\mathbb{C}\gen{x}$-modules. Also,
+	\begin{align*}
+		&v_0y = w_0,\quad w_0y  = v_0,\\
+		&v_1y = w_2,\quad w_1y = v_2,\\
+		&v_2y = w_1,\quad w_2y = v_1,
+	\end{align*}
+	and $U_3 = \Span({v_0,w_0}),U_4 = \Span({v_1,w_2}), U_5 =\Span({v_2,w_1})$ are all $\mathbb{C}\gen{y}$-modules.\\
+
+	The $\mathbb{C}G$-submodules $U_4$ and $U_5$ are irreducible, and $U_3$ contains $W_1 = \Span(v_0 + w_0)$ and $W_2 = \Span(v_0 - w_0)$ as $\mathbb{C}G$-submodules. The elements $v_0,v_1,v_2,w_0,w_1,w_2$ form a basis for $V$ and hence we have $V = W_1 \oplus W_2 \oplus U_4 \oplus U_5$. Note that $U_4 \cong U_5$ by the map $v_1 \mapsto w_1$ and $w_2 \mapsto v_2$.\\
+
+	We will later use character theory to prove Proposition \ref{sumdegsquared}, which will verify that $W_1,W_2,U_4$ is a complete list of non-isomorphic irreducble $\mathbb{C}G$-submodules.\\
+
+	Letting $\mathcal{B}_{W_1},\mathcal{B}_{W_2},\mathcal{B}_{U_4}$ be the bases of $W_1,W_2,U_4$ respectively, we have
+	\begin{alignat*}{3}
+		&\Brack{x}_{\mathcal{B}_{W_1}} = 1,&&\Brack{y}_{\mathcal{B}_{W_1}} = 1,\\
+		&\Brack{x}_{\mathcal{B}_{W_2}} = 1,&&\Brack{y}_{\mathcal{B}_{W_2}} = -1,\\
+		&\Brack{x}_{\mathcal{B}_{U_4}} = \begin{bmatrix}\zeta_3 & 0\\0 & \zeta_3^{-1}\end{bmatrix},\quad &&\Brack{y}_{\mathcal{B}_{U_4}} = \begin{bmatrix}0 & 1\\1 & 0 \end{bmatrix}.
+	\end{alignat*}
+\end{exam}
 
 \newpage
 \subsection{Schur's Lemma}
-\begin{lemm}[Schur \cite{2}]
-	Let $V,W$ be irreducible $\mathbb{C}G$-modules.
-	\begin{enumerate}
-		\item For a $\mathbb{C}G$-homomorphism $\phi : V \to W$, either $\phi$ is a $\mathbb{C}G$-isomorphism or $\phi(v) = 0$ $\forall v \in V$.
-		\item For a $\mathbb{C}G$-isomorphism $\phi : V \to V$, $\phi$ is a scalar multiple of the identity isomorphism $\phi = \alpha \Id_V$.
-	\end{enumerate}
+In this subsection we prove Schur's Lemma and explore some of the useful results on reducibility it provides.
+\begin{lemm}[Schur {\cite[Lemma 9.1]{2}}]
+	Let $V$ and $W$ be irreducible $\mathbb{C}G$-modules. Then
+	\begin{menum}
+		\item For a $\mathbb{C}G$-homomorphism $\theta : V \to W$, either $\theta$ is a $\mathbb{C}G$-isomorphism or $\theta(v) = 0$ for all $v \in V$.
+		\item A $\mathbb{C}G$-isomorphism $\theta : V \to V$ is a scalar multiple of the identity isomorphism, that is $\theta = \alpha \Id_V$ with $\alpha \in \mathbb{C}$.
+	\end{menum}
 \end{lemm}
 
-\begin{proo*}[\cite{2}]~ %%%
+\begin{proo*}[Schur {\cite[Lemma 9.1]{2}}]~ %%%
 \vspace{-\topsep}
-\begin{enumerate}
-	\item Suppose $\exists \,v \in V$ such that $\phi(v) \neq 0$. Then $\Im(\phi) \neq \Brace{0}$. By proposition \ref{ImKerSub} we know $\Im(\phi)$ is a $\mathbb{C}G$-submodule of $W$, but $W$ is irreducible so $\Im(\phi) = W$ and $\phi$ is surjective. Also by proposition \ref{ImKerSub} $\Ker(\phi)$ is a $\mathbb{C}G$-submodule of $V$ and since $\Ker(\phi) \neq V$ and $V$ is irreducible, $\Ker(\phi) = \Brace{0}$ so $\phi$ is injective and hence a $\mathbb{C}G$-isomorphism.
-	\item By theorem \ref{eigenvectheo} we have $\phi : V \to V$ must have at least one eigenvalue $\lambda \in \mathbb{C}$, then $\Ker(\phi - \lambda\Id_V) \neq \Brace{0}$. $\Ker(\phi - \lambda\Id_V)$ is a $\mathbb{C}G$-submodule of $V$, but $V$ is irreducible, so $\Ker(\phi - \lambda\Id_V) = V$ and $(\phi - \lambda\Id_V)v = 0\;\forall v \in V$, then $\phi = \lambda\Id_V$. $\blacksquare$
-\end{enumerate}
+\begin{menum}
+	\item Suppose there exists some $v \in V$ such that $\theta(v) \neq 0$. Then $\Im(\theta) \neq \Brace{0}$. By Proposition \ref{ImKerSub} we know $\Im(\theta)$ is a $\mathbb{C}G$-submodule of $W$, but $W$ is irreducible so $\Im(\theta) = W$ and $\theta$ is surjective. Also by Proposition \ref{ImKerSub}, we know $\Ker(\theta)$ is a $\mathbb{C}G$-submodule of $V$ and since $\Ker(\theta) \neq V$ and $V$ is irreducible, $\Ker(\theta) = \Brace{0}$ so $\theta$ is also injective and hence a $\mathbb{C}G$-isomorphism.
+	\item By Theorem \ref{eigenvectheo}, $\theta : V \to V$ must have at least one eigenvalue $\lambda \in \mathbb{C}$, then $\Ker(\theta - \lambda\Id_V) \neq \Brace{0}$. By Proposition \ref{ImKerSub}, $\Ker(\theta - \lambda\Id_V)$ is a $\mathbb{C}G$-submodule of $V$, but $V$ is irreducible, so $\Ker(\theta - \lambda\Id_V) = V$ and $(\theta - \lambda\Id_V)v = 0$ for all $v \in V$, then $\theta = \lambda\Id_V$.
+\end{menum}
+ \hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{prop}[\cite{2}]
-	For a $\mathbb{C}G$-module $V$, if every $\mathbb{C}G$-endomorphism on $V$ is a scalar multiple of $\Id_V$ then $V$ is irreducible.
+
+The following proposition will provide us with another way to check if a module is irreducible.
+\begin{prop}[{\cite[Proposition 9.2]{2}}]
+	For a non-zero $\mathbb{C}G$-module $V$, if every $\mathbb{C}G$-endomorphism on $V$ is a scalar multiple of $\Id_V$ then $V$ is irreducible.
 \end{prop}
 
-\begin{proo*}[\cite{2}]
-	Suppose for purpose of contradiction that $V$ is a reducible $\mathbb{C}G$-module where every $\mathbb{C}G$ endomorphism is a scalar multiple of the identity. Then there exists a proper $\mathbb{C}G$-submodule $W < V$, and by Maschke's theorem there exists a proper $FG$-submodule $U < V$ such that $V = U \oplus W$.
+\begin{proo*}[{\cite[Proposition 9.2]{2}}]
+	Suppose for purpose of contradiction that $V$ is a reducible $\mathbb{C}G$-module where every $\mathbb{C}G$-endomorphism on $V$ is a scalar multiple of the identity. Then there exists a non-zero proper $\mathbb{C}G$-submodule $W < V$, and by Maschke's Theorem there exists a proper $FG$-submodule $U < V$ such that $V = U \oplus W$.\\
 
-	Then by Proposition \ref{projishom}, $\pi_W : V \to V$ such that $\pi(u + w) = w$ $\forall w \in W,\,u \in U$ is a $\mathbb{C}G$-homomorphism. But $\pi_W$ isn't a scalar multiple of $0$.\\
+	By Proposition \ref{projishom}, the projection $\pi_W : V \to V$ such that $\pi_W(u + w) = w$ for all $w \in W,\,u \in U$ is a $\mathbb{C}G$-homomorphism, but $\pi_W$ isn't a $\mathbb{C}G$-isomorphism or the zero map, and hence it contradicts Schur's Lemma.\\
 
-	Then by contradiciton $V$ is irreducible. $\blacksquare$
+	Then by contradiciton $V$ is irreducible.\hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{theo}[Fundamental theorem of finite abelian groups \cite{4}]
-	Let $G$ be a finite abelian group. Then $G$ is isomorphic to a direct product of cyclic groups $C_{p_1}^{n_1} \oplus \cdots C_{p_m}^{n_m}$ each of which has an order equal to a prime power.
+Schur's Lemma allows us to prove some essential properties on the representations of finite abelian groups.
+\begin{prop}[{\cite[Proposition 9.5]{2}}]
+	\label{irrefinabelianhasdim1}
+	Let $G$ be a finite abelian group. Every irreducible $\mathbb{C}G$-module $V$ has dimension $1$.
+\end{prop}
+\begin{proo*}
+	Let $G$ be a finite abelian group and $V$ an irreducible $\mathbb{C}G$-module with basis $\mathcal{B}$. Then for all $g,g' \in G,\,v \in V,\alpha,\alpha' \in \mathbb{C}$ we have
+	$$gg' = g'g \text{ implies } g'(gv) = (gg'v),\quad g(\alpha v + \alpha'v') = \alpha(gv) + \alpha'(gv').$$
+	So the map $\theta_g : V \to V$, such that $v \mapsto gv$ for $v \in V$, is a $\mathbb{C}G$-endomorphism for all $g \in G$. Then by Schur's Lemma (1) either
+	\begin{menum}
+		\item $gv = 0$ for all $v \in V$,
+		\item or $\theta_g$ is a $\mathbb{C}G$-automorphism and $gv = \lambda v$ for some $\lambda \in \mathbb{C}$.
+	\end{menum}
+	Then for a given $g \in G$ there exists $\lambda_g \in G$ such that $gv = \lambda_g v$ for all $v \in G$. Every linear subspace $W < V$ is also an $\mathbb{C}G$-submodule since $gw = \lambda_gw \in W$  for all $w \in W$. Then $\dim(V) = 1$, else we could choose any basis element $e_i \in \mathcal{B}$ an get a $\mathbb{C}G$-submodule $\mathbb{C}\Brace{e_i} \neq V$. \hfill$\blacksquare$\\
+\end{proo*}
+
+We use the the fundamental theorem of finite abelian groups cited below to prove a useful fact about the representations of fintite abelian groups.
+\begin{theo}[Fundamental theorem of finite abelian groups {\cite[Theorem 1.2]{4}}]
+	\label{funtheoabelian}
+	Let $G$ be a finite abelian group. Then $G$ is isomorphic to a direct product of cyclic groups $C_{n_1} \oplus \cdots \oplus C_{n_k}$.
 \end{theo}
 
-\begin{proo*}
-	TODO
+
+\begin{theo}[{\cite[Theorem 9.8]{2}}]
+	\label{representationoffinabelian}
+	Let $G$ be a finite abelian group. Every irreducible representation of $G$ over $\mathbb{C}$ is equivalent to a degree 1 representation, and there are $\abs{G}$ different non-equivalent representations of this type.
+\end{theo}
+\begin{proo*}[{\cite[page 81]{2}}]
+		By the fundamental theorem of finite abelian groups $G \cong C_{n_1}\oplus\cdots\oplus C_{n_k}$ for $k$ positive integers $n_1,\dots,n_k$. 
+		For each $1 \leqslant i \leqslant k$, let $x_i$ be the generator of $C_{n_i}$ such that $C_{n_i} = \gen{x_i\;\vert\;x_i^{n_i}}$, and define $g_i \coloneqq  \Paren{1_{C_{n_1}},\dots,x_i,\dots,1_{C_{n_k}}} \in G$, that is $g_i$ is the element with $x_i$ in the $i$th index and the respective identities in the other indices. Then it is clear that $G$ is generated by all the $g_i$ elements, that is
+	$$G = \gen{g_1,\dots,g_k\;\vert\;g_i^{n_i},g_ig_jg_i^{-1}g_j^{-1} \text{ for all } 1 \leqslant i,j \leqslant k},$$
+	where the relations are implied by the order $n_i$ of $g_i$ and that the cyclic group is abelian.\\
+
+	Let $\rho : G \to \GL_m(\mathbb{C})$ be an irreducible representation of $G$. Then by Proposition \ref{irrefinabelianhasdim1} we have $m = 1$ and for each $1 \leqslant i \leqslant k$ there exists $\lambda_i \in \mathbb{C}$ such that
+	$$\rho_{g_i} = \lambda_i\Id_{\mathbb{C}^m}.$$
+	The order of each $g_i$ is $n_i$, so $\lambda_i^{n_i} = 1$ and $\lambda_i$ is an $n_i$th root of unity. Also the values of $\lambda_i$ determine $\rho$ since for any element $g \in G$ can be written as $g = g_1^{r_1}\cdots g_k^{r_k}$ for some $r_1,\cdots,r_k \in \mathbb{Z}$. Hence
+	$$\rho_g = \rho_{g_1^{r_1}\cdots g_k^{r_k}} = \lambda_1^{r_1}\cdots\lambda_k^{r_k}.$$
+	Convesely, any map taking elements of $G$ to the $n_i$th roots of unity $\zeta_{n_i}$ $$g_1^{r_1}\cdots g_k^{r_k} \mapsto \zeta_{n_1}^{r_1}\cdots\zeta_{n_k}^{r_k}$$
+	is a representation, and there are $n_1n_2\cdots n_k = \abs{G}$ different choices of such representations. \hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{prop}[\cite{2}]
-	If $G$ is finite abelian then every irreducible $\mathbb{C}G$-module $V$ has dimension $1$.
+When examining character theory in the next section it will be useful to be able to select a basis of an $FG$-module such that the matrix corresponding to a specific group element is diagonal. The following proposition allows us to do this.
+
+\begin{prop}[{\cite[proposition 9.11]{2}}]
+	Let $G$ be a finite group and $V $ a $\mathbb{C}G$-module. For an element $g \in G$ there is some basis $\mathcal{B}$ of $V$  such that $\Brack{g}_\mathcal{B}$ is a diagonal matrix. If $g$ has order $n$ then the entries on the the diagonal of $\Brack{g}_\mathcal{B}$ are $n$th roots of unity.
+	\label{diagonalizable}
 \end{prop}
-\begin{proo*}
-	Let $G$ be a finite abelian and $V$ and irreducible $\mathbb{C}G$-module with basis $\mathcal{B}$. $\forall g,g' \in G,\,v \in V,\alpha,\alpha' \in \mathbb{C}$ we have
-	$$gg' = g'g \implies g'(gv) = (gg'v),\quad g(\alpha v + \alpha'v') = \alpha(gv) + \alpha'(gv').$$
-	So the map $\phi_g : V \to V$ such that $v \mapsto gv \;\forall v \in V$ is a $\mathbb{C}G$-endomorphism for any $g \in G$. Then by Schur's lemma (1) either
-	\begin{enumerate}
-		\item $gv = 0 = 0v\, \forall v \in V$,
-		\item or $\phi_g$ is a $\mathbb{C}G$-automorphism and $gv = \lambda v$ for some $\lambda \in \mathbb{C}$.
-	\end{enumerate}
-	Then  $\exists \lambda_g \in \mathbb{C}$ for a given $g$ such that $gv = \lambda_g v$ $\forall v \in G$. Every subvectorspace $W < V$ is also an $\mathbb{C}G$-submodule since $gw = \lambda_gw \in W\; \forall w \in W$. Then $\dim(V) = 1$, else we could choose any basis element $e_i \in \mathcal{B}$ an get a $\mathbb{C}G$-submodule $\mathbb{C}\Brace{e_i} \neq V$. $\blacksquare$
+\begin{proo*}[{\cite[Proposition 9.11]{2}}]
+	Let $C_n = \gen{x \;\vert\; x^n}$ and $U$ be a non-zero $\mathbb{C}C_n$-module. By Theorem \ref{4} $U$ is completely reducible and
+	$$U = W_1 \oplus \cdots \oplus W_m$$
+	where $W_i$ is an irreducible $\mathbb{C}C_n$-submodule of $U$ for all $1 \leqslant i \leqslant m$. By Proposition \ref{irrefinabelianhasdim1}, each $W_i$ has dimension 1. Let $w_i$ be a vector spanning $W_i$, and $\zeta_n$ be an $n$th root of unity. Then for each $1 \leqslant i \leqslant m$ there exists some integer $k_i$ such that for all $g \in C_n$ we have $gw_i = \zeta_n^{k_i}w_i$. Then choosing a basis $\mathcal{B} = \Brace{w_1,\dots,w_m}$ of $U$ we obtain the diagonal matrix
+	$$\Brack{g}_\mathcal{B} = \begin{pmatrix}
+	\zeta_n^{k_1} &  & &  & \\
+	 & \zeta_n^{k_2} & & \text{\Large{0}}&  \\
+	& & \ddots & & \\
+	 & \text{\Large{0}} & & \zeta^{k_{m-1}}_n & \\ 
+	&  & & & \zeta_n^{k_m}\end{pmatrix}.$$\\
+
+	Let $G$ be a finite group. For an element $g \in G$ with order $m$ we have $\gen{g} \cong C_m$. Let $V$ be a $\mathbb{C}G$-module, then by restiction $V$ is also a $\mathbb{C}\gen{g}$-module, and we can obtain the desired basis through the method above.
+
 \end{proo*}
+
+
+
 
 \end{document}

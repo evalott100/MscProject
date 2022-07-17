@@ -2,122 +2,443 @@
 \begin{document}
 \newpage
 \section{Character Theory}
+In this section we develop the character theory of group representations. The idea behind character theory is to encode a compex representation $\rho : G \to \GL_n(\mathbb{C})$ by a complex valued function $\chi : G \to \mathbb{C}$ called a character. We will examine how the values of a character can be used to determine interesting properties about an underlying representation - for example representations are equivalent if and only if they have the same character. Character theory will allow us to develop character tables in the next section.
 \subsection{Basic Definitions and Results}
-\begin{defi}[Character \cite{2}]
-	Let $V$ be a $\mathbb{C}G$-module with basis $\mathcal{B}$. The character of $V$ is the function $\chi : G \to \mathbb{C}$ with
+We begin with a basic introduction to character theory, detailing the essential definitions and immediate results of characters.
+\begin{defi}[Character {\cite[Definition 13.3]{2}}]
+	Let $G$ be a group and $V$ a $\mathbb{C}G$-module with basis $\mathcal{B}$. The \textit{character} of $V$ is the function $\chi : G \to \mathbb{C}$ with
 	$$\chi(g) = \Tr\Brack{g}_\mathcal{B}.$$
-	Given our connection between $FG$-modules and representations, we can see the character of an element $g \in G$ with respect to a representation $\phi : G \to \GL(V)$ is $\chi(g) = \Tr(\phi_g)$.\\
+	Given our connection between $\mathbb{C}G$-modules and representations, we can see the character of an element $g \in G$ with respect to a matrix representation $\rho : G \to \GL_n(\mathbb{C})$ is $\chi(g) = \Tr(\rho_g)$.\\
+
+	We say that $\chi$ is a character of $G$ if $\chi$ is the character a $\mathbb{C}G$-module.\\
 \end{defi}
 
-\begin{prop}[\cite{2}]
-$\chi$ is invariant under choice and change of basis, since
-$\Brack{g}_{\mathcal{B}'} = T^{-1}\Brack{g}_\mathcal{B}T$ by theorem \ref{5} $\implies \Tr(\Brack{g}_{\mathcal{B}'}) = \Tr(T^{-1}\Brack{g}_\mathcal{B}T) = \Tr(\Brack{g}_\mathcal{B})$ by proposition \ref{7}.
+It may seem that we need to take choice of basis into account when calculating the character of a $\mathbb{C}G$-module, however the following proposition shows us this is not the case.
+
+\begin{prop}[{\cite[Definition 13.3]{2}}]
+\label{mehbasisch}
+Let $G$ be a group, and $V$ a $\mathbb{C}G$-module. The character $\chi$ of $V$ is constant under choice of basis, since by for bases $\mathcal{B}, \mathcal{B}'$ of $V$ there exists a matrix $T$ such that
+$\Brack{g}_{\mathcal{B}'} = T\Brack{g}_\mathcal{B}T^{-1}$.  One can verify that for matrices $A,B \in \M_n(\mathbb{C})$ with $A$ invertible, we have $\Tr(ABA^{-1}) = \Tr(B)$. Then we have $\Tr(\Brack{g}_{\mathcal{B}'}) = \Tr(T\Brack{g}_\mathcal{B}T^{-1}) = \Tr(\Brack{g}_\mathcal{B})$.
+\end{prop}
+By Theorem \ref{5} the above proposition can be stated in terms of representations: if $\chi$ is the character of a representation $\rho : G \to \GL_n(\mathbb{C})$ then $\chi$ is also the character of all representations equivalent to $\rho$.\\
+
+\begin{defi}[Degree of a character {\cite[Definition 13.7]{2}}]
+	Let $\chi$ be the character of a $\mathbb{C}G$-module $V$, the \textit{degree} of $\chi$ is the dimension of $V$.
+\end{defi}
+
+It is important to note that given a $\mathbb{C}G$-module $V$ with basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$, since $1_Gv = v$ for all $v \in V$, given the character $\chi$ of $V$, we have that $\chi(1_G) = \Tr([1_G]_\mathcal{B}) = \Tr(\I_n) = \dim(V)$.
+
+\begin{defi}[Linear character {\cite[page 21]{3}}]
+	A character $\chi$ of a $\mathbb{C}G$-module is called \textit{linear} if it has degree 1. \\
+\end{defi}
+
+Notice that the trace is the identity when applied to a scalar ($1 \times 1$ matrix), so given the linear character $\chi$ of a $\mathbb{C}G$-module $V$ with basis $\mathcal{B} = \Brace{e_1}$, we have $\chi(g) = \Tr([g]_\mathcal{B}) = [g]_\mathcal{B}$ for all $g \in G$. Alternatively, if $\chi$ is the character of a linear representation $\rho : G \to \GL_1(\mathbb{C})$ then $\chi(g) = \Tr(\rho_g) = \rho_g$ for all $g \in G$ and $\chi = \rho$. In the next section we will develop a method to find all linear characters of a group $G$.\\
+
+
+As with other maps we can define the image and the kernel of a character.
+\begin{defi}[Kernel and Image of a character]
+	Let $\chi : G \to \mathbb{C}$ be a character. Then the kernel and image of of $\chi$ are given by
+	$$\Ker(\chi) = \Brace{g \in G \;:\; \chi(g) = \chi(1_G)},\quad \Im(\chi) = \Brace{\chi(g) \in \mathbb{C}\;:\;g  \in G}$$
+	respectively.\\
+\end{defi}
+
+We can give any $\mathbb{C}G$-module the trivial character.
+\begin{defi}[Trivial character {\cite[Examples 13.8 (3)]{2}}]
+	We call the character of the trivial $\mathbb{C}G$-module the \textit{trivial character} which has values $\chi(g) = 1$ for all $g \in G$.\\
+\end{defi}
+
+The following proposition informs us what values a character of a finite group is limited to.
+
+\begin{prop}[{\cite[Proposition 13.9 (2),(3)]{2}}]
+	\label{inverseisconj}
+	Let $G$ be a finite group, $\chi$ be the character of a $\mathbb{C}G$-module $V$, and $g \in G$ be an element of order $m$. Then $\chi(g)$ is the sum of $m$th roots of unity, and we have $\chi(g^{-1}) = \overline{\chi(g)}$.
+\end{prop}
+\begin{proo*}[{\cite[Proposition 13.9 (2),(3)]{2}}]
+	By Proposition \ref{diagonalizable}, there exists a basis $\mathcal{B}$ of $V$ such that
+	$$\Brack{g}_\mathcal{B} = 
+ \begin{pmatrix}
+	\zeta_1 &  & &  & \\
+	 & \zeta_2 & & \text{\Large{0}}&  \\
+	& & \ddots & & \\
+	 & \text{\Large{0}} & & \zeta_{n-1} & \\ 
+	&  & & & \zeta_n\end{pmatrix}.$$
+
+	where each $\zeta_i$ is an $m$th root of unity for each $1 \leqslant i \leqslant n$. Then $\chi(g) = \zeta_1 + \cdots + \zeta_n$ is the sum of roots of unity. We can choose a basis to obtain the above diagonal matrix for any element $g \in G$, and by Proposition \label{mehbasisch} the character is constant under choice of basis.\\
+
+
+	Now for the second claim, that $\chi(g^{-1}) = \overline{\chi(g)}$. We have
+	$$\Brack{g^{-1}}_\mathcal{B} = \begin{pmatrix}
+	\zeta_1^{-1} &  & &  & \\
+	 & \zeta_2^{-1} & & \text{\Large{0}}&  \\
+	& & \ddots & & \\
+	 & \text{\Large{0}} & & \zeta_{n-1}^{-1} & \\ 
+	&  & & & \zeta_n^{-1}\end{pmatrix},$$
+	and hence $\chi(g^{-1}) = \zeta_1^{-1} + \cdots \zeta_n^{-1}$. Then since for a comlex root of unity $\zeta$ we have
+	$\zeta^{-1} = \overline{\zeta}$, we have $\chi(g^{-1}) = \overline{\zeta_1} + \cdots \overline{\zeta_n} =  \overline{\chi(g)}$. \hfill$\blacksquare$\\
+\end{proo*}
+
+We will later be able to use irreducible characters to understand the structure of a group.
+
+\begin{defi}[Irreducible character {\cite[Definition 13.4]{2}}]
+	 Let $G$ be a group. A character $\chi$ of $G$ is called \textit{irreducible} if $\chi$ is the character of an irreducible $\mathbb{C}G$-module, and $\chi$ is a reducible character of $G$ if it is the character of a reducible $\mathbb{C}G$-module.
+\end{defi}
+
+
+\begin{prop}[{\cite[Proposition 13.15]{2}}]
+	\label{compconjcharischar}
+	For a character $\chi$ of $G$, the complex conjugate $\overline{\chi}$ is also a character of $G$. Further, $\chi$ is irreducible if and only if $\overline{\chi}$ is irreducible.
 \end{prop}
 
-\begin{defi}[Irreducible character \cite{2}]
-	We say that $\chi$ is a character of $G$ if $\chi$ is the character a $\mathbb{C}G$-module. $\chi$ is called an irreducible character of $G$ if $\chi$ is the character of an irreducible $\mathbb{C}G$-module, and $\chi$ is reducible if it is the character of a reducible $\mathbb{C}G$-module.
-\end{defi}
+\begin{proo*}[{\cite[Proposition 13.15]{2}}]
+	Let $V$ be an $n$-dimensional vector space over $\mathbb{C}$ and let $\rho : G \to \GL(V)$ be a representation of $G$. Then for choosing a basis $\mathcal{B}$ of $V$, let $\Brack{g}_\mathcal{B} = \rho_g$ and
+	$$\chi(g) = \Tr(\Brack{g}_\mathcal{B}).$$
+	For a matrix $A \in \M_n(\mathbb{C})$, let $\overline{A}$ be the conjugate matrix such that the entry $A^i_j$ of $A$ gives the correponding entry $\overline{A}^i_j$ of $\overline{A}$. Notice that since for $z,z' \in \mathbb{C}$ we have $\overline{z} \times \overline{z}' = \overline{z \times z'}$, for $A,A' \in \M_n(\mathbb{C})$ we also have $\overline{A\times A'} = \overline{A}\times\overline{A'}$.\\
 
-\begin{defi}[Trivial character \cite{2}]
-	The trivial character of a group $G$ is the character $\chi$ such that $\chi(g) = 1 \in \mathbb{C}$ $\forall g \in G$.
-\end{defi}
+	This implies that the representation $\overline{\rho}$ obtained from taking the conjugate of $\rho$ defined is also representation. Then since 
+	$$\Tr({\overline{\Brack{g}_\mathcal{B}}}) = \overline{\Tr(\Brack{g}_\mathcal{B})} = \overline{\chi(g)},$$
+	the character of $\overline{\rho}$ is $\overline{\chi}$. Clearly if $\rho$ is reducible then $\overline{\rho}$ is reducible, then if $\chi$ is irreducible so is $\overline{\chi}$, and vice-versa since taking the conjugate of the conjugate gives the original matrix. \hfill$\blacksquare$\\
+\end{proo*}
 
 
-\begin{prop}[\cite{2}]
+
+
+
+
+A useful quality of characters is that they determine $\mathbb{C}G$-modules up to isomorphism.
+
+\begin{prop}[{\cite[Proposition 13.5 (1)]{2}}]
+\label{isomorphicmodhavesamechar}
 	If $V,W$ are isomorphic $\mathbb{C}G$-modules then they have the same character.
 \end{prop}
-\begin{proo*}[\cite{2}]
-	Since $V\cong W$, by Proposition \ref{6} there is are bases $\mathcal{B}_V$ of $V$ and $\mathcal{B}_W$ of $W$ such that $\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}\;\forall g \in G$. Then $\Tr(\Brack{g}_{\mathcal{B}_V}) = \Tr(\Brack{g}_{\mathcal{B}_W})$. $\blacksquare$
+\begin{proo*}[{\cite[Proposition 13.5 (1)]{2}}]
+	Since $V\cong W$, by Proposition \ref{6} there is are bases $\mathcal{B}_V$ of $V$ and $\mathcal{B}_W$ of $W$ such that $\Brack{g}_{\mathcal{B}_V} = \Brack{g}_{\mathcal{B}_W}$ for all $g \in G$. Then $\Tr(\Brack{g}_{\mathcal{B}_V}) = \Tr(\Brack{g}_{\mathcal{B}_W})$. \hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{defi}[Degree of a character \cite{2}]
-	Let $\chi$ be the character of a $\mathbb{C}G$-module $V$, the degree of $\chi$ is the dimension of $V$.
-\end{defi}
+As mentioned in the historical overview, Frobenius first defined characters on conjugacy classes without the notion of a group representation, and later defined representations. We will detail the connection between conjugacy classes and characters below.
 
-\begin{prop}[\cite{1}]
-	Let $V$ be a $\mathbb{C}G$-module, and $g \in G$ an element with order $n$. Then
-	\begin{enumerate}
-		\item $\chi(1) = \dim(V)$,
-		\item $\chi(g)$ is the sum of all $n$th roots of unity,
-		\item $\chi(g^{-1}) = \bar{\chi}(g)$ the complex conjugate of $\chi(g)$,
-		\item TODO check if we need conjugate stuff
-	\end{enumerate}
+\begin{prop}[{\cite[Proposition 13.5 (2)]{2}}]
+	\label{charareclassfun}
+	Let $G$ be a group and let $\chi$ be the character of a $\mathbb{C}G$-module $V$. If $g,g' \in G$ are elements of the same conjugacy class then $\chi(g) = \chi(g')$ 
 \end{prop}
-\begin{proo*}[\cite {2}]~ %%%
-	\vspace{-\topsep}
-	\begin{enumerate}
-	\item Let $\mathcal{B}$ be a chosen basis of $V$, and $n = \dim(V)$. Then $\chi(1) = \Tr[1]_\mathcal{B} = \Tr[1]_\mathcal{B} = \Tr(I) = n$.
-	\item TODO rest
-	\end{enumerate}
+\begin{proo*}[{\cite[Proposition 13.5 (2)]{2}}]
+	Since $g$ and $g'$ are conjugate $g = hg'h^{-1}$ for some $h \in G$. Choosing a basis $\mathcal{B}$ for $V$ we have
+	$$[g]_\mathcal{B} = [h]_\mathcal{B}[g']_\mathcal{B}[h]_\mathcal{B}^{-1}.$$
+	 Then since $\Tr(ABA^{-1}) = \Tr(B)$ for $A,B \in \M_n(\mathbb{C})$ and invertible $A$ we get
+	$\Tr([g]_{\mathcal{B}}) = \Tr([g']_\mathcal{B})$. \hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{defi}[Kernel of a character \cite{2}]
-	Let $\chi : G \to F$ be a character. Then the kernel of $\chi$ is given by $\Ker(\chi) = \Brace{g \in G \;\vert\; \chi(g) = \chi(1)}$.
+Note that for a character $\chi$ of a group $G$,  if $g \in G$ is conjugate to $g^{-1}$ then by Proposition \ref{charareclassfun} $\chi(g) = \chi(g^{-1}) = \overline{\chi(g)}$. Then $\chi(g) \in \mathbb{R}$. This motivates the following definition.
+
+\begin{defi}[Real conjugacy classes and characters {\cite[page 263]{2}}]
+	Let $G$ be a finite group. An element $g \in G$ is said to be \textit{real} if $g$ is conjugate to $g^{-1}$, then we call the conjugacy class $g^G$ real. Equivalently, a conjugacy class is \textit{real} if it contains the inverse of every element in it.\\
+
+	A character $\chi$ of $G$ is real if $\chi(g) \in \mathbb{R}$ for all $g \in G$.\\
 \end{defi}
 
-\begin{defi}[Faithful character \cite{2}]
-	A character $\chi$ is faithful if it has trivial kernel $\Ker(\chi) = \Brace{1}$.
-\end{defi}
+The following Theorem will enable us to prove a useful fact about the kernel of a character in Theorem \ref{mehker}.
 
-\begin{theo}[\cite{2}]
-	Given a representation $\phi : G \to \GL_n(\mathbb{C})$, and a character $\chi : G \to \mathbb{C}$, we have $\abs{\chi(g)} = \chi(1) \iff \exists \,\alpha \in \mathbb{C}$ such that $\phi_g = \alpha I$.
+\begin{theo}[{\cite[13.11(1)]{2}}]
+	Given a representation $\rho : G \to \GL_n(\mathbb{C})$, and the character $\chi : G \to \mathbb{C}$ of $\rho$, for an element $g \in G$ we have $\abs{\chi(g)} = \chi(1_G)$ if and only if there exists $\alpha \in \mathbb{C}$ such that $\rho_g = \alpha \I_n$.
 	\label{8}
 \end{theo}
-\begin{proo*}[\cite{2}]
-TODO
+\begin{proo*}[{\cite[13.11(1)]{2}}]
+	Let $g \in G$, and let $g$ have order $m$. We have  $\rho_g = \lambda\I_n$ for some $\lambda \in \mathbb{C}$. When $\rho_g^m = \rho_{1_G} = \I_n = \lambda^nI_n$ and hence $\lambda$ is an $m$th root of unity. Then $\chi(g) = \Tr(\lambda\I_n) = n\lambda$ and $\abs{\chi(g)} = n = \chi(1_G)$. Conversely, assume that for all $g \in G$, we have $\abs{\chi(g)} = \chi(1)$. By Proposition \ref{diagonalizable} there is a basis $\mathcal{B}$ of $\mathbb{C}^n$ such that
+	$$\Brack{g}_\mathcal{B} =  \begin{pmatrix}
+	\zeta_1 &  & &  & \\
+	 & \zeta_2 & & \text{\Large{0}}&  \\
+	& & \ddots & & \\
+	 & \text{\Large{0}} & & \zeta_{n-1} & \\ 
+	&  & & & \zeta_n\end{pmatrix}$$
+	where $\zeta_i$ is an $m$th root of unity for each $1 \leqslant i \leqslant n$.
+	Then $\abs{\chi(g)} = \abs{\zeta_1 + \cdots + \zeta_n} = \chi(1) = n$. For complex numbers $z_1,\dots,z_n$ we have
+	$$\abs{z_1 + \cdots + z_n} \leqslant \abs{z_1} + \cdots + \abs{z_n}$$
+	with equality if and only if $z_i = z_j$ for each $1 \leqslant i,j \leqslant n$. Since $\abs{\zeta_i} = 1$ for each $1 \leqslant i \leqslant n$ and $\abs{\zeta_1 + \cdots + \zeta_n} = n$ we indeed have $z_i = z_j$ for each $1 \leqslant i,j \leqslant n$. Then
+	$$\Brack{g}_\mathcal{B} = \zeta_1\I_n.$$
+	Then for all bases $\mathcal{B}'$ of $\mathbb{C}^n$ we have $\Brack{g}_{\mathcal{B}'} = \zeta_1\I_n$, and $\rho_g = \zeta_1\I_n$. \hfill$\blacksquare$\\
 \end{proo*}
-\begin{theo}[\cite{2}]
-	Given a representation $\phi : G \to \GL_n(\mathbb{C})$, and a character $\chi : G \to \mathbb{C}$, $\Ker(\chi) = \Ker(\phi)$. $\blacksquare$
+
+\begin{theo}[{\cite[13.11(2)]{2}}]
+\label{mehker}
+	Let $G$ be a group, and $\rho : G \to \GL_n(\mathbb{C})$ a representation with character $\chi : G \to \mathbb{C}$, Then $\Ker(\chi) = \Ker(\rho)$.
 \end{theo}
 
-\begin{proo*}[\cite{2}]
-	Choosing a basis $\mathcal{B}$ of $V$,
-	For $g \in \Ker(\phi)$, then $\phi_g = I \implies \chi(g) = n = \chi(1) \implies g \in \Ker(\chi)$. For $g \in \Ker(\chi)$, by theorem \ref{8} we have $\phi_g = \alpha I$ for some $\alpha \in \mathbb{C}$. Then $\chi(g) = \alpha \chi(1)$, hence $\alpha = 1$. Then $\phi_g = I$ and $g \in \Ker(\phi)$. $\blacksquare$
+\begin{proo*}[{\cite[13.11(2)]{2}}]
+	Let $g \in \Ker(\rho)$, then $\rho_g = \I_n$, so $\chi(g) = n = \chi(1)$ and $g \in \Ker(\chi)$. Conversely, suppose $g \in \Ker(\chi)$, by Theorem \ref{8} we have $\rho_g = \alpha \I_n$ for some $\alpha \in \mathbb{C}$. Then $\chi(g) = \alpha \chi(1_G)$, hence $\alpha = 1$. Then $\rho_g = \I_n$ and $g \in \Ker(\rho)$.\\
+	We have $\Ker(\rho)$ is a normal subgroup of $G$, hence $\Ker(\chi)$ is also a normal subgroup.\hfill$\blacksquare$\\
 \end{proo*}
 
-\begin{coro}
-	Since the kernel of a homomorphism is a normal subgroup, $\Ker(\phi) = \Ker(\chi)\,\triangleleft\,G$.
-\end{coro}
-
-\begin{prop}[\cite{2}]
-	For a character $\chi$ of $G$, $\overline{\chi}$ is also a character of $G$. $\chi$ is irreducible $\iff$ $\overline{\chi}$ is irreducible.
+The following proposition will allow us to see a connection between characters of a $\mathbb{C}G$-module and the characters of its irreducible submodules.
+\begin{prop}[{\cite[Proposition 13.18]{2}}]
+	\label{directsumchar}
+	Let $V$ be a $\mathbb{C}G$-module with
+	$$V = W_1 \oplus \cdots \oplus W_n,$$
+	where $W_i$ is an irreducible $\mathbb{C}G$-submodule for each $1 \leqslant i \leqslant n$.
+	Suppose $\chi_V$ is the character of $V$ and $\chi_{W_i}$ is the character of $W_i$ for each $1 \leqslant i \leqslant n$.
+	Then $\chi_V = (\chi_{W_1} + \cdots + \chi_{W_n}) : G \to \mathbb{C}$.
 \end{prop}
 
 \begin{proo*}
-	Let $V$ be $n$-dimensional over $\mathbb{C}$ and let $\phi : G \to \GL(V)$ be a representation of $G$. Then for choosing a basis $\mathcal{B}$ of $V$, let $\Brack{g}_\mathcal{B} = \phi_g$ and
-	$$\chi(g) = \Tr(\Brack{g}_\mathcal{B}).$$
-	For a matrix $A \in \M_n(\mathbb{C})$, let $\overline{A}$ be the matrix such that $A^i_j \in A \implies \overline{A}^i_j \in \overline{A}$, that is each entry in $\overline{A}$ is the complex conjugate of the corresponding entry in $A$. Notice that since for $z,z' \in \mathbb{C}$ we have $\overline{z} \times \overline{z}' = \overline{z \times z'}$, for $A,A' \in \M_n(\mathbb{C})$ we also have $\overline{A\times A'} = \overline{A}\times\overline{A'}$.\\
-
-	This implies that the function $\overline{\phi} : G \to \GL(V)$ obtained from taking the conjugate of $\phi$ defined by $\overline{\phi}_g = \overline{(\phi_g)}$ is a representation. Then since 
-	$$\Tr({\overline{\Brack{g}_\mathcal{B}}}) = \overline{\Tr(\Brack{g}_\mathcal{B})} = \overline{\chi(g)},$$
-	the character of $\overline{\phi}$ is $\overline{\chi}$. Clearly if $\phi$ is reducible then $\overline{\phi}$ is reducible, then if $\chi$ is irreducible so is $\overline{\chi}$. $\blacksquare$
+	This follows clearly from Definition \ref{directsumoffg}. Given irreducible $\mathbb{C}G$-submodules $W_1,\dots,W_n$ with $V = W_1 \oplus \cdots \oplus W_n$, and bases $\mathcal{B}_V,{\mathcal{B}_{W_1}},\dots,{\mathcal{B}_{W_n}}$ respectively, we have
+	$$\Tr([g]_{\mathcal{B}_V}) = \Tr \begin{pmatrix}
+	[g]_{\mathcal{B}_{W_1}} &  & &  & \\
+	 & [g]_{\mathcal{B}_{W_2}} & & \text{\Large{0}}&  \\
+	& & \ddots & & \\
+	 & \text{\Large{0}} & & [g]_{\mathcal{B}_{W_{n-1}}} & \\ 
+	&  & & & [g]_{\mathcal{B}_{W_n}}\end{pmatrix} = \Tr([g]_{\mathcal{B}_{W_1}}) + \cdots + \Tr([g]_{\mathcal{B}_{W_n}}). \;$$
+	\hfill $\blacksquare$\\
 \end{proo*}
 
-\newpage
-\subsection{The Regular Character}
-\begin{defi}[Regular character \cite{2}]
-	Let $V$ be the regular $\mathbb{C}G$-module with basis $\mathcal{B} = G$. We write the regular character as $\chi_{\reg}$.
+The permutation character is one of the irreducible characters $S_n$. In later chapters we will be finding all irreducible characters of $S_n$ as Frobenius did in the early days of representation theory.
+\begin{defi}[Permutation character {\cite[page 129]{2}}]
+	Let $V$ be the permutation module of $G \leqslant S_n$ over $\mathbb{C}$ with basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$. Then for $g \in G$, the matrix $[g]_\mathcal{B}$ has diagonal entries
+	$$([g]_\mathcal{B})^i_i = \begin{cases}0 \quad &\text{ if }gi \neq i\\1 \quad &\text{ if }gi = i\end{cases} \quad \text{ for all } 1 \leqslant i \leqslant n.$$
+	We can then see that the character  $\pi : G \to \mathbb{C}$ of the permutation module $V$ is defined by
+	$$\pi(g) \coloneqq \abs{\Brace{i \;:\; 1 \leqslant i \leqslant n,\; gi = i}}.$$
+	We define the set
+	$$\Fix(g) \coloneqq \Brace{i \;:\; 1 \leqslant i \leqslant n,\; gi = i}.$$
+
 \end{defi}
 
-\begin{prop}[\cite{2}]
-	Let $V$ be a $\mathbb{C}G$-module, which is completely reducible with
-	$$V = W_1 \oplus \cdots \oplus W_n,$$
-	where $W_i$ is irreducible for all $1 \leqslant i \leqslant n$.
-	Then $\chi(V) = \chi(W_1 \oplus \cdots \oplus W_n) = \chi(W_1) + \cdots + \chi(W_n)$.
+\begin{prop}[{\cite[Proposition 13.24]{2}}]
+	\label{fixchar}
+	Let $G$ be a subgroup of $S_n$. Then the function $\chi : G \to \mathbb{C}$ such that
+	$$\chi(g) \coloneqq \abs{\Fix(g)} - 1\quad g \in G$$
+	is a character of $G$.
+\end{prop}
+\begin{proo*}[{\cite[Proposition 13.24]{2}}]
+	Let $V$ be the permutation module of $G$ over $\mathbb{C}$ with basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$. Let $U = \Span(e_1 + \cdots + e_n)$.
+	Then $gu = u$ for all $g \in G$, $u \in U$. Hence $U$ is a $\mathbb{C}G$-submodule of $V$. $U$ is ismorphic to the trivial $\mathbb{C}G$-module, and hence the character $\chi_1$ of $U$ is the trivial character. Then by Maschke's Theorem there exists a $\mathbb{C}G$-submodule $W < V$ such that $V = U \oplus W$. Let $\chi_2$ be the character of $W$. Then given the permutation character $\pi(g) = \abs{\Fix(g)}$ and using Proposition \ref{directsumchar}, we have
+	$$\pi(g) = \chi_1(g) + \chi_2(g) = 1 + \chi_2(g) = \abs{\Fix(g)} \text{ implies }\chi_2(g) = \abs{\Fix(g)} - 1 \quad \text{ for all } g \in G.$$
+\end{proo*}
+
+\newpage
+\subsection{Inner Products on Characters}
+In this subsection we will develop the Hermitian inner products on characters, which will aid us later in classifying groups with character theory.\\
+
+\begin{defi}[Complex space of class functions {\cite[page 23]{3}}]
+	The set of all functions from a group $G$ to $\mathbb{C}$ which are constant on conjugacy classes forms a vector space denoted $$\mathcal{C}^G = \Brace{\eta : G \to \mathbb{C}\;:\;\eta(hgh^{-1}) = \eta(g)\;\text{ for all } g,h \in G},$$ with addition $(\eta + \eta')(g) = \eta(g) + \eta'(g)$ and scalar multiplication $(\alpha \eta)(g)= \alpha(x(g))$ for all $\eta,\eta' \in C(G)$, and $\alpha \in \mathbb{C}$. We call this the \textit{complex space of class functions}.\\
+\end{defi}
+
+The vector space $C_G$ clearly contains all characters of a group $G$ by Proposition \ref{charareclassfun}. Providing this vector space with an inner product will allow us to prove further useful results about characters.\\
+
+
+\begin{defi}[Hermitian inner product on $\mathcal{C}^G$ {\cite[Definition 14.3]{2}}]
+	For functions $\eta,\eta' \in \mathcal{C}^G$, we define the \textit{Hermitian inner product}
+	$$\gen{\eta,\eta'} \coloneqq \frac{1}{\abs{G}}\sum_{g \in G} \eta(g)\overline{\eta'(g)}.$$
+	This is indeed satisfies the axioms of an inner product since:
+	\begin{mitem}
+		\item $\overline{\gen{\eta,\eta'}} = \frac{1}{\abs{G}}\overline{\sum\limits_{g \in G} \eta(g)\overline{\eta'(g)}} =\frac{1}{\abs{G}}\sum\limits_{g \in G} \overline{\eta(g)}{\eta'(g)} = \gen{\eta',\eta}$ for all $\eta,\eta' \in \mathcal{C}^G$.
+		\item $\gen{\alpha \eta+\alpha '\eta',\iota} = \frac{1}{\abs{G}}\sum\limits_{g \in G} (\alpha \eta(g) + \alpha'\eta'(g))\overline{\iota(g)} = \alpha\gen{\eta,\iota} + \alpha'\gen{\eta',\iota}$ for all $\eta,\eta',\iota \in \mathcal{C}^G$ and $\alpha,\alpha' \in \mathbb{C}$.
+		\item For a complex number $\alpha \in \mathbb{C}$ we get a real number $\alpha\overline{\alpha} \geqslant 0$ with $\alpha\overline{\alpha} = 0$ if and only if $\alpha = 0$. Hence $\gen{\eta,\eta} = \frac{1}{\abs{G}}\sum\limits_{g \in G} \eta(g)\overline{\eta(g)} \geqslant 0$ with $\gen{\eta,\eta} = 0$ if and only if $\eta = 0$.
+	\end{mitem}
+\end{defi}
+
+The Hermitian inner product has unique properties when restricted to class functions. These properties will aid us in proving further properties of characters.
+
+\begin{prop}[The inner product is symmetric on characters \\{\cite[Proposition 14.5 (1)]{2}}]
+	Let $G$ be a group, and let $\chi,\chi'$ be characters $G$. Then
+	$$\gen{\chi,\chi'} = \gen{\chi',\chi} = \frac{1}{\abs{G}}\sum_{g \in G}\chi(g)\chi'(g^{-1}).$$
 \end{prop}
 
-\begin{proo*}
-	This follows clearly from Definition \ref{directsumoffg}. Given $FG$-modules $V,W_1,\dots,W_n$ with $V = W_1 \oplus \cdots \oplus W_n$, and bases $\mathcal{B}_V,{\mathcal{B}_{W_1}},\dots,{\mathcal{B}_{W_n}}$ respectively, we have
-	$$\Tr([g]_{\mathcal{B}_V}) = \Tr \begin{pmatrix} 
-	    [g]_{\mathcal{B}_{W_1}}& 0 & \dots & 0 \\
-	    0 & [g]_{\mathcal{B}_{W_2}} & \cdots & 0 \\
-	    \vdots & \vdots& \ddots & \vdots\\
-	    0 & 0  &\dots & [g]_{\mathcal{B}_{W_n}} \end{pmatrix} = \Tr([g]_{\mathcal{B}_{W_1}}) + \cdots + \Tr([g]_{\mathcal{B}_{W_n}}). \;\blacksquare$$
+\begin{proo*}[{\cite[Proposition 14.5 (1)]{2}}]
+	By Proposition \ref{inverseisconj} we have $\chi'(g^{-1}) = \overline{\chi'(g)}$ for all $g \in G$, hence
+	$$\gen{\chi,\chi'} = \frac{1}{\abs{G}}\sum_{g \in G}\chi(g)\overline{\chi'(g)} = \frac{1}{\abs{G}}\sum_{g \in G}\chi(g)\chi'(g^{-1}) =  \gen{\chi',\chi}$$
+	since summing over $g^{-1}$ is the same summing over $g$.\\
+
+	Notice this implies the inner product is real when restricted to characters since $\gen{\chi,\chi'} = \overline{\gen{\chi',\chi}} = \overline{\gen{\chi,\chi'}}$. \hfill$\blacksquare$\\
+\end{proo*}
+
+To prove Proposition \ref{innerprodcent} we will require the below proposition on the order of conjugacy classes.
+\begin{prop}[{\cite[Theorem 12.8]{2}}]
+	\label{cardofconj}
+	For a finite group $G$, and a conjugacy class $g^G \subseteq G$, we have $\abs{g^G} = \dfrac{\abs{G}}{\abs{C_G(g)}}$ where $C_G$ is the centralizer of $G$. 
+\end{prop}
+\begin{proo*}[{\cite[Theorem 12.8]{2}}]
+	Let $G$ be a finite group, and $g,h \in G$.
+	Let $\textasteriskcentered \cdot \textasteriskcentered : G \times G \to G$ be the map
+	$h \cdot g = hgh^{-1}$. This is a group action of $G$ on itself. Cleary $\Orb(g) = g^G$, and $\Stab(g) = \Brace{ h \in G \;: hg = gh} = C_G(g)$, then by the Orbit-Stabilizer Theorem we have
+	$$\abs{g^G} = \Brack{G : C_G(g)} = \frac{\abs{G}}{\abs{C_G(g)}}.$$
+	\hfill $\blacksquare$\\
+\end{proo*}
+
+We can rewrite the Hermitian inner product in terms of characters
+
+\begin{prop}[{\cite[Proposition 14.5 (2)]{2}}]
+	\label{innerprodcent}
+	Let $G$ be a finite group and $\chi,\chi'$ be characters of $G$.  Let $n$ be the number of conjugacy classes of $G$, and let $g_1,\dots,g_n$ be distinct representatives of the conjugacy classes. Then
+	$$\gen{\chi,\chi'} = \sum_{1 \leqslant i \leqslant n}\frac{1}{\abs{C_G(g_i)}}\chi(g_i)\overline{\chi'(g_i)}.$$
+\end{prop}
+\begin{proo*}[{\cite[Proposition 14.5 (2)]{2}}]
+	Note that since $\chi$ is constant on elements of the same conjugacy class,
+	$$\sum_{g \in g_i^G}\chi(g)\overline{\chi'(g)} = \abs{g_i^G}\chi(g_i)\overline{\chi'(g_i)}.$$
+	for all conjugacy classes $g_i^G$ of $G$.
+	Then by Proposition \ref{cardofconj} we have $\abs{g_i^G} = \dfrac{\abs{G}}{\abs{C_G({g_i})}}$ and
+	\begin{align*}
+		\gen{\chi,\chi'} &= \frac{1}{\abs{G}}\sum_{g \in G}\chi(g)\overline{\chi'(g)} = \frac{1}{\abs G}\sum_{1 \leqslant i \leqslant n}\sum_{g \in g_i^G}\chi(g)\overline{\chi'(g)}\\
+		&= \sum_{1 \leqslant i \leqslant n} \frac{\abs{g_i^G}}{\abs{G}}\chi(g_i)\overline{\chi'(g_i)}
+		= \sum_{1 \leqslant i \leqslant n} \frac{1}{\abs{C_G(g_i)}}\chi(g_i)\overline{\chi'(g_i)}.
+	\end{align*}
+	\hfill$\blacksquare$\\
+\end{proo*}
+ 
+In the next few propositions we will prove that the characters of a group $G$ form a basis for the vector space of class functions $\mathcal{C}^G$
+
+\begin{theo}[Irreducible characters are orthonormal {\cite[page 24]{3}}]
+\label{irrcharorth}
+	Let $V$ and $V'$ be isomorphic irreducible $\mathbb{C}G$-modules with characters $\chi$ and $\chi'$ repsectively, then
+	$\gen{\chi,\chi'} = 1$. If $V$ and $V'$ are non-isomorphic irreducible $\mathbb{C}G$-modules then $\gen{\chi,\chi'} = 0$.
+\end{theo}
+\begin{proo*}[{\cite[page 28]{3}}]
+	Let $\mathcal{B}$ be the basis of $V$ and $\mathcal{B}'$ be the basis of $V'$, and let $n,n'$ be the dimensions of $V,V'$ repsectively. Then since $\chi(g) = \Tr(\Brack{g}_\mathcal{B})$ we have
+	$$\gen{\chi',\chi} = \frac{1}{\abs{G}}\sum_{g \in G}\chi'(g)\chi(g^{-1}) = \frac{1}{\abs{G}}\sum_{g \in G}\sum_{\substack{1 \leqslant i \leqslant n' \\ 1 \leqslant j \leqslant n}}\Paren{\Brack{g}_{\mathcal{B}'}}^i_i\Paren{\Brack{g^{-1}}_{\mathcal{B}}}^j_j.$$\\
+
+	Given a linear map $\phi : V \to V'$, we define $\tilde{\phi} : V \to V'$ such that for $v \in V$
+	$$\tilde{\phi}(v) \coloneqq \frac{1}{\abs{G}}\sum_{g \in G}g^{-1}\phi(gv).$$
+
+	We verify that for $h \in G$
+	\begin{align*}
+		h^{-1}\tilde\phi(hv) &= \frac{1}{\abs{G}}\sum_{g \in G}(gh)^{-1}\phi(ghv) = \frac{1}{\abs{G}}\sum_{g' = gh \in G}g'^{-1}\phi(g'v) = \tilde\phi(v) \text{ implies } \tilde\phi(hv) = h\tilde\phi(v).
+	\end{align*}
+	Thus $\tilde\phi$ is a $\mathbb{C}G$-homomorphism. We examine the consequences of $V \ncong V'$ and $V \cong V'$.
+	\begin{menum}
+		\item Suppose $V \ncong V'$. Then by Schur's lemma $\tilde\phi = 0$ for any linear $\phi$. Let $\phi = E_{ab}$, the matrix with entries $(E_{ab})^{i}_j = \delta^i_a\delta^j_b$, that is is $1$ for the entry $(a,b)$ and $0$ for all others.
+		Then
+		$$\tilde E_{ab} = \frac{1}{\abs{G}}\sum_{g \in G}\Brack{g^{-1}}_{\mathcal{B}'}E_{ab}\Brack{g}_\mathcal{B} = 0,$$
+		and for each $i,j$ we get
+		$$\frac{1}{\abs{G}}\sum_{g \in G}\Paren{\Brack{g^{-1}}_{\mathcal{B}'}E_{ab}\Brack{g}_\mathcal{B}}^i_j = 0 = \frac{1}{\abs{G}}\sum_{g \in G}\Paren{\Brack{g^{-1}}_{\mathcal{B}'}}^i_a\Paren{\Brack{g}_\mathcal{B}}^b_j.$$
+		Now selecting $a = i, b = j$ we have 
+		$$\frac{1}{\abs{G}}\sum_{g \in G}\Paren{\Brack{g^{-1}}_{\mathcal{B}'}}^i_i\Paren{\Brack{g}_\mathcal{B}}^j_j = 0.$$
+		Then summing over this and applying the same procedure for all $a = i, b = j$ we get that $\gen{\chi',\chi} = 0$.
+
+
+		\item Suppose $V \cong V'$, then by Proposition \ref{isomorphicmodhavesamechar} we have $\chi = \chi'$. As proved above, if $\phi : V \to V'$ is linear then $\tilde{\phi} : V \to V'$ is a $\mathbb{C}G$-homomorphism, more specifically a $\mathbb{C}G$-endomorphism since $V \cong V'$. Notice that since $[g^{-1}]_\mathcal{B} = [g]^{-1}_\mathcal{B}$,
+		$$\Tr(\tilde\phi) = \frac{1}{\abs{G}}\sum_{g \in G}\Tr(\Brack{g^{-1}}_{\mathcal{B}}\phi\Brack{g}_\mathcal{B}) = \frac{1}{\abs{G}}\sum_{g \in G}\Tr(\phi) = \Tr(\phi).$$
+		Since $\tilde\phi$ is a endomorphism, by Schur's Lemma we know that $\tilde\phi = \lambda\Id_V$ for some $\lambda \in \mathbb{C}$. Then 
+		$$\Tr(\phi) = \lambda\Tr(\Id_V) = \lambda n$$
+		where $n = \dim(V)$, then $\lambda = \frac{1}{n}\Tr(\phi)$. Let $\phi = E_{ab}$, then $\Tr(E_{ab}) = \delta^a_b$ and
+		$$\tilde E_{ab} = \frac{1}{\abs{G}}\sum_{g \in G}\Brack{g^{-1}}_{\mathcal{B}}E_{ab}\Brack{g}_\mathcal{B} = \frac{1}{n}\delta^a_b\Id_V.$$
+		For the entry $(i,j)$ we get
+		$$\frac{1}{\abs{G}}\sum_{g \in G}\Paren{\Brack{g^{-1}}_\mathcal{B}}^i_a\Paren{\Brack{g}_\mathcal{B}}^b_j = \frac{1}{n}\delta^a_b\delta^i_j,$$
+		and setting $a = i, b = j$ we have
+		$$\frac{1}{G}\sum_{g \in G}\Paren{\Brack{g^{-1}}_\mathcal{B}}^i_i\Paren{\Brack{g}_\mathcal{B}}
+		^j_j = \frac{1}{n}\delta^i_j.$$
+		Then summing the above over $1 \leqslant i,j \leqslant n$.
+		We obtain $\gen{\chi,\chi} = 1$. \hfill$\blacksquare$\\
+	\end{menum}
+\end{proo*}
+
+\begin{theo}[{\cite[Theorem 14.23]{2}}]
+	Let $G$ be a group and let $\chi_1,\dots,\chi_n$ be the irreducible characters of $G$. Then $\chi_1,\dots,\chi_n$ are linearly independent vectors in $\mathcal{C}^G$.
+	\label{linindchar}
+\end{theo}
+\begin{proo*}[{\cite[Theorem 14.23]{2}}]
+	Let $\alpha_i \in \mathbb{C}$ for each $1 \leqslant i \leqslant n$ such that
+	$$\alpha_1\chi_1 + \cdots + \alpha_n\chi_n = 0.$$
+	Then by bilinearity and $\gen{\chi_i,\chi_j} = \delta^i_j$ we have
+	$$\gen{\alpha_1\chi_1 +\cdots + \alpha_n\chi_n,\chi_i} = 0 = \alpha_i.$$
+	Hence $\alpha_i = 0$ for each $1 \leqslant i \leqslant n$. \hfill$\blacksquare$\\
 \end{proo*}
 
 
-\newpage
-\subsection{Inner products of Characters}
+\begin{prop}[{\cite[page 24]{3}}]
+\label{irrechararebasis}
+	 The characters irreducible characters of a finite group $G$ form a basis of the class functions $\mathcal{C}^G$.
+\end{prop}
+\begin{proo*}[{\cite[page 31]{3}}]
+	Let $G$ be a finite group. Let $V_1,\dots,V_n$ be all the non-ismorphic irreducible $\mathbb{C}G$-modules, with irreducible characters $\chi_1,\dots,\chi_n$ respectively.
+	Let $X = \Brace{\chi_i \;:\; 1 \leqslant i \leqslant n}$. We seek to prove that $\Span(X) = \mathcal{C}^G$. We know that $\Span(X) \leqslant \mathcal{C}^G$, so $\mathcal{C}^G = \Span(X) \oplus \Span(X)^\perp$. Assume that $f \in \Span(X)^{\perp}$ is orthogonal to each $\chi_i$. Then we need only prove $f = 0$ to imply $\mathcal{C}^G = X$.\\
+	
+	Assume $f \in \Span(X)^\perp$ and $\gen{f,\chi_i} = 0$ for each $1 \leqslant i \leqslant n$. Let $V$  be an irreducible $\mathbb{C}G$-module and define
+	$\psi : V \to V$ such that
+	$$\psi(v) \coloneqq \frac{1}{\abs{G}}\sum_{g \in G}\overline{f}(g)gv \quad \text{ for all } v \in V.$$
+	Then for all $h \in G$, since $\overline{f}$ is a class function
+	$$h^{-1}\psi(hv) = \frac{1}{\abs{G}}\sum_{g \in G}\overline{f}(g)h^{-1}ghv = \frac{1}{\abs{G}}\sum_{g \in G}\overline{f}(h^{-1}gh)h^{-1}ghv = \psi(v).$$
+	Then $\psi$ is a $\mathbb{C}G$-endomorphism. Then since $V$ is irreducible, by Schur's Lemma we have $\psi = \lambda\Id_V$ for some $\lambda \in \mathbb{C}$ and
+	$$\Tr(\lambda\Id_V) = \Tr(\psi) \text{ implies } k\lambda = \Tr\Paren{\frac{1}{\abs{G}}\sum_{g \in G}\overline{f}(g)g} = \frac{1}{\abs{G}}\sum_{g \in G}\overline{f}(g)\chi(g) = \gen{f,\chi} = 0,$$
+	where $k = \dim(V)$. Then $\lambda = 0$ and $\dfrac{1}{\abs{G}}\sum\limits_{g \in G}\overline{f}(g)g = 0$. This is true for any irreducible $\mathbb{C}G$-module, and hence any $\mathbb{C}G$-module since Maschke's Theorem implies complete reducibility for $\Char(\mathbb{C}) = 0$ and finite $G$, together with $\chi(V) = \chi(W_1 \oplus \cdots \oplus W_m) = \chi(W_1) + \cdots + \chi(W_m)$.\\
+
+	Let $V$ be the regular $\mathbb{C}G$-module with basis elements being members of the group. Then
+	$$\psi(e_{1_G}) = \sum_{g \in G}\overline{f}(g)ge_{1_G} = 0.$$
+	The elements of $G$ which form the basis are linearly independent, so $\overline{f}(g) = 0$ for all $g \in G$, implying $f = 0$ and $\Span(X)^{\perp} = \Brace{0}$. Then $\mathcal{C}^G = \Span(X) \oplus \Brace{0} = \Span(X)$.
+\end{proo*}
+
+\begin{theo}[{\cite[Theorem 14.17]{2}}]
+\label{intbasisforclassfun}
+	Let $V$ be a $\mathbb{C}G$-module for a finite group $G$. Let $V_1,\dots,V_n$ be a complete list of non-zero proper $\mathbb{C}G$-submodules of $V$, with characters $\chi_1,\dots,\chi_n$ respectively. Then the character $\psi$ of $V$ is of the form 
+	$$\psi = m_1\chi_1 + \cdots m_n\chi_n$$
+	where $m_i$ is a non-negative integer for each $1 \leqslant i \leqslant n$. Further, for each $1 \leqslant i \leqslant n$ we have
+	$m_i = \gen{\psi,\chi_i}$ for each and $\gen{\psi,\psi} = \sum\limits_{1 \leqslant i \leqslant n} m_i^2$ 
+\end{theo}
+\begin{proo*}[{\cite[page 141]{2}}]
+	The $\mathbb{C}G$-module $V$ is completely reducible by Proposition \ref{maschkecompred}, and hence
+	$$V \cong \bigoplus_{\substack{1 \leqslant i \leqslant n\\1 \leqslant j \leqslant m_i}}V_i = \Big({\bigoplus_{1 \leqslant j \leqslant m_1}V_1}\Big) \oplus \cdots \oplus \Big({\bigoplus_{1 \leqslant j \leqslant m_n}V_n}\Big)$$
+	for a collection of irreducible $\mathbb{C}G$-submodules ${V_i\;:\;1\leqslant i \leqslant n}$ with each $V_i$ appearing in the sum $m_i$ times.
+	Then by Proposition \ref{directsumchar} we have
+	\begin{align*}
+	\psi = m_1\chi_1 + \cdots m_n\chi_n.
+	\end{align*}
+
+	By Theorem \ref{irrcharorth} we have $\gen{\chi_i,\chi_j} = \delta^i_j$, then by bilinearlity we have both
+	\begin{alignat*}{2}
+	&\gen{\psi,\chi_i} &&= \gen{m_1\chi_1 + \cdots m_n\chi_n, \chi_i} =  m_i \quad \text{ for each } 1 \leqslant i \leqslant n,\\&\gen{\psi,\psi} &&= \gen{m_1\chi_1 + \cdots + m_n\chi_n,m_1\chi_1 + \cdots + m_n\chi_n} = m_1^2 + \cdots + m_n^2
+	\end{alignat*}
+	\hfill$\blacksquare$\\
+\end{proo*}
+
+Given a finite group $G$ and a $\mathbb{C}G$-module $V$, we can use the Hermitian inner product on the character of $V$ to easily determine if $V$ is  irreducible.
+
+\begin{theo}[{\cite[Theorem 14.20]{2}}]
+	\label{irreifinnerprod1}
+	Let $G$ be a finite group and a $\chi$ be the character of a  $\mathbb{C}G$-module $V$, then $V$ is irreducible if and only if $\gen{\chi,\chi} = 1$.
+\end{theo}
+\begin{proo*}[{\cite[Theorem 14.20]{2}}]
+	Suppose $\chi$ is irreducible. Then by Theorem 	\ref{irrcharorth} we have $\gen{\chi,\chi} = 1$.\\
+
+	Conversely, suppose $\gen{\chi,\chi} = 1$.
+	By Theorem \ref{intbasisforclassfun} we have $\chi = m_1\chi_1 + \cdots + m_n\chi_n$ where $\chi_i$ is the character of an irreducible $\mathbb{C}G$-submodule for each $1 \leqslant i \leqslant n$. Also
+	$$1 = \gen{\chi,\chi} = m_1^2 + \cdots + m_n^2.$$
+	Since $m_i$ are non-negative integers for each $1 \leqslant i \leqslant n$ we have $m_j = 1$ for some single $1 \leqslant j \leqslant n$ with the rest equaling 0. Then $\chi = \chi_j$ and $\chi$ is irreducible.\hfill$\blacksquare$
+\end{proo*}
+
+We prove the core property of characters, which validates their usefulness: for finite groups $G$ they classify $\mathbb{C}G$-modules up to isomorphism.
+
+\begin{theo}[{\cite[Theorem 14.21]{2}}]
+	Let $G$ be a finite group. Let $V$ and $W$ be $\mathbb{C}G$-modules, with characters $\chi_V$ and $\chi_W$ respectively, then $V$ and $W$ are isomorphic if and only if $\chi_V = \chi_W$.
+\end{theo}
+\begin{proo*}[{\cite[Theorem 14.21]{2}}]
+	Suppose $V \cong W$, then $\chi_V = \chi_W$ by Proposition \ref{isomorphicmodhavesamechar}.\\
+
+	Conversely, suppose $\chi_V = \chi_W$. We can write a complete list of non-isomorphic irreducible $\mathbb{C}G$-submodules $X_1,\dots,X_n$ with characters $\chi_1,\dots,\chi_n$ respectively. Both $V$ and $W$ are completely reducible by Proposition \ref{maschkecompred} and hence we can decompose $V$ and $W$ into the direct sum of elements in $\Brace{X_i\;:\; 1 \leqslant i \leqslant n}$,
+	\begin{align*}
+	V &\cong \bigoplus_{\substack{1 \leqslant i \leqslant n\\1 \leqslant j \leqslant m_i}}X_i = \Big({\bigoplus_{1 \leqslant j \leqslant m_1}X_1}\Big) \oplus \cdots \oplus \Big({\bigoplus_{1 \leqslant j \leqslant m_n}X_n}\Big), \quad \text{and}\\
+	W &\cong \bigoplus_{\substack{1 \leqslant i \leqslant n\\1 \leqslant j \leqslant l_i}}X_i = \Big({\bigoplus_{1 \leqslant j \leqslant l_1}X_1}\Big) \oplus \cdots \oplus \Big({\bigoplus_{1 \leqslant j \leqslant l_n}X_n}\Big),
+	\end{align*}
+	where for each $1 \leqslant i \leqslant n$ the submodule $X_i$ appears $m_i$ times in the sum isomorphic to $V$  and  $l_i$ times for the sum isomorphic to $W$. Then by Theorem \ref{intbasisforclassfun} and $\chi_V = \chi_W$ we have
+	\begin{align*}
+		\chi_V = m_1\chi_1 + \cdots + m_n\chi_n,\quad \chi_W = l_1\chi_1 + \cdots + l_n\chi_n
+	\end{align*}
+	which implies
+	$$m_i = \gen{\chi_V,\chi_i} = \gen{\chi_W,\chi_i} = l_i \quad \text{ for each } 1 \leqslant i \leqslant n.$$
+
+	Then $V \cong W$. \hfill$\blacksquare$\\
+\end{proo*}
+
+The following proposition will demonstrate that the sum of the degrees of all irreducible characters of a finite group is equal to the order of the group. This can be a useful to quickly check if all irreducible characters of a group have been aquired, which is something we will seek to do in the next section. We use the regular character and the Hermitian inner product in an interesting way in the proof.
+
+\begin{prop}[{\cite[page 25]{3}}]
+	Let $G$ be a finite group and $\chi_1,\cdots,\chi_n$ be all irreducible characters of $G$. Then
+	$$\abs{G} = \sum_{1 \leqslant i \leqslant n}\chi_i(1_G)^2.$$
+	\label{sumdegsquared}
+\end{prop}
+\begin{proo*}[{\cite[page 25]{3}}]
+	Let $\chi_\text{reg}$ be the character of the regular $\mathbb{C}G$-module. Since the regular $\mathbb{C}G$-module takes vector elements and permutes them by group multiplication on the group element basis, we can see $[g]_\mathbb{B}$ as a permutation matrix for all $g \in G$ and the basis $\mathcal{B} = G$. Since the trace of a permutation matrix is the number of fixed points under the permutation, $\chi_\text{reg}(g)$ is the number of elements fixed by $g \in G$. Then $\chi_\text{reg}(1_G) = \abs{G}$, and since $g \neq 1_G$ fixes no elements $\chi_\text{reg}(1_G) = 0$. Then
+	$$\gen{\chi_\text{reg},\chi_i} = \frac{1}{\abs{G}}\sum_{g \in G}\chi_\text{reg}(g)\overline{\chi_i(g)} = \chi_i(1_G) \quad \text{ for all } 1 \leqslant i \leqslant n.$$
+	By Theorem \ref{intbasisforclassfun} we know that $\chi_\text{reg} = m_1\chi_1 + \cdots + m_n\chi_n$ for some non-negative integers $m_1,\dots,m_n$, combining this with the above we have
+	$$\gen{\chi_\text{reg},\chi_i} = \chi_i(1_G) = m_i \quad \text{ for all } 1 \leqslant i \leqslant n,$$
+	and $\chi_\text{reg} = \chi_1(1_G)\chi_1 + \cdots +\chi_n(1_G)\chi_n$. Then $$\chi_\text{reg}(1_G) = \chi_1(1_G)^2 + \cdots + \chi_n(1_G)^2 = \abs{G}.$$
+	\hfill$\blacksquare$
+\end{proo*}
+
 
 
 \end{document}

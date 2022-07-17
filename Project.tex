@@ -1,53 +1,130 @@
 \input{../../template.tex}
 \addbibresource{bibliography.bib}
 
+
+% References setup
 \makeatletter
 \patchcmd{\thebibliography}{%
 \chapter*{\bibname}\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}{%
 \section{References}}{}{}
 \makeatother
 
-\title{\vspace{-1.9cm}\textbf{MSc Project: Representations of Finite Groups}}
-\author{Eva Lott (2599097L)\\Supervised by Gwyn Bellamy\\
-	{University of Glasgow}\\ \today}
-\date{}
+% Header and footer setup
+\newpagestyle{mypage}{%
+  \headrule
+  \sethead{{\sectiontitle}}{}{\subsectiontitle}
+  \footrule
+  \setfoot{\vspace{-1pt} Representation Theory of Finite Groups}{\thepage}{}
+}
+\pagestyle{mypage}
 
 
 \begin{document}
 \clearpage
-\maketitle
+			 \begin{figure}[h!]
+			 \centering
+            \includegraphics[width=0.25\linewidth]{logo.png}
+			\end{figure}
+
+		\begin{minipage}{\textwidth}
+			\centering
+            	{\LARGE \bfseries  Representation Theory of Finite Groups}\\[2ex]
+            	{\Large \bfseries  University of Glasgow MSc Project}\\[2ex]
+            	{\large \bfseries Eva Lott (2599097L)}\\[1ex]
+            	{\large \bfseries Supervised by Professor Gwyn Bellamy}\\[1ex]
+				{\large \bfseries \today}\\[1ex]
+			\end{minipage}\\
+			\vspace{+50pt}
+
+	
+
 \begin{abstract}
-	In this project we provide an introduction to representation theory of finite groups, and go on to show its usefulness in the classification of simple finite groups.
+	In this project we provide an introduction to the representation theory of finite groups, with a focus on character theory. Representation theory is introduced and we go on to explore the properties of characters and character tables, with worked examples throughout. Since its conception in the late 19th century, representation theory has become a crucial area of abstract algebra. It is used extensively in varied areas of mathematics and the physical sciences, and is an active area of research to this day.
+	 
 \end{abstract}
+\pagenumbering{Roman}
+\thispagestyle{empty}
+
+\newpage
 \thispagestyle{empty}
 \tableofcontents
 
+\subfile{Chapters/declaration}
+
 \newpage
-\section{Glossary of Notation}
-\setcounter{page}{1}
-	\begin{itemize}
-		\item{\makebox[2cm]{$\M_n(F)$\hfill} The set of $n\times n$ matrices with entries in field $F$.}
+\section*{Glossary of Notation}
+\thispagestyle{empty}
+	\begin{mitem}
+		\item{\makebox[2cm]{$\M_n(F)$\hfill} The set of $n\times n$ matrices with entries in the field $F$.}
 		\item{\makebox[2cm]{$\I_n$\hfill} The $n\times n$ identity matrix.}
-		\item {\makebox[2cm]{$\GL_n(F)$\hfill} The set of invertible $n\times n$ matrices with entries in field $F$.}
-		\item {\makebox[2cm]{$\GL(V)$\hfill} The set of linear automorphisms on vector space $V$.}
+		\item {\makebox[2cm]{$\GL(V)$\hfill} The set of linear automorphisms on a vector space $V$.}
+		\item {\makebox[2cm]{$\GL_n(F)$\hfill} The group of invertible $n\times n$ matrices with entries in the field $F$.}
+		\item {\makebox[2cm]{$\SL_n(F)$\hfill} The subgroup of $\GL_n(F)$ of matrices with determinant $1$.}
+		\item {\makebox[2cm]{$X^\dagger$\hfill} The conjugate transpose of a matrix $X$.}
 		\item {\makebox[2cm]{$\Id_X$\hfill} Identity morphism of a space $X$.}
 		\item {\makebox[2cm]{$C_n$\hfill} Cyclic group of order $n$.}
 		\item {\makebox[2cm]{$D_{2n}$\hfill} Dihedral group of order $2n$.}
 		\item {\makebox[2cm]{$S_n$\hfill} Symmetric group of order $n$.}
-		\item {\makebox[2cm]{$1_X$\hfill} The identity of a space $X$ with algebraic structure.}
-	\end{itemize}
+		\item {\makebox[2cm]{$A_n$\hfill} Alternating group of order $n$.}
+		\item {\makebox[2cm]{$1_G$\hfill} The identity element of a group $G$.}
+		\item {\makebox[2cm]{$\mathbb{T}$\hfill} The complex unit circle $\Brace{z \in \mathbb{C}\;:\;\abs{z} = 1}$.}
+	\end{mitem}
 
 \newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
 \section{Introduction}
-\subfile{Chapters/background}
+\subsection{Overview of Project}
+In this project, we will introduce representation theory for finite groups. We will begin with an explanation of the basic definitions of representations, then introduce $FG$-modules and examine the implications of Maschke's Theorem and Schur's Lemma. We will then introduce character theory and explore the properties and uses of the Hermitian inner product on characters. In the last section we will introduce character tables and calculate some interesting examples.\\
+
+Since on a fundamental level representation theory is a marriage of group theory with linear algebra, this project assumes a graduate level familiarity with each. Certain theorems in group theory and linear algebra will be used without proof, however care is taken to reiterate some of the results and terminology from linear algebra and group theory which the reader may not immediately recall.
+
+
+
+
+\subsection{An Overview of the History of Representation Theory}
+This section makes heavy use of the texts \textit{Pioneers of Representation Theory: Frobenius, Burnside, Schur, and Brauer} \cite{9} and \textit{The Genesis of the Abstract Group Concept} \cite{10} to provide a brief history of representation theory.\\
+
+During the 19th century the notion of an abstract group had not yet been developed. The notion of a group as studied by Cauchy and Galois was primarily considered as theory surrounding permutations, which had importance in large part due to the applicability of permutations to the theory of polynomials. Many of the basic theorems of group theory taught in an introductory class had been worked on, however were not written in the context of an abstract group. For example, Lagrange's Theorem was initially given as a statement on the number of polynomials obtained by permuting the $n$ variables of a polynomial $p(x_1,\dots,x_n)$, which would later be formalized as the index of the subgroup of permutations constant on $p$ inside $S_n$, which would in turn be generalized to the modern statement with all groups and subgroups. In 1831 Galois would use the term ``group of an equation'' and in 1854 Cayley began to use the term ``group'' in his publications. While these terms were exclusively applied to permutation groups, Cayley had the realization that the concepts could be extended to other areas under study at the time such as matrix multiplication and quaternions, though he was ahead of the curve and there was no rush to generalize among the community.\\
+
+By 1878 the importance of group theory had begun to be recognized and Cayley published four papers in the field, one of which `\textit{The Theory of Groups}' described an operation mapping a finite set to itself which respected the familiar four axioms of the group operation. In 1879 Frobenius and Stickelberger published the paper `\textit{Ueber Gruppen von vertauschbaren Elementen}' which, among other things, contained a statement of the fundamental theorem of finite abelian groups in modern day group-theoretic terms, introducing the term irreducible.\\
+
+Frobenius was the father of representation theory. In 1896 he published five papers in group theory. One paper proved Sylow's theorem in terms of abstract groups, as until the conception of abstract groups it had been stated as a result on symmetric groups. This paper is noteworthy as it contains an elegant application of conjugacy classes, which Frobenius later examined in greater detail. His fourth publication that year was a seminal paper on character theory. Character theory has its roots in the ideas of Legendre, Dirichlet and Gauss in 19th century number theory, but Frobenius extended the theory to finite nonabelian groups. This paper contains a homomorphism which in the modern day we would consider a one-dimensional representation, though Frobenius would not define group representations until the following year. He had first defined a character in his letters to Dedekind in 1896 as a complex function on a group $G$ which is constant on elements in the same conjugacy class. In the same writings he went on to generalize the already existing orthogonality relations for finite abelian groups. In 1898 an important application to Frobenius' character theory had already been discovered by Molien in his exploration of polynomial invariants of finite groups.\\
+
+Frobenius published four papers between 1897 and 1899, two of which introduced representation theory of finite groups. They introduced matrix representations and a collection of the important results which are normally given in an introductory course. It was not immediately clear that characters, as Frobenius initially defined them, could be understood as the trace of a representation. He later found this link by studying matrices with polynomial entries which were associated with the representations of a group. Frobenius used his hitherto developed results in character theory to calculate the characters of $S_n$. The work done by Frobenius and his doctoral student Schur at this time has been incorporated into modern computational group theory.\\
+
+An early victory for representation theory was the first proof of Burnside's $pq$-theorem, which states that for primes $p,q$ and positive integers $a_1,a_2$ every finite group of order $p^{a_1}q^{a_2}$ is solvable. The proof employing representation theory was the sole proof until a group-theoretic proof could be developed years later \cite[page 1]{1}. Representation theory was a crucial tool in the complete classification of finite simple groups \cite[page 1]{1}. Richard Brauer had been an early pioneer in the theory of finite simple groups and provided some of the early work towards their classification. The theory he developed ``almost entirely'' relied on character-theoretic and representation-theoretic proofs \cite[page 1]{14}.\\
+
+Representation theory has gone on to be an incredibly useful tool in the physical sciences, notably in solid state physics and molecular physics \cite[page 78]{11}, and is a staple of quantum mechanics where symmetry groups are used extensively \cite[page 187]{12}. Fourier analysis of finite groups depends on representation theory and is essential for modern sound compression methods, it also is used in a variety of probabilistic and statistical methods such as random walks \cite[Chapter 11]{1}. It was used in graph theory in the study of expander graphs which have seen widespread engineering application \cite[page 3]{13}. Group representation theory is used extremely often in areas of applied maths where group theory is used frequently.
+
+
+
+
+
+%\subfile{Chapters/background}
 \subfile{Chapters/reptheo}
 \subfile{Chapters/fgmodules}
 \subfile{Chapters/chartheo}
 \subfile{Chapters/chartables}
-\subfile{Chapters/orthrel}
 
 \newpage
 \section{Conclusion}
+We have introduced representation theory and character theory for finite groups to the reader and examined multiple interesting examples.\\
+
+Representation theory is a broad field and there is far more theory beyond what we have examined. The reader may be interested in continuing their study of representation theory of finite groups with the following areas:
+\begin{mitem}
+\item Induced characters and modules \cite[Chapter 21]{2}.
+\item The proof of Burnside's theorem \cite[Chapter 31]{2}.
+\item The theory of modular characters \cite[Chapter 18]{6}.
+\item Linear representations of compact groups \cite[Chapter 4]{6}.
+\item Young diagrams and Frobenius' character formula \cite[Chapter 4]{16}.\\
+\end{mitem}
+
+By studying induced characters the reader will be equipped to find more complicated character tables such as that of the group $\GL_2(F_q)$ where $q$ is a positive integer power of some prime $p$ and $F_q$ is the finite field of $q$ elements.\\
+
+
+Finite group representation theory is still under research today. In the wake of the classification of simple finite groups, 21st century algebraists have sought to understand the representation theory of simple finite groups over fields of arbitrary characteristic \cite[page 1]{15}. As we highlighted in the introduction, representation theory is currently seen in a wide range of mathematical contexts and it is sure to be researched well into the future.\\
+
 \newpage
 \section{References}
 \printbibliography[heading=none]

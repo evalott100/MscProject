@@ -2,15 +2,616 @@
 \begin{document}
 \newpage
 \section{Character Tables}
-\begin{defi}[Character table \cite{2}]
-	Let $\chi_1\dots,\chi_n$ be irreducible characters of a group $G$. Let $g_1,\dots,g_n$ be representatives of the conjugacy classes of $G$. The character table is the $n \times n$ matrix $X$ such that the entry $X^i_j = \chi_i(g_j)$.\\
+We have seen that the characters of a group are constant on elements on the same conjugacy class, and that the values of the the character of a $\mathbb{C}G$-module determine the $\mathbb{C}G$-module up to isomorphism. Then the reader may see the convenience in storing the values of the characters of a finite group evaluated on the conjugacy classes in a matrix. Character tables are such a matrix, and we can use them to classify a finite group. In this section we explore character tables, and explicitly calculate the character tables of several finite groups. We will highlight many methods to aquire the irreducible characters of groups.
+\subsection{Basic Definitions}
+We begin by defining the character table and providing examples.
+\begin{defi}[Character table {\cite[Definition 16.1]{2}}]
+	Let $G$ be a finite group and let $V$ be a $\mathbb{C}G$-module. By Theorem \ref{4} $V$ is completely reducible with $V = W_1 \oplus \cdots \oplus W_n$ where $W_i$ is an irreducible non-zero proper $\mathbb{C}G$-submodule with character $\chi_i$ for each $1 \leqslant i \leqslant n$. Let $m$ be the number of conjugacy classes of $G$ and $g_1,\dots,g_m$ be distinct representatives of each of the conjugacy classes. The \textit{character table} is the matrix $X$ such that the entry $X^i_j \coloneqq \chi_i(g_j)$ for each $1 \leqslant i \leqslant n$ and $1 \leqslant j \leqslant m$.\\
+
+	We number the irreducible characters and conjugacy classes such that $\chi_1$ is the trivial character and $g_1 = 1_G$.
 \end{defi}
 
-We number the irreducible characters and conjugacy classes such that $\chi_1$ is the trivial character and $g_1 = 1_G$.
+In the above example we define the number of conjugacy classes as $m$ and the number of non-zero proper $\mathbb{C}G$-submodules as $n$. As it turns out $m = n$, as we prove below.
 
-\begin{prop}[\cite{2}]
-	The character table of $G$ is invertible
+\begin{prop}[{\cite[Theorem 15.3]{2}}]
+	A character table is a square matrix.
+\end{prop}
+This proposition is really claiming that the set of conjugacy classes has the the same cardinality as the set of irreducible characters, and hence the matrix is square.
+\begin{proo*}
+	We proved already that the irreducible characters of $G$ form a basis for $\mathcal{C}_G$.\\
+
+	A class function can be defined by its value on each conjugacy class, and hence the number of conjugacy classes is equal to $\dim(\mathcal{C}_G)$. \hfill$\blacksquare$\\
+\end{proo*}
+
+It is relatively easy to calculate the character table of cyclic groups.
+
+\begin{exam}[Character table of $C_5$]
+	Since the cyclic group $G = C_5 = \gen{x \;\vert\;x^5}$ is abelian, it has $\abs{C_5} = 5$ trivial conjugacy classes
+	$$(1_G)^G = \Brace{1_G},\quad (x)^{G} = \Brace{x},\;\dots\;,\;(x^4)^{G} = \Brace{x^4}.$$
+	By Theorem \ref{representationoffinabelian} there has to be five irreducible characters. Let $\zeta_5 = e^{2 \pi i /5}$ be the $5$th root of unity.  We write out our characters directly
+
+	\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c c c}
+		  $ $ & $(1_{G})^{G}$ & $(x)^{G}$ & $(x^2)^{G}$ & $(x^3)^{G}$ & $(x^4)^{G}$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 & 1\\
+		$\chi_2$ & 1 & $\zeta_5$ & $\zeta_5^2$ & $\zeta_5^3$ & $\zeta_5^4$ \\
+		$\chi_3$ & 1 & $\zeta_5^2$ & $\zeta_5^4$ & $\zeta_5$ & $\zeta_5^3$ \\
+		$\chi_4$ & 1 & $\zeta_5^3$ & $\zeta_5$ & $\zeta_5^4$ & $\zeta_5^2$ \\
+		$\chi_5$ & 1 & $\zeta_5^4$ & $\zeta_5^3$ & $\zeta_5^2$ & $\zeta_5$ \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+\end{exam}
+
+The character table of $D_6$ is harder as finding all irreducible $\mathbb{C}D_6$-modules up to isomorphism can be more complicated.
+
+\begin{exam}[Character table of $D_6$ {\cite[Example 16.5 (1)]{2}}]
+	Let $G = D_6  = \gen{x,y\;\vert\;x^3,\, y^2,\,(yx)^2}$. In Example \ref{D6decomp} we calculated some non-isomorphic irreducible $\mathbb{C}G$-modules. For $g \in G$, we define
+	\begin{alignat*}{3}
+		&\chi_1(g) \coloneqq \Tr(\Brack{g}_{\mathcal{B}_{W_1}}),\\
+		&\chi_2(g) \coloneqq \Tr(\Brack{g}_{\mathcal{B}_{W_2}}),\\
+		&\chi_3(g) \coloneqq \Tr(\Brack{g}_{\mathcal{B}_{U_4}}).
+	\end{alignat*}
+	where $\mathcal{B}_{W_1},\mathcal{B}_{W_2},\mathcal{B}_{U_4}$ are the bases of the $\mathbb{C}G$-submodules defined in Example \ref{D6decomp}.
+	By direct calculation, the conjugacy classes of $G$ are
+		$$(1_G)^G = \Brace{1_G},\quad y^G = \Brace{y,yx,yx^2},\quad x^G = \Brace{x,x^2}.$$
+		Since there are three conjugacy classes we know that we have all irreducible characters already.
+	Therefore the character table of $G$ is:\\
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c}
+		  $ $ & $(1_G)^G$ & $(x)^G$ & $(y)^G$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 \\
+		$\chi_2$ & 1 & 1 & -1 \\
+		$\chi_3$ & 2 & -1 & 0 \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+	\label{chartableD6}
+\end{exam}
+
+
+We will use the fact that a character table is invertible in later proofs.
+\begin{prop}[{\cite[Proposition 16.2]{2}}]
+\label{chartableinver}
+	The character table of $G$ is invertible.
+\end{prop}
+\begin{proo*}[{\cite[Proposition 16.2]{2}}]
+	Columns consist of irreducible characters, then by Theorem \ref{linindchar} the columns are linearly independent, then the character table is invertible. \hfill$\blacksquare$
+\end{proo*}
+
+\newpage
+\subsection{Orthogonality Relations}
+	Entries of character tables are related to one another by orthogonality relations, which are useful for determining specific character tables. In this section we will explore these relations.
+
+\begin{theo}[Row and column orthogonality relations {\cite[Theorem 16.4]{2}}]
+	Let $G$ be a finite group, let $V = W_1 \oplus \cdots \oplus W_n$ be a $\mathbb{C}G$-module, and $W_i$ an irreducible $\mathbb{C}G$-submodule with character $\chi_i$ for each $1 \leqslant i \leqslant n$. Let $g_1,\dots,g_n$ distinct representatives of all the conjugacy classes of $G$. We've already seen that by Proposition \ref{innerprodcent}, for any $i,j \in \Brace{1,\dots,n}$,
+	$$\gen{\chi_i,\chi_j} = \frac{1}{\abs{G}}\sum_{g \in G}\chi_i(g)\overline{\chi_j(g)} =  \sum_{1 \leqslant k \leqslant n}\frac{1}{\abs{C_G(g_k)}}\chi_i(g_k)\overline{\chi_j(g_k)} = \delta^i_j.$$
+	We call this the \textit{row orthogonality relation}. We also have the \textit{column orthogonality relation}
+	$$\sum_{1 \leqslant k \leqslant n}\chi_k(g_i)\overline{\chi_k(g_j)} = \delta^i_j\abs{C_G(g_i)}.$$
+\end{theo}
+As we have already proved the row orthogonality relation, we proceed to prove the column orthogonality relation.
+\begin{proo*}[Column orthogonality relations {\cite[page 30]{3}}]
+	Let $X$ be the character table of $V$, with entries $X^i_j = \chi_i(g_j)$. From the row orthogonality relation we have
+	$$\gen{\chi_i,\chi_j} = \frac{1}{\abs{G}}\sum_{g \in G}\chi_i(g)\overline{\chi_j(g)} = \sum_{1 \leqslant k \leqslant n}\frac{1}{\abs{C_G(g_k)}}\chi_i(g_k)\overline{\chi_j(g_k)} = \delta^i_j.$$
+	Let $D$ be the diagonal matrix with entries $D^i_j = \delta^i_j\abs{C_G(g_i)}$, then
+	$(XD^{-1}X^\dagger)^i_j = \gen{\chi_i,\chi_j}$ and $XD^{-1}X^\dagger = \I_n$, where $X^\dagger$ is the conjugate transpose of the character table $X$.
+	This implies $X^{-1} = D^{-1}X^\dagger$ and $\I_n = X^{-1}X = D^{-1}X^\dagger X$, hence $X^\dagger X = D$ or written with respect to entries,
+	$$D^i_j = \delta^i_j\abs{C_G(g_i)} = \delta^i_j\abs{C_G(g_j)} = \sum_{1 \leqslant k \leqslant n}(X^\dagger)^i_kX^k_j = \sum_{1 \leqslant k \leqslant n}(\overline{X})^k_iX^k_j = \sum_{1 \leqslant k \leqslant n}\overline{\chi_k(g_i)}\chi_k(g_j).$$\\
+\end{proo*}
+
+\begin{exam}[{\cite[Examples 16.5 (1)]{2}}]
+	Let $G = D_6  = \gen{x,y\;\vert\;x^3,\, y^2,\,(yx)^2}$. The calculating some values of the centralizer we have
+	$$\abs{C_G(1_G)} = \abs{G} = 6,\quad \abs{C_G(x)} = \abs{\Brace{x,x^2,1_G}} = 3,\quad \abs{C_G(y)} = \abs{\Brace{y,1_G}} = 2.$$
+	Recall from Example \ref{chartableD6} that the character table of $G = D_6$ is:\\
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c}
+		  $ $ & $(1_G)^G$ & $x^G$ & $y^G$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 \\
+		$\chi_2$ & 1 & 1 & -1 \\
+		$\chi_3$ & 2 & -1 & 0 \\
+	\hline
+	\end{tabular}
+	\end{minipage}
+
+	Then labeling $g_1 = 1_G,\; g_2 = x,$ and $g_3 = y$, we use column orthogonality relations to calculate $\sum\limits_{1 \leqslant k \leqslant 3}\chi_k(g_i)\overline{\chi_k(g_j)}$ for different $i$ and $j$:
+	\begin{align*}
+		i \neq j &\text{   implies } \sum_{1 \leqslant k \leqslant 3}\chi_k(g_i)\overline{\chi_k(g_j)} = 0,\\
+		i = j = 1 &\text{   implies}  \sum_{1 \leqslant k \leqslant 3}\chi_k(g_1)\overline{\chi_k(g_1)} = 1\cdot 1  + 1 \cdot 1 + 2\cdot 2 = 6 = \abs{C_G(g_1)},\\
+		i = j = 2 &\text{   implies}  \sum_{1 \leqslant k \leqslant 3}\chi_k(g_2)\overline{\chi_k(g_2)} = 1\cdot 1  + 1 \cdot 1 + -1\cdot -1 = 3 = \abs{C_G(g_2)},\\
+		i = j = 3 &\text{   implies}  \sum_{1 \leqslant k \leqslant 3}\chi_k(g_3)\overline{\chi_k(g_3)} = 1\cdot 1  + 1 \cdot -1 = 2 = \abs{C_G(g_3)}.
+	\end{align*}
+
+	We can verify the row orthogonality relations:
+	\begin{align*}
+		\gen{\chi_1,\chi_1} &= \frac{1^2}{6} + \frac{1^2}{3} + \frac{1^2}{2} = 1,\\
+		\gen{\chi_2,\chi_2} &= \frac{1^2}{6} + \frac{1^2}{3} + \frac{(-1)^2}{2} = 1,\\
+		\gen{\chi_3,\chi_3} &= \frac{2^2}{6} + \frac{(-1)^2}{3} + \frac{0}{2} = 1.
+	\end{align*}
+\end{exam}
+
+Orthogonality relations are a useful tool for deriving more complicated character tables.
+
+\newpage
+\subsection{Lifting Characters}
+For a finite group $G$, and a normal subgroup $N \neq \Brace{1_G}$, the quotient group $G/N$ will be smaller than $G$, and hence characters should be easier to calculate on $G/N$ than $G$. In this subsection we will explore the process of lifting characters, a method to use the characters of $G/N$ to find the characters of $G$.\\
+
+\begin{prop}[{\cite[Proposition 17.1]{2}}]
+	Let $G$ be a finite group and $N \trianglelefteq G$. Given a character $\tilde{\chi}$ of $G/N$, define the function $\chi$ on $G$ such that
+	$$\chi(g) = \tilde{\chi}(gN) \quad \text{ for all } g \in G.$$
+	Then $\chi$ is a character of $G$ with the same degree as $\tilde{\chi}$.
+\end{prop}
+\begin{proo*}[{\cite[Proposition 17.1]{2}}]
+	Let $\tilde{\chi}$ be the character of a representation $\tilde\rho : G/N \to \GL_n(\mathbb{C})$ of $G/N$. Let $\rho : G \to \GL_n(\mathbb{C})$ be the function defined by $\rho_g \coloneqq \tilde{\rho}_{gN}$ for every element $g \in G$. We can see $\rho$ is a homomorphism, and hence a representation, with
+	$$\rho_{g_1}\rho_{g_2} = \tilde{\rho}_{g_1N}\tilde{\rho}_{g_2N} = \tilde{\rho}_{g_1g_2N}.$$
+	A character $\chi$ of $\rho$ gives
+	$$\chi(g) = \Tr(\rho_g) = \Tr(\tilde{\rho}_{gN}) = \tilde{\chi}(gN)\quad \text{ for all } g \in G.$$
+	Then $\chi({1_G}) =\tilde{\chi(N)}$. Then $\chi$ and $\tilde{\chi}$ have the same degree.\\
+\end{proo*}
+
+This motivates us to formally define the lift $\chi$ of the character $\tilde{\chi}$.
+
+\begin{defi}[Lift of a character {\cite[Definition 17.2]{2}}]
+	Let $G$ be a finite group with normal subgroup $N \trianglelefteq G$, and let $\tilde{\chi}$ be the character of $G/N$. We call the character $\chi$ of a $G$ defined by 
+	$$\chi(g) \coloneqq \tilde{\chi}(gN) \quad \text{ for all } g \in G$$
+	the \textit{lift} of $\tilde{\chi}$ to $G$.\\
+\end{defi}
+
+The character lift has the following useful property.
+\begin{theo}[{\cite[Theorem 17.3]{2}}]
+	Let $G$ be a finite group with normal subgroup $N \trianglelefteq G$. We can associate each character $\tilde{\chi}_j$ of $G/N$ with the corresponding lift $\chi_j$ of a $G$, and form a bijection between the set of characters $\tilde{\chi}$ and the set of characters $\chi$ which satisfy $N \leqslant \Ker{\chi}$.\\
+
+	Further, this bijection maps irreducible characters to irreducible characters.
+	\label{irredliftstoirred}
+\end{theo}
+\begin{proo*}[{\cite[Theorem 17.3]{2}}]
+	Let $\tilde\chi$ be the character of a representation $\tilde\rho : G \to \GL_m(\mathbb{C})$ and $\chi$ its lift. We have $\tilde\chi(N) = \chi(1_G)$. For an element $n \in N$ we have $\chi(n) = \tilde\chi(nN) = \tilde\chi(N) = \chi(1_G)$. Then $N \leqslant \Ker(\chi)$.\\
+
+	Conversely, let $\chi$ be the character of a representation $\rho : G \to \GL_m(\mathbb{C})$ and suppose $N \leqslant \Ker(\chi)$. Given $g_1,g_2 \in G$ such that $g_1N = g_2N$ we have $g_1^{-1}g_2 \in N$, hence $\rho_{g_1^{-1}g_2} = \I_m = \rho_{g_1}^{-1}\rho_{g_2}$ which implies $\rho_{g_1} = \rho_{g_2}$. Then the function $\tilde{\rho} : G/N \to \GL_m(\mathbb{C})$ with
+	$$\tilde{\rho}_{gN} \coloneqq \rho_{g} \quad \text{ for all } g \in G$$
+	is will defined. We verify $\tilde\rho$ is a homomorphism with
+	$$\tilde{\rho}_{(g_1N)(g_2N)} = \tilde{\rho}_{g_1g_2N} = \rho_{g_1g_2} = \rho_{g_1}\rho_{g_2} = \tilde{\rho}_{g_1N}\tilde{\rho}_{g_2N} \quad\text{ for all } g_1,g_2\in G,$$
+	and hence it is a representation. If $\tilde{\chi}$ is the character of $\tilde\rho$ then 
+	$$\tilde\chi(gN) = \Tr(\tilde\rho_{gN}) = \Tr(\rho_g) = \chi(g)$$
+	and $\chi$ is is the lift of $\tilde\chi$.\\
+
+	We've established the bijection between the characters $\Brace{\chi : G \to \mathbb{C} \;:\;N \leqslant \Ker(\chi)}$ and the characters $\Brace{\tilde{\chi} : G/N \to \mathbb{C}}$.\\
+
+	We now show that irreducible characters are mapped to irreducible characters under this bijection. Let $U$ be any subspace of $\mathbb{C}^m$. Then by the above bijection
+	$$\rho_g(u) \in U\;\text{ for all } u \in U \text{ if and only if } \tilde\rho_{gN}(u) \in U\;\text{ for all } u \in U,$$
+	and $U$ is a $\mathbb{C}G$-submodule of $\mathbb{C}^m$ if and only if $U$ is a $\mathbb{C}(G/N)$-submodule of $\mathbb{C}^m$. Then $\rho$ is irreducible if and only if $\tilde\rho$ is irreducible.\\
+\end{proo*}
+
+We will calculate the character table of a quotient group of $S_4$, and lift them to characters of $S_4$.
+
+\begin{exam}[Character lift for $S_4$ {\cite[Example 17.4]{2}}]
+\label{charliftofS4}
+	Let $G = S_4$ and let
+	$$N = V_4 \coloneqq \Brace{1_{G},(12)(34),(13)(24)(14)(23)} = (1_G)^{G}\cup((12)(24))^{G},$$
+	which is a normal subgroup of $G$. Let $x \coloneqq (123)N$ and $y \coloneqq (12)N$, then
+	$$G/N = \gen{x,y\;\vert\;x^3,y^2,(xy)^2} \cong D_6.$$
+	Then by Example \ref{chartableD6} the character table of $G/N$ is:\\
+
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c}
+		  $ $ & $N$ & $(123)N$ & $(12)N$\\
+	\hline
+		$\tilde\chi_1$ & 1 & 1 & 1 \\
+		$\tilde\chi_2$ & 1 & 1 & -1 \\
+		$\tilde\chi_3$ & 2 & -1 & 0 \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+We need to calculate the lift $\chi$ of each character $\tilde\chi$. Since
+\begin{align*}
+	(12)(34) \in N &\implies \chi((12)(34)) = \tilde\chi(N),\\
+	(1234)N = (13)N &\implies \chi((1234)) = \tilde\chi((13)N),
+\end{align*}
+the lifts of $\tilde\chi_1$,$\tilde\chi_2$,$\tilde\chi_3$ given by $\chi_1,\chi_2,\chi_3$ respectively are\\
+
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c  c  c}
+		  $ $ & $1_{S_4}$ & $(123)$ & $(12)$ & $(12)(34)$ & $(1234)$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 & 1\\
+		$\chi_2$ & 1 & 1 & -1 & 1 & -1\\
+		$\chi_3$ & 2 & -1 & 0 & 2 & 0\\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Furthermore, since $\tilde\chi_1$,$\tilde\chi_2$,$\tilde\chi_3$ are irreducible, so are $\chi_1,\chi_2,\chi_3$.
+\end{exam}
+
+\newpage
+\subsection{Linear Characters}
+In this subsection, by exploring the derived subgroups, we will develop a method to aquire all linear characters of a group.\\
+
+
+We begin by recalling the definition of the derived subgroup of a group.
+
+\begin{defi}[Derived subgroup {\cite[Definition 17.7]{2}}]
+	Let $G$ be a group, and let $G' \leqslant G$ be the subgroup
+	$$G' \coloneqq \Brace{g_1^{-1}g_2^{-1}g_1g_2\;:\;g_1,g_2 \in G}.$$
+	We call $G'$ the \textit{derived subgroup} of $G$. For simplicity of notation, given elements $g_1,g_2 \in G$ we write $g_1^{-1}g_2^{-1}g_1g_2$ as the commutator bracket $[g_1,g_2]$.\\
+\end{defi}
+
+\begin{exam}[{\cite[Examples 17.8 (2)]{2}}]
+	Let $G = S_3$. Then For any elements $g_1,g_2 \in G$, the element $[g_1,g_2]$ is an even permutation, hence $G' \leqslant A_3$. For $g_1 = (12)$ and $g_2 = (23)$, we have $[g_1,g_2] = (123)$. Since $\gen{(123)} = A_3$, we have that $A_3 \leqslant G'$. Hence $G' = A_3$.
+	\label{derivofS3}
+\end{exam}
+
+\begin{prop}[{\cite[Proposition 17.9]{2}}]
+	Let $G$ be a group and $G'$ its derived subgroup. If $\chi$ is a linear character of $G$ then $G' \leqslant \Ker(\chi)$.
+	\label{derivedsubgroupofker}
+\end{prop}
+\begin{proo*}[{\cite[Proposition 17.9]{2}}]
+	Since $\chi$ is linear it is the trace of a one-dimensional representation from $G$ to $\GL_1(\mathbb{C})$, which implies $\chi$ itself is a one-dimensional representation and hence a homomorphism. Then for all $g_1,g_2 \in G$ we have
+	$$\chi(g_1^{-1}g_2^{-1}g_1g_2) = \chi(g_1)^{-1}\chi(g_2)^{-1}\chi(g_1)\chi(g_2) = 1,$$
+	and $G' \leqslant \Ker(\chi)$.\\
+\end{proo*}
+
+The following propositions will help us combine character lifts with derived subgroups.
+\begin{prop}[{\cite[Proposition 17.10 (1)]{2}}]
+	The derived subgroup of a group is a normal subgroup. \label{derisnor}
+\end{prop}
+\begin{proo*}[{\cite[Proposition 17.10 (1)]{2}}]
+	Let $G$ be a group and $G'$ its derived subgroup. For all $g_1,g_2,h \in G$ we have
+	$$h^{-1}(g_1g_2)h = (h^{-1}g_1h)(h^{-1}g_2h),\quad h^{-1}g_1^{-1}h = (h^{-1}g_1h)^{-1}.$$
+	To prove $G' \trianglelefteq G$ we need to prove $h^{-1}[g_1,g_2]h \in G'$ for all $g_1,g_2,h \in G$, which we can see with
+	\begin{align*}
+		h^{-1}[g_1,g_2]h &= h^{-1}g_1^{-1}g_2^{-1}g_1g_2h\\
+		&= (h^{-1}g_1h)^{-1}(h^{-1}g_2h)^{-1}(h^{-1}g_1h)(h^{-1}g_2h)\\
+		&= [h^{-1}g_1h,h^{-1}g_2h] \in G'.
+	\end{align*}
+\end{proo*}
+
+\begin{prop}[{\cite[Proposition 17.10 (2)]{2}}]
+	Let $G$ be a group, and $G' \trianglelefteq G$ its derived subgroup. Given a normal subgroup $N \trianglelefteq G$, we have $G' \leqslant N$ if and only if $G/N$ is abelian. Further, $G/G'$ is abelian.
+	\label{quotisabelian}
 \end{prop}
 
+\begin{proo*}[{\cite[Proposition 17.10 (2)]{2}}]
+	For elements $g_1,g_2 \in G$, we have
+	$$g_1^{-1}g_2^{-1}g_1g_2 \in N \text{ if and only if } g_1g_2N = g_2g_1N \text{ if and only if } (g_1N)(g_2N) = (g_2N)(g_1N).$$
+Therefore $G' \leqslant N$ if and only if $G/N$ is abelian. Then by Proposition \ref{derisnor} we have that $G/G'$ is abelian. \hfill$\blacksquare$
+\end{proo*}
 
+The above propositions imply that $G'$ is the smallest normal subgroup of $G$ with abelian quotient group $G/G'$. In the below theorem we tie together linear characters and lifts of $G$.
+\begin{theo}[{\cite[Theorem 17.11]{2}}]
+	Let $G$ be a finite group and $G'$ its derived subgroup. The linear characters $\Brace{\epsilon : G \to \mathbb{C}}$ are the lifts to $G$ of the irreducible characters of $G/G'$. Also, there is a bijection between the distinct linear characters of $G$ and the elements of $G/G'$.
+	\label{numlineareqnumirr}
+\end{theo}
+\begin{proo*}[{\cite[Theorem 17.11]{2}}]
+	Let $n = \abs{G/G'}$.  By Proposition \ref{quotisabelian}, $G/G'$ is abelian so by 
+	Theorem \ref{representationoffinabelian} we know $G/G'$ has $n$ irreducible characters $\tilde\chi_1,\dots,\tilde\chi_n$, all of which are degree $1$. The lifts $\chi_1,\dots,\chi_n$ of $\tilde\chi_1,\dots,\tilde\chi_n$ respectively also have degree $1$, and by Theorem \ref{irredliftstoirred} they are the irreducible characters of $G$ with $G'$ in their kernel. Then Proposition  \ref{derivedsubgroupofker} implies $\chi_1,\dots,\chi_n$ are linear characters of $G$. \hfill$\blacksquare$\\
+\end{proo*}
+
+We seek to obtain all linear characters of $S_n$. To do this we will require Theorem \ref{theo12.15}, which we will prove below.
+\begin{prop}[{\cite[Proposition 12.13]{2}}]
+	Let $k$ and $n$ both be positive integers with $k \leqslant n$, and let $A \coloneqq \Brace{a_1,\cdots,a_k} \subseteq \Brace{1,\dots,n}$ be a collection of distinct integers from 1 to $n$. For a $k$-cycle $\sigma = (a_1a_2\dots a_k) \in S_n$ and an element $g \in S_n$, we have
+	$$g\sigma g^{-1} = (g(a_1)\;g(a_2)\;\dots\;g(a_k)),$$
+	where $g(a_i)$ is the integer $g$ permutes $a_i$ to for each $a_i \in A$.
+	\label{elementscycnot}
+\end{prop}
+\begin{proo*}[{\cite[Proposition 12.13]{2}}]
+	For any element $a_i \in A$ we have
+	$$(g\sigma g^{-1})ga_i = g\sigma a_i = ga_{(i+1 \text{ mod } k)}.$$
+	For any $b \notin A$ with $1 \leqslant b \leqslant n$ we have
+	$$(g\sigma g^{-1})gb = g\sigma b = gb.$$
+	Then $g(a_1\dots a_k)g^{-1} = (g(a_1)\;\dots\; g(a_k)).$\hfill$\blacksquare$
+\end{proo*}
+
+\begin{defi}[Cycle shape {\cite[Proposition 12.13]{2}}]
+	We can write any permutation $\sigma \in S_n$ as the product of disjoint cycles
+	$$\sigma = (a_1\dots a_{k_1})(b_1\dots b_{k_2})\cdots(c_1\dots c_{k_r})$$
+	with $k_1 \geqslant k_2 \geqslant \cdots \geqslant k_r$.
+	We call the $r$-tuple $(k_1,\dots,k_r)$ the \textit{cycle shape} of $\sigma$.
+\end{defi}
+
+\begin{theo}[{\cite[Theorem 12.15]{2}}]
+	Let $G = S_n$. For a permutation $\sigma \in G$, the conjugacy class $\sigma^{G}$ is equal to the set of all permutations with the same cycle shape as $\sigma$.
+	\label{theo12.15}
+\end{theo}
+\begin{proo*}[{\cite[Proposition 12.13]{2}}]
+	Let $\sigma \in G$ be a permutation. We can decompose $\sigma$ into the product of disjoint cycles
+	$$\sigma = (a_1\dots a_{k_1})(b_1\dots b_{k_2})\cdots(c_1\dots c_{k_r})$$
+	with $k_1 \geqslant k_2 \geqslant \cdots \geqslant k_r$. By Proposition \ref{elementscycnot}, for an element $g \in G$ we have
+	\begin{align*}
+	g\sigma g^{-1} &= (g(a_1\dots a_{k_1})g^{-1})(g(b_1\dots b_{k_2})g^{-1})\cdots (g(c_1\dots c_{k_r})g^{-1})\\
+	&= (g(a_1)\;\dots\; g(a_{k_1}))(g(b_1)\;\dots\; g(b_{k_2}))\cdots(g(c_1)\;\dots\; g(c_{k_r})).
+	\end{align*}
+	From this we can see that $g\sigma g^{-1}$ has the same cycle shape as $\sigma$.
+	Suppose two elements $\sigma, \sigma' \in G$ have the same cycle numbers with decompostion
+	\begin{align*}
+		\sigma &= (a_1\dots a_{k_1})(b_1\dots b_{k_2})\cdots(c_1\dots c_{k_r}),\\
+		\sigma' &= (a_1'\dots a_{k_1}')(b_1'\dots b_{k_2}')\cdots(c_1'\dots c_{k_r}').
+	\end{align*}
+	Let $g \in G$ be the permutation sending $a_1 \mapsto a_1'$,$\dots$,$c_{k_r} \mapsto c_{k_r}'$. Then by the above $g\sigma g^{-1} = \sigma'$.\hfill$\blacksquare$\\
+\end{proo*}
+
+We now have the tools neccesary to calculate the linear characters of $S_n$ using lifting.
+
+\begin{exam}[Linear characters of $S_n$ {\cite[Example 17.12]{2}}]
+\label{lincharofSn}
+	Let $G = S_n$ and let $G'$ be the derived subgroup of $G$. If $n = 1,2$ then $G$ is abelian and $G' = \Brace{1_{G}} = A_n$. By Example \ref{derivofS3} for $n = 3$ we have $G' = A_3$. Then we assume $n \geqslant 4$. Since $S_n/A_n \cong C_2$, by Proposition \ref{quotisabelian} we have $G' \leqslant A_n$. Letting $g_1 = (12),$ $g_2 = (23)$, and $g_3 = (12)(34)$ we have
+	$$[g_1,g_2] = (123),\quad [g_2,g_3] = (14)(23).$$
+	Because $G' \triangleleft G$, we have $(123)^G,((14)(23))^G \subset G'$. Hence by Theorem \ref{theo12.15}, $G'$ contains all $3$-cycles and elements of cycle shape $(2,2)$. Since every product of two transpositions is the identity, a $3$-cycle, or an element of cycle shape $(2,2)$, and $A_n$ contains even products of transpositions, we can conclude $A_n \leqslant G'$. Then $G' = A_n$.\\
+
+	Then $G/G' =  S_n/A_n = \Brace{A_n,(12)A_n} \cong C_2$, and the group $G/G'$ has two linear characters
+	$$\tilde\chi_1((12)A_n) = 1,\quad \tilde\chi_2((12)A_n) = -1.$$
+	Then by Theorem \ref{numlineareqnumirr} we find that $S_n$ has two linear characters, precisely the lifts $\chi_1,\chi_2$ of $\tilde\chi_1,\tilde\chi_2$:
+	$$\chi_1(g) = 1,\quad \chi_2(g) = \begin{cases}1\quad &\text{if }g \in A_n\\-1\quad &\text{if }g \notin A_n\end{cases}\quad \text{ for all } g \in G.$$\\
+\end{exam}
+
+Linear characters also allow us to form new characters, by taking their products with other representations, a method we will now examine.
+
+\begin{prop}[{\cite[Proposition 17.14]{2}}]
+	\label{linprodischar}
+	Let $G$ be a group, let $\chi : G \to \mathbb{C}$ be a character, and let $\epsilon : G \to \mathbb{C}$ be a linear character. Then the product $\chi\epsilon$ defined by
+	$$\chi\epsilon(g) \coloneqq \chi(g)\epsilon(g)\quad \text{ for all } g \in G$$
+	is a character of $G$.
+	Furthermore, if $\chi$ is irreducible then $\chi\epsilon$ is irreducible.
+\end{prop}
+\begin{proo*}[{\cite[Proposition 17.14]{2}}]
+	Let $\chi$ be the character of a representation $\rho : G \to \GL_n(\mathbb{C})$. We define $\rho\epsilon : G \to \GL_n(\mathbb{C})$ with
+	$$\rho\epsilon_{g} = \epsilon(g)\rho_g\quad \text{ for all } g \in G.$$
+	Then the matrix of the representation $\rho\epsilon(g)$ is the matrix of $\rho(g)$ multiplied by $\epsilon(g)$. We've already shown that linear charactes are group homomorphisms, then $\rho,\epsilon$ are both homomorphisms and $\rho\epsilon$ is also a homomorphism with 
+	$$\rho\epsilon_{(g_1g_2)} = \rho_{(g_1g_2)}\epsilon_{(g_1g_2)} = \rho_{(g_1)}\epsilon_{(g_1)}\rho_{(g_2)}\epsilon_{(g_2)} = \rho\epsilon_{(g_1)}\rho\epsilon_{(g_2)} \quad \text{ for all } g_1,g_2 \in G.$$
+	Note that since $\epsilon(g)$ is a scalar, $\Tr(\rho\epsilon_g) = \epsilon(g)\Tr(\rho_g) = \epsilon(g)\chi(g)$. Then $\rho\epsilon$ is a representation of $G$ with character $\chi\epsilon$.\\
+
+	Now we show that if $\chi$ is irreducible then $\chi\epsilon$ is irreducible. We know that $\epsilon(g)$ is a root of unity for all $g \in G$. Hence $\epsilon(g)\overline{\epsilon(g)} = 1$. Then
+	\begin{align*}
+		\gen{\chi\epsilon,\chi\epsilon} &= \frac{1}{\abs{G}}\sum_{g \in G}\chi(g)\epsilon(g)\overline{\chi(g)\epsilon(g)}\\
+		&= \frac{1}{\abs{G}}\sum_{g \in G}\chi(g)\overline{\chi(g)} = \gen{\chi,\chi}.
+	\end{align*}
+	Then by Theorem \ref{irreifinnerprod1},
+	$$\chi \text{ is irreducible} \text{ if and only if } \gen{\chi,\chi} = 1 \text{ if and only if } \gen{\chi\epsilon,\chi\epsilon} = 1 \text{ if and only if } \chi\epsilon \text{ is irreducible}.$$\\
+\end{proo*}
+
+We can now finally calculate the full character table of $S_4$.
+
+\begin{exam}[Character table of $S_4$ {\cite[Example 18.1]{2}}]
+Let $G = S_4$. By direct calculation, the conjugacy classes of $G$ are 
+		\begin{mitem}
+			\item $(1_{G})^G = \Brace{1_{G}}$,
+			\item $(12)^G = \Brace{(12),(13),(14),(23),(24),(34)}$,
+			\item $(123)^G = \Brace{(123),(132),(124),(142),(134),(143),(234),(243)}$,
+			\item $((12)(34))^G = \Brace{(12)(34),(13)(24),(14)(23)}$,
+			\item $(1234)^G = \Brace{(1234),(1342),(1423),(1243),(1432),(1324)}$.
+		\end{mitem}
+	
+
+In Example \ref{charliftofS4} we found three irreducible characters $\chi_1,\chi_2,\chi_3$, and in Proposition \ref{fixchar} we found the character $\chi_4(g) = \abs{\Fix(g)} - 1$ for all $g \in G$. All of which have the following values on conjugacy classes:
+
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c  c  c}
+		  $ $ & $1_{G}$ & $(123)$ & $(12)$ & $(12)(34)$ & $(1234)$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 & 1\\
+		$\chi_2$ & 1 & 1 & -1 & 1 & -1\\
+		$\chi_3$ & 2 & -1 & 0 & 2 & 0\\
+		$\chi_4$ & 3 & 0 & 1 & -1 & -1\\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Since the number of conjugacy classes is equal to the number of irreducible characters, we only require one more irreducible character to complete the character table. In Example \ref{lincharofSn} we found linear irreducible characters, written here as $\chi_1,\chi_2$. We showed in Proposition \ref{linprodischar} that the product of an irreducible character and a linear character is also a character. Hence the product $\chi_4\chi_2$ is also a character, with values\\
+
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c  c  c}
+		  $ $ & $1_{G}$ & $(123)$ & $(12)$ & $(12)(34)$ & $(1234)$\\
+	\hline
+		$\chi_4\chi_2$ & 3 & 0 & -1 & -1 & 1\\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Noting the orders of the values of the centralizers we have\\
+
+\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c  c  c}
+		  $ $ & $1_{G}$ & $(123)$ & $(12)$ & $(12)(34)$ & $(1234)$\\
+	\hline
+		$\abs{C_{G}}$ & 24 & 3 & 4 & 8 & 4\\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Then calculating the inner product, by Proposition \ref{innerprodcent}
+$$\gen{\chi_4\chi_2,\chi_4\chi_2} = \frac{3^2}{24} + \frac{(-1)^2}{4} + \frac{(-1)^2}{8} + \frac{1}{4} = 1.$$
+Then by Theorem \ref{irreifinnerprod1} we have $\chi_5 = \chi_4\chi_2$ is irreducible and the character table of $G$ is\\
+
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c  c  c}
+		  $ $ & $1_{G}$ & $(123)$ & $(12)$ & $(12)(34)$ & $(1234)$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 & 1\\
+		$\chi_2$ & 1 & 1 & -1 & 1 & -1\\
+		$\chi_3$ & 2 & -1 & 0 & 2 & 0\\
+		$\chi_4$ & 3 & 0 & 1 & -1 & -1\\
+		$\chi_5 $ & 3 & 0 & -1 & -1 & 1\\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+\end{exam}
+
+
+\newpage
+\subsection{Further Examples}
+In this subsection we will work calculate the character tables of $A_4$ and $\SL_2(F_3)$ for the finite field $F_3$.
+
+\begin{exam}[Character table of $A_4$ {\cite[Example 18.2]{2}}]
+	Recall $G = A_4$ is the group of even permutations on $4$ elements, we write elements in cycle notation.\\
+
+	By direct calculation, there are $n = 4$ conjugacy classes:
+	\begin{mitem}
+		\item $g_1^G = (1_G)^G = \Brace{1_G}$,
+		\item $g_2^G = ((12)(34))^G = \Brace{(12)(34),(13)(24),(14)(23)}$,
+		\item $g_3^G = (123)^G  = \Brace{(123),(134),(142),(243)}$,
+		\item $g_4^G = (132)^G = \Brace{(132),(234),(143),(124)}$.
+	\end{mitem}
+	Then since $\abs{C_G(g_i)} = \dfrac{\abs{G}}{\abs{g_i^G}}$ we have\\
+
+	\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c  c }
+		  $ $ & $1_{G}$ & $(12)(34)$ & $(123)$ & $(132)$\\
+	\hline
+		$\abs{C_{G}}$ & 12 & 4 & 3 & 3 \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Let $\chi_4$ be the character found in Proposition \ref{fixchar} defined by $\chi_4(g) = \abs{\Fix(g)} - 1$ for all $g \in G$. Then calculating the values of $\chi_4$ on conjugacy classes we have
+
+\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c  c }
+		  $ $ & $1_{G}$ & $(12)(34)$ & $(123)$ & $(132)$\\
+	\hline
+		$\chi_4$ & 3 & -1 & 0 & 0 \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Hence
+$$\gen{\chi_4,\chi_4} = \frac{3^2}{12} + \frac{(-1)^2}{4} = 1$$
+and $\chi_4$ is an irreducible character by Theorem \ref{irreifinnerprod1}, with degree $\chi_4(1_G) = 3$. Since there are four conjugacy classes, by the column orthogonality relation, the sum of the square of degrees gives us
+$$\sum_{1 \leqslant k \leqslant 4}\chi_k(1_G)\overline{\chi_k(1_G)} = \abs{C_G(1_G)} = 12.$$
+The squares of the degrees of the remaining three characters must sum to $12 - 3^2 = 3$, hence all three remaining characters are linear characters. Let $G'$ be the derived subgroup of $G$. Then by Theorem \ref{numlineareqnumirr} we have $\abs{G/G'} = 3$. By direct calculation we can show
+$$G' = V_4 = \Brace{1_G,(12)(34),(13)(24),(14)(23)},$$
+which implies $G/G' = \Brace{G',G'(123),G'(132)} \cong C_3$. Letting  $\zeta_3$ be the $3$rd root of unity we write the character table of $C_3$:\\
+
+	\begin{minipage}{\linewidth}
+\centering
+	\begin{tabular}{c | c  c  c }
+		  $ $ & $G'$ & $G'(123)$ & $G'(132)$\\
+	\hline
+		$\tilde\chi_1$ & 1 & 1 & 1\\
+		$\tilde\chi_2$ & 1 & $\zeta_3$ & $\zeta_3^2$ \\
+		$\tilde\chi_3$ & 1 & $\zeta_3^2$ & $\zeta_3$ \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+Then we can lift the characters of $G/G'$ to $G$ and we are left with the compete character table of $G$:\\
+
+\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c  c }
+		  $ $ & $1_{G}$ & $(12)(34)$ & $(123)$ & $(132)$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 \\
+		$\chi_2$ & 1 & 1 & $\zeta_3$ & $\zeta_3^2$ \\
+		$\chi_3$ & 1 & 1 & $\zeta_3^2$ & $\zeta_3$ \\
+		$\chi_4$ & 3 & -1 & 0 & 0 \\
+	\hline
+	\end{tabular}
+	\end{minipage}
+\label{chartableA4}\\
+\end{exam}
+
+To calculate the character table of $\SL_2(F_3)$ we require the following three propositions.
+
+\begin{prop}[{\cite[Theorem 23.1]{2}}]
+\label{realcharirre}
+	The number of real irreducible characters of a finite group $G$ is equal to the number of real conjugacy classes.
+\end{prop}
+\begin{proo*}[{\cite[Theorem 23.1]{2}}]
+	Let $G$ be a finite group and $V$ a $\mathbb{C}G$-module. Let $X$ be the character table of $V$ and $\overline{X}$ its complex conjugate. By Proposition \ref{compconjcharischar}, the complex conjugate character table $\overline{X}$ contains the same characters as $X$. Then $PX = \tilde{X}$ for some permutation matrix $P$. For each conjugacy class $g^G$, the entries in the column in $X$ corresponding to $g$ are the complex conjugates of the entries corresponding to the column of $g^{-1}$. Then $\overline{X}$ can be obtained by permuting the columns of $X$, and there exists a permutation matrix $Q$ such that $XQ = \overline{X}$. Then by Propostion \ref{chartableinver} $X$ is invertible and
+	$$Q = X^{-1}\overline{X} = X^{-1}P\overline{X}.$$
+	Then $\Tr(Q) = \Tr(P)$, and since trace of a permutation matrix is equal to the number of points fixed by the permuation matrix, we have that the number of irreducible charaters equal to $\Tr(P)$, and the number of real conjugacy classes is equal to $\Tr(Q)$. These numbers have been shown to be equal.\\
+\end{proo*}
+
+In the interest of brevity we cite without proof the following two propositions. These are neccessary for the derivation of the character table of $\SL_2(F_3)$.
+
+\begin{prop}[{\cite[Corollary 22.27]{2}}]
+	\label{22.27}
+	Let $G$ be a finite group. Let $p$ be a prime number and $g \in G$ be an element with order $p^n$ for some positive integer $n$. Then if $\chi$ is a character of $G$ with $\chi(g) \in \mathbb{Z}$ then 
+	$$\chi(g) \equiv \chi(1_G) \mod p$$
+\end{prop}
+
+\begin{prop}[{\cite[Excercise 5 Chapter 13]{2}}]
+\label{irredcenterroot}
+	Let $\chi$ be an irreducible character of a group $G$, and let $z$ be an element in the center $Z(G) \coloneqq \Brace{h \in G \;:\;gh = hg \;\text{ for all } g \in G}$ of order $m$. Then there exists an $m$th root of unity $\zeta_m$ such that
+	$$\chi(zg) = \zeta_m\chi(g) \quad \text{ for all } g \in G.$$\\
+\end{prop}
+
+In general, for a field $F$, the special linear group $\SL_n(F)$ is the subgroup of $\GL_n(F)$ of matrices with deteminant $1 \in F$. In the below example we calculate the character table of $\SL_2(F_3)$ where $F_3 = \Brace{-1,0,1}$ is the finite field of three elements.
+
+
+\begin{exam}[$\SL_2(F_3)$ {\cite[page 439]{2}}]
+	Let $F_3$ be the finite field of 3 elements. By direct calculation $G = \SL_2(F_3)$ has 24 elements and $7$ conjugacy classes:
+	\begin{mitem}
+		\item $g_1^G = (1_G)^G = \Brace{1_G}$
+		\item $g_2^G = \begin{pmatrix}-1 & 0\\0 & -1\end{pmatrix}^G = \Brace{\begin{pmatrix}-1 & 0\\0 & -1\end{pmatrix}}$,
+		\item $g_3^G = \begin{pmatrix}1 & 1\\0 & 1\end{pmatrix}^G  = \Brace{\begin{pmatrix}1 & 1\\0 & 1\end{pmatrix},\begin{pmatrix}-1 & 1\\-1 & 0\end{pmatrix},\begin{pmatrix}1 & 0 \\-1 & 1\end{pmatrix},\begin{pmatrix}0 & 1\\-1 & -1\end{pmatrix}},$
+		\item $g_4^G = \begin{pmatrix}1 & -1\\0&1\end{pmatrix}^G = \Brace{\begin{pmatrix}1 & -1\\0 & 1\end{pmatrix},\begin{pmatrix}-1 & -1\\1 & 0\end{pmatrix},\begin{pmatrix}1 & 0\\ 1 & 1\end{pmatrix},\begin{pmatrix}0 & -1\\1 & -1\end{pmatrix}}$,
+		\item $g_5^G = \begin{pmatrix}-1 & 1\\0&-1\end{pmatrix}^G = \Brace{\begin{pmatrix}-1 & 1\\0 & -1\end{pmatrix},\begin{pmatrix}1 & 1\\-1 & 0\end{pmatrix},\begin{pmatrix}-1 & 0\\ -1 & -1\end{pmatrix},\begin{pmatrix}0 & 1\\-1 & 1\end{pmatrix}}$,
+		\item $g_6^G = \begin{pmatrix}-1 & -1\\0&-1\end{pmatrix}^G = \Brace{\begin{pmatrix}-1 & -1\\0 & -1\end{pmatrix},\begin{pmatrix}1 & -1\\1 & 0\end{pmatrix},\begin{pmatrix}-1 & 0\\ 1 & -1\end{pmatrix},\begin{pmatrix}0 & -1\\1 & 1\end{pmatrix}}$,
+		\item $g_7^G = \begin{pmatrix}0 & -1\\1&0\end{pmatrix}^G = \Brace{\begin{pmatrix}0 & -1\\1 & 0\end{pmatrix},\begin{pmatrix}0 & 1\\-1 & 0\end{pmatrix},\begin{pmatrix}1 & 1\\ 1 & -1\end{pmatrix},\begin{pmatrix}-1 & 1\\1 & 1\end{pmatrix},\begin{pmatrix}1 & -1\\-1 & -1\end{pmatrix},\begin{pmatrix}-1 & -1\\-1& 1\end{pmatrix}},$
+	\end{mitem}
+	where $1_G$ is the identity matrix $\I_2$. Then there are 7 characters $\chi_1,\dots,\chi_7$, where $\chi_1$ is the trivial character. Notice that  the vector space $\mathbb{Z}_3 \oplus \mathbb{Z}_3$ has four 1-dimensional subspaces
+	$$U_1 = \Span((0,1)),\;U_2 = \Span((1,1)),\;U_3 = \Span((2,1)),\; U_4 = \Span((1,0)),$$
+	which $G$ permutes. Then there is a homomorphism $\phi : G \to S_4$ with $\Ker(\phi) = \Brace{\I_2,-\I_2}$. Hence by the First Isomorphism Theorem $G/\Ker(\phi) \cong \Im(\phi)$, which is a subgroup of $S_4$ of order 12. Hence $G/\Ker(\phi) \cong A_4$. Then we can lift the characters of $A_4$ from Example \ref{chartableA4} to give characters\\
+
+\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c  c c c c }
+		  $ $ & $1_{G}$ & $g_2$ & $g_3$ & $g_4$ & $g_5$ & $g_6$ & $g_7$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+		$\chi_2$ & 1 & 1 & $\zeta_3$ & $\zeta_3^2$ & $\zeta_3^2$ & $\zeta_3$ & 1\\
+		$\chi_3$ & 1 & 1 & $\zeta_3^2$ & $\zeta_3$ & $\zeta_3$ & $\zeta_3^2$ & 1 \\
+		$\chi_4$ & 3 & 3 & 0 & 0 & 0 & 0 & -1 \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+	where $\zeta_3$ is the 3rd root of unity. By Proposition \ref{sumdegsquared} we have $\chi_5(1_G)^2 + \chi_6(1_G)^2 + \chi_7(1_G)^2 = 12$ therefore all the remaining characters have degree 2. Noting the centralizers
+
+	\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c  c c c c }
+		  $ $ & $g_1$ & $g_2$ & $g_3$ & $g_4$ & $g_5$ & $g_6$ & $g_7$\\
+	\hline
+		$\abs{C_{G}}$ & 24 & 24 & 6 & 6 & 6 & 6 & 4\\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+	we can use the column orthogonality relation to find the value of the remaining characters on $g_2$,$g_7$ and find $\chi_5(g_2) = \chi_6(g_2) = \chi_7(g_2) = -2$ and $\chi_5(g_7) = \chi_6(g_7) = \chi_7(g_7) = 0$. There are three real conjugacy classes, so by Proposition \ref{realcharirre} there are three real characters. Then only one of our remaining three characters  is real, say $\chi_5$. Then $\chi_5(g_3) = x \in \mathbb{R}$ and by Proposition \ref{22.27} we have $x \neq 0$. Then the products $\chi_5\chi_2$ and $\chi_5\chi_3$ are irreducible by Proposition \ref{linprodischar} and both have degree 2. Then $\chi_6 = \chi_5\chi_2$ and $\chi_7 = \chi_5\chi_3$ are the last irreducible characters in the table, with results $\chi_6(g_3) = x\zeta_3$ and $\chi_7(g_3) = x\zeta_3^2$. By the row orthogonality relation we have
+	$$\sum_{1 \leqslant i \leqslant 7}\chi_i(g_3)\overline{\chi_i(g_3)} = 1 + 1 + 1 +0 +3x\overline{x} = 6 \implies x\overline{x} = 1 \implies x = 1,-1.$$ 
+	Then by Proposition \ref{22.27} we have $\chi_5(g_3) \equiv \chi_5(1_G) \mod 3$ which implies $x = -1$. Then by Proposition \ref{irredcenterroot} we have $\chi_i(g_6) = -\chi_i(g_3)$ for $i = 5,6,7$. Furthermore we know $\chi_i(g_4) = \overline{\chi_i(g_3)}$ and $\chi_i(g_5) = \overline{\chi_i(g_6)}$ for all $1 \leqslant i \leqslant 7$. Then our character table is:\\
+
+	\begin{minipage}{\linewidth}
+	\centering
+	\begin{tabular}{c | c  c  c  c c c c }
+		  $ $ & $1_{G}$ & $g_2$ & $g_3$ & $g_4$ & $g_5$ & $g_6$ & $g_7$\\
+	\hline
+		$\chi_1$ & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+		$\chi_2$ & 1 & 1 & $\zeta_3$ & $\zeta_3^2$ & $\zeta_3^2$ & $\zeta_3$ & 1\\
+		$\chi_3$ & 1 & 1 & $\zeta_3^2$ & $\zeta_3$ & $\zeta_3$ & $\zeta_3^2$ & 1 \\
+		$\chi_4$ & 3 & 3 & 0 & 0 & 0 & 0 & -1 \\
+		$\chi_5$ & 2 & -2 & -1 & -1 & 1 & 1 & 0 \\
+		$\chi_6$ & 2 & -2 & $-\zeta_3$ & $-\zeta_3^2$ & $\zeta_3^2$ & $\zeta_3$ & 0 \\
+		$\chi_7$ & 2 & -2 & $-\zeta_3^2$ & $-\zeta_3$ & $\zeta_3$ & $\zeta_3^2$ & 0 \\
+	\hline
+	\end{tabular}
+	\end{minipage}\\
+
+\end{exam}
 \end{document}

@@ -2,151 +2,226 @@
 \begin{document}
 \newpage
 \section{Background}
+\text{ if and only if }alse
 \subsection{Group Theory}
+	Character theory will require a comprehensive understanding of conjugacy classes.
 	\begin{defi}[Conjugacy class \cite{2}]
-		For elements $g,h \in G$. $g$ is conjugate to $h$ if $\exists x \in G$ such that $h = x^{-1}gx$. The conjugacy class of $g$ is the equivalence class $g^G = \Brace{x^{-1}gx \;\vert\; x \in G}$.
+		Let $G$ be a group. Recall that for elements $g_1,g_2 \in G$, we say $g_1$ is conjugate to $g_2$ if there exists some $h \in G$ such that $g_2 = hg_1h^{-1}$. The \textit{conjugacy} class of $g \in G$ is the equivalence class $g^G = \Brace{hgh^{-1} \;:\; h \in G}$.
+		\begin{mitem}
+		\item We call an element $h \in g^G$ a \textit{representative} of $g^G$
+		\item We call two conjugacy classes $g_1^G,g_2^G$ \textit{distinct} if they are disjoint
+		\end{mitem}
 	\end{defi}
-
+	
 	\begin{prop}
-		Given two conjugacy classes $g^G,h^G$ in $G$, either $g^G = h^G$ or $g^G \cap ^G = \varnothing$.
+		Given two conjugacy classes $g_1^G,g_2^G$ in $G$, either $g_1^G = g_2^G$ or $g_1^G \cap g_2^G = \varnothing$.
 	\end{prop}
 	\begin{proo*}
-		TODO
+		Suppose there exists $g \in g^G_1\cap g^G_2$. Then there exists $h_1,h_2 \in G$ such that $g = h_1g_1h_1^{-1} = h_2g_2h_2^{-1}$. Then $g_1 = h_1^{-1}gh_1 = h_1^{-1}h_2g_2h_2^{-1}h_1 = (h_1^{-1}h_2)g_2(h_1^{-1}h_2)^{-1}$ and $g_1^G = g_2^G$.
 	\end{proo*}
-	\begin{defi}[Distinct conjugacy classes]
-		 If $g^G \cap h^G = \varnothing$ then we say $g^G$ and $h^G$ are distinct.
-	\end{defi}
-	\begin{defi}[Representatives of conjugacy classes \cite{2}]
-		Given distinct conjugacy classes $g_1^G,\dots,g_n^G$ such that $G = g_1^G\cup \cdots \cup g^G_n$, we call $g_1,\dots,g_n$ representatives of the conjugacy classes of $G$.
-	\end{defi}
+
+	We will examine the structure of $S_4$ and $D_6$ with representation theory in later sections, and we will see why a  complete list of their conjugacy classes is helpful.
+
+	\begin{exam}
+		By direct calculation, there are five conjugacy classes of $G = S_4$. Written in cycle notation they are
+		\begin{mitem}
+			\item $(1_{G})^G = \Brace{1_{G}}$,
+			\item $(12)^G = \Brace{(12),(13),(14),(23),(24),(34)}$,
+			\item $(123)^G = \Brace{(123),(132),(124),(142),(134),(143),(234),(243)}$,
+			\item $((12)(34))^G = \Brace{(12)(34),(13)(24),(14)(23)}$,
+			\item $(1234)^G = \Brace{(1234),(1342),(1423),(1243),(1432),(1324)}$.
+		\end{mitem}
+	\end{exam}
+
+	\begin{exam}[Conjugacy classes of $D_6$]
+		\label{examconjofD6}
+		Consider the dihedral group $G = D_6 = \gen{x,y\;:\;x^3,\, y^2,\,(yx)^2}$ with six elements $\Brace{1_G,y,yx,yx^2,x,x^2}$. We can calculate our conjugacy classes as 
+		$$(1_G)^G = \Brace{1_G},\quad y^G = \Brace{y,yx,yx^2},\quad x^G = \Brace{x,x^2}.$$
+	\end{exam}
+
+
+The content on this page will be useful in our examination of $S_4$ in later sections.
+
 
 \newpage
+\begin{defi}[Group action \cite{4}]
+	Let $G$ be a group. Recall the \textit{group action} of $G$ on a set $X$ is a map $\textasteriskcentered \cdot \textasteriskcentered : G \times X \to X$ such that
+	\begin{menum}
+		\item $1 \cdot x = x$ $\text{ for all } x \in X$,
+		\item $g_1 \cdot (g_2 \cdot x) = g_1g_2 \cdot x\quad\text{ for all } g_1,g_2 \in G,\,x \in X$
+	\end{menum}
+\end{defi}
+
+\begin{defi}[Orbit \cite{4}]
+	Given a group $G$ acting on a set $X$ the \textit{orbit} of an element $x \in X$ is the set
+	$$\Orb(x) \coloneqq \Brace{y \in X\;:\; \exists g \in G \text{ with } y = g \cdot x}.$$
+\end{defi}
+
+\begin{defi}[Stabilizer \cite{4}]
+	Given a group $G$ acting on a set $X$ the \textit{stabilizer} of an element $x \in X$ is the set
+	$$\Stab(x) \coloneqq \Brace{g \in G\;:\; g \cdot x = x}.$$
+\end{defi}
+
+\begin{theo}[Orbit-Stabilizer theorem \cite{4}]
+	Given a group $G$ acting on a finite set $X$ we have
+	$$\abs{\Orb(x)} = \Brack{G : \Stab(x)},$$
+	the index of $\Stab(x)$ in $G$.
+\end{theo}
+\begin{proo*}
+TODO
+\end{proo*}
+
+Orbit-Stabilizer theorem is an incredibly useful property and can be seen in a large number of contexts in group theory. We will use it to prove a relation between conjugacy classes and centralizers which will be used frequently in our study of character tables.
+
+
+\begin{defi}[Centralizer \cite{3}]
+	Let $G$ be a group and $g \in G$. The \textit{centralizer} $C_G$ of $g$ is the set of elements in $G$ which commute with $g$, written
+	$$C_G(g) \coloneqq \Brace{h \in G\;:\;gh = hg}.$$
+\end{defi}
+
+\begin{prop}[\cite{2}]
+	\label{cardofconj}
+	For a finite group $G$, and a conjugacy class $g^G \subseteq G$ we have $\abs{x^G} = \dfrac{\abs{G}}{\abs{C_G(g)}}$.
+\end{prop}
+\begin{proo*}
+	Let $G$ be a finite group, and $g,h \in G$.
+	Let $\textasteriskcentered \cdot \textasteriskcentered : G \times G \to G$ be the map
+	$h \cdot g = hgh^{-1}$. This is a group action of $G$ on itself. Cleary $\Orb(g) = g^G$, and $\Stab(g) = \Brace{ h \in G \;: hg = gh} = C_G(g)$, then by Orbit-Stabilizer Theorem we have
+	$$\abs{g^G} = \Brack{G : C_G(g)} = \frac{\abs{G}}{\abs{C_G(g)}}.$$
+\end{proo*}
+\newpage
+
+The fundamental theorem of abelian groups is a result which will allow us to classify finite abelian groups with ease.
+\begin{theo}[Fundamental theorem of finite abelian groups \cite{4}]
+	\label{funtheoabelian}
+	Let $G$ be a finite abelian group. Then $G$ is isomorphic to a direct product of cyclic groups $C_{n_1} \oplus \cdots \oplus C_{n_k}$.
+\end{theo}
+\begin{proo*}
+	TODO
+\end{proo*}
+\newpage
+\fi
 \subsection{The Linear Algebra Recap and the General Linear Group}
 
-\begin{theo}
-	Given a projection $\pi$ of $V$ onto a subspace $W$, we have $V = \Ker(\pi) \oplus \Im(\pi)$.
-	\label{projtheo}
-\end{theo}
-
-\begin{defi}[Trace of a matrix]
-	The trace of a matrix $A \in \M_n(F)$ is the sum of the diagonal elements $\Tr(A) = \sum\limits_{i = 1}^nA^i_i$.
-\end{defi}
-
-\begin{theo}
-	If $V$ is a finite dimensional vector space over an algebraically closed field $F$, and $L : V \to V$ is a linear map, then $L$ has at least one eigenvector.
-	\label{eigenvectheo}
-\end{theo}
-
-\begin{prop}
-\label{7}
-	Let $A,B \in \M_n(F)$. Then
-	\begin{itemize}
-		\item $\Tr(A + B) = \Tr(A) + \Tr(B)$,
-		\item $\Tr(AB) = \Tr(BA)$.
-	\end{itemize}
-
-	Also, if $T$ is invertable then $\Tr(T^{-1}AT) = \Tr(A)$.
-\end{prop}
-
 \begin{defi}[Endomorphisms and Automorphisms]
-	Given a space $V$ with an algebraic structure, an endomorphism is defined to be a homomorphism from $V$ to itself. We denote $\End(V) \coloneqq \Hom(V,V)$ to be the set of all endomorphisms on $V$. An automorphism is an endomorphism which is also an isomorphism, and we denote $\Aut(V) \coloneqq \Brace{\phi \in \End(V)\;|\;\phi \text{ is an isomorphism}}$ as the set of all automorphisms on $V$.\\
-
-	In this project, we focus on vector space endomorphisms - linear maps from a space to itself.
+	Given a space $V$ with an algebraic structure, an \textit{endomorphism} is defined to be a homomorphism from $V$ to itself. We denote $\End(V) \coloneqq \Hom(V,V)$ to be the set of all endomorphisms on $V$. An \textit{automorphism} is an endomorphism which is also an isomorphism, and we denote $\Aut(V) \coloneqq \Brace{\phi \in \End(V)\;|\;\phi \text{ is an isomorphism}}$ as the set of all automorphisms on $V$.\\
 \end{defi}
 
-\begin{defi}[Projection \cite{2}]
-	Linear map $\pi$ from $V$ to a subspace $W$ is called a projection if and only if it satisfies $\pi^2 = \pi$, $\Im(\pi) = W$, $\pi\vert_W = \Id_W$.
-\end{defi}
-
-
-
+In this project, we focus on vector space endomorphisms - linear maps from a space to itself.
 
 \begin{defi}[General linear group \cite{1}]
 	Let $V$ be a vector space. We define
 	$$\GL(V) \coloneqq \Aut(V)$$
-	to be the set of invertable linear endomorphisms over $V$. We prove this is a group under composition.\label{1}
+	to be the set of invertible linear endomorphisms over $V$. It is clear from the properties of compostion that $\GL(V)$ is a group under compostion. We call $\GL(V)$ the \textit{general linear group} of vector space $V$.\label{1}
 \end{defi}
 
-\begin{proo*}
-	\textbf{Associativity:} Composition is always associative.\\
-	\textbf{Existance of inverse elements:} $\phi$ an isomorphism $\iff$ $\phi$ invertible. Hence every element of $\Aut(V)$ has an inverse.\\
-	\textbf{Closedness:} The composition of linear maps is linear, and the composition of bijective maps is bijective. Therefore $\Aut(V)$ is closed under composition.\\
-	\textbf{Existence of identity:} The identity map is linear and bijective, hence in $\Aut(V)$. $\blacksquare$
-\end{proo*}
+We will most often be dealing with finite-dimensional vector spaces, and so will prefer to view the general linear group in matrix form.\\
+
+\textit{(NOTE TO GWYN - I did the following proposition and proof on the first day of working but reviewing it now it seems pretty excessive and straightforward so I'm strongly considering taking it out)}
 
 \begin{prop}
-	 If $V$ is an $n$-dimensional vector space over $\mathbb{C}$ then there is a group isomorphism
-	$$\GL(V) \cong \GL_n(\mathbb{C}) \coloneqq \Brace{A \in \M_n(\mathbb{C}) \;|\; A \text{ is invertable}},$$
-	the group of invertable $n \times n$ matrices.
+	 If $V$ is an $n$-dimensional vector space over a field $F$ then there is a group isomorphism
+	$$\GL(V) \cong \GL_n(F) \coloneqq \Brace{A \in \M_n(F) \;|\; A \text{ is invertible}},$$
+	the group of invertible $n \times n$ matrices.
 \end{prop}
 \begin{proo*}
-	Let $V$ be an $n$-dimensional vector space over $\mathbb{C}$ and fix a basis $e = \Brace{e_1,\dots,e_n}$. Recall that the result of a linear transformation is entirely determined by its result on basis elements (once a basis is chosen). Then for $L : V \to V$, we can write the result of $L$ on basis element $e_k$ as $L(e_k) = \alpha^1_ke_1 + \cdots + \alpha^n_ke_n$. Let $\phi : \Aut(V) \to \M_n(\mathbb{C})$ such that
+	Let $V$ be an $n$-dimensional vector space over $F$ and fix a basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$. Recall that the result of a linear transformation is entirely determined by its result on basis elements (once a basis is chosen). Then for a linear endomorphism $L : V \to V$, we can write the result of $L$ on basis element $e_k$ as $L(e_k) = \alpha^{(1)}_ke_1 + \cdots + \alpha^{(n)}_ke_n$. Let $\phi : \Aut(V) \to \M_n(F)$ such that
 	$$\phi(L) =
 	\begin{pmatrix} 
-	    \alpha^1_1 & \alpha^1_2 & \dots & \alpha^1_n \\
-	    \alpha^2_1 & \alpha^2_2 & \cdots & \alpha^2_n \\
+	    \alpha^{(1)}_1 & \alpha^{(1)}_2 & \dots & \alpha^{(1)}_n \\
+	    \alpha^{(2)}_1 & \alpha^{(2)}_2 & \cdots & \alpha^{(2)}_n \\
 	    \vdots & \vdots& \ddots & \vdots\\
-	    \alpha^n_1 & \alpha^n_2  &\dots & \alpha^n_n 
+	    \alpha^{(n)}_1 & \alpha^{(n)}_2  &\dots & \alpha^{(n)}_n 
 	\end{pmatrix}.$$
-	Any matrix has a corresponding linear map which sends the $k$th basis vector to another vector with the basis coefficients made up of the scalars in the $k$th column. Also, since any linear map is determined by the vectors that the basis elements are mapped to, there is a unique linear map with columns as the coefficients. Then $\phi$ is a bijection.\\
+	Any matrix has a corresponding linear map which sends the $k$th basis vector to another vector with the basis coefficients made up of the scalars in the $k$th column. Conversly, any linear map is determined by the vectors that the basis elements are mapped to, for which there is a unique linear map with columns as the coefficients. Then $\phi$ is a bijection. Also the set of invertible matrices is a group under matrix multiplication.  \\
 
-	Now we show that $\phi$ is an homomorphism. Given $L_1(e_k) = \alpha^1_ke_1 + \cdots + \alpha^n_ke_n$ and $L_2(e_k) = \beta^1_ke_1 + \cdots + \beta^n_ke_n$, we have
+	Now we show that $\phi$ is a homomorphism. Given $L_1(e_k) = \alpha^{(1)}_ke_1 + \cdots + \alpha^{(n)}_ke_n$ and $L_2(e_k) = \beta^{(1)}_ke_1 + \cdots + \beta^{(n)}_ke_n$, we have
 	\begin{align*}
-	L_2 \circ L_1(e_k) &= L_2(\alpha^1_ke_1 + \cdots + \alpha^n_ke_n) = \alpha_k^1L_2(e_1) + \cdots + \alpha_k^nL_2(e_n)\\
-	&= \alpha^1_k(\beta^1_1e_1 + \cdots + \beta^n_1e_n) + \cdots + \alpha^n_k(\beta^1_ne_1 + \cdots + \beta^n_ne_n)\\
-	&= e_1(\alpha^1_k\beta^1_1 + \cdots + \alpha^n_k\beta^1_n) + \cdots e_n(\alpha^1_k\beta^n_1 + \cdots +\alpha^n_k\beta^n_n).
+	L_2 \circ L_1(e_k) &= L_2(\alpha^{(1)}_ke_1 + \cdots + \alpha^{(n)}_ke_n) = \alpha_k^{(1)}L_2(e_1) + \cdots + \alpha_k^{(n)}L_2(e_n)\\
+	&= \alpha^{(1)}_k(\beta^{(1)}_1e_1 + \cdots + \beta^{(n)}_1e_n) + \cdots + \alpha^{(n)}_k(\beta^{(1)}_ne_1 + \cdots + \beta^{(n)}_ne_n)\\
+	&= e_1(\alpha^{(1)}_k\beta^{(1)}_1 + \cdots + \alpha^{(n)}_k\beta^{(1)}_n) + \cdots e_n(\alpha^{(1)}_k\beta^{(n)}_1 + \cdots +\alpha^{(n)}_k\beta^{(n)}_n).
 	\end{align*}
 	Therefore
 	\begin{align*}
 		\phi(L_2 \circ L_1) &= 
 		\begin{pmatrix} 
-	    (\alpha^1_1\beta^1_1 + \cdots +\alpha^n_1\beta^1_n) & (\alpha^1_2\beta^1_1 + \cdots + \alpha^n_2\beta^1_n) & \dots & (\alpha^1_n\beta^1_1 + \cdots +\alpha^n_n\beta^1_n) \\
-	    (\alpha^1_1\beta^2_1 + \cdots +\alpha^n_1\beta^2_n) & (\alpha^1_2\beta^2_1 + \cdots + \alpha^n_2\beta^2_n) & \cdots & (\alpha^1_n\beta^2_1 + \cdots +\alpha^n_n\beta^2_n) \\
+	    (\alpha^{(1)}_1\beta^{(1)}_1 + \cdots +\alpha^{(n)}_1\beta^{(1)}_n) & (\alpha^{(1)}_2\beta^{(1)}_1 + \cdots + \alpha^{(n)}_2\beta^{(1)}_n) & \dots & (\alpha^{(1)}_n\beta^{(1)}_1 + \cdots +\alpha^{(n)}_n\beta^{(1)}_n) \\
+	    (\alpha^{(1)}_1\beta^{(2)}_1 + \cdots +\alpha^{(n)}_1\beta^{(2)}_n) & (\alpha^{(1)}_2\beta^{(2)}_1 + \cdots + \alpha^{(n)}_2\beta^{(2)}_n) & \cdots & (\alpha^{(1)}_n\beta^{(2)}_1 + \cdots +\alpha^{(n)}_n\beta^{(2)}_n) \\
 	    \vdots & \vdots& \ddots & \vdots\\
-	    (\alpha^1_1\beta^n_1 + \cdots +\alpha^n_1\beta^n_n) & (\alpha^1_2\beta^n_1 + \cdots + \alpha^n_2\beta^n_n) &\dots & (\alpha^1_n\beta^n_1 + \cdots +\alpha^n_n\beta^n_n) 
+	    (\alpha^{(1)}_1\beta^{(n)}_1 + \cdots +\alpha^{(n)}_1\beta^{(n)}_n) & (\alpha^{(1)}_2\beta^{(n)}_1 + \cdots + \alpha^{(n)}_2\beta^{(n)}_n) &\dots & (\alpha^{(1)}_n\beta^{(n)}_1 + \cdots +\alpha^{(n)}_n\beta^{(n)}_n) 
 		\end{pmatrix}\\
 		&= \begin{pmatrix} 
-	    \beta^1_1 & \beta^1_2 & \dots & \beta^1_n \\
-	    \beta^2_1 & \beta^2_2 & \cdots & \beta^2_n \\
+	    \beta^{(1)}_1 & \beta^{(1)}_2 & \dots & \beta^{(1)}_n \\
+	    \beta^{(2)}_1 & \beta^{(2)}_2 & \cdots & \beta^{(2)}_n \\
 	    \vdots & \vdots& \ddots & \vdots\\
-	    \beta^n_1 & \beta^n_2  &\dots & \beta^n_n 
+	    \beta^{(n)}_1 & \beta^{(n)}_2  &\dots & \beta^{(n)}_n 
 	\end{pmatrix} \times
 \begin{pmatrix} 
-	    \alpha^1_1 & \alpha^1_2 & \dots & \alpha^1_n \\
-	    \alpha^2_1 & \alpha^2_2 & \cdots & \alpha^2_n \\
+	    \alpha^{(1)}_1 & \alpha^{(1)}_2 & \dots & \alpha^{(1)}_n \\
+	    \alpha^{(2)}_1 & \alpha^{(2)}_2 & \cdots & \alpha^{(2)}_n \\
 	    \vdots & \vdots& \ddots & \vdots\\
-	    \alpha^n_1 & \alpha^n_2  &\dots & \alpha^n_n 
+	    \alpha^{(n)}_1 & \alpha^{(n)}_2  &\dots & \alpha^{(n)}_n 
 	\end{pmatrix}
-		= \phi(L_2) \times \phi(L_1). \;\blacksquare
+		= \phi(L_2) \times \phi(L_1).
 	\end{align*}
+	$\blacksquare$
 \end{proo*}
 
-\begin{defi}[Unitary map]
-	A linear map $L : V \to W$ between inner product spaces $V,W$ is said to be unitary if and only if $\langle v_1, v_2\rangle  = \langle L(v_1), L(v_2) \rangle\;\forall v_1,v_2 \in V$.
-	We denote the unitary maps of a vector space $V$ as $\U(V)$, and for maps over an $n$-dimensional vector space over $\mathbb{C}$, we have $U(V) \cong U_n(\mathbb{C}) \coloneqq \Brace{A \in \M_n(\mathbb{C}) \;\vert\; A^* = A^{-1}}$ where $A^*$ is the standard conjugate transpose.
-\end{defi}
+\text{ if and only if }alse
+The following theorem is essential for a counterexample to Maschke's theorem in later chapters.
+\begin{theo}
+	If $V$ is a finite-dimensional vector space over an algebraically closed field $F$, and $L : V \to V$ is a linear map, then $L$ has at least one eigenvector.
+	\label{eigenvectheo}
+\end{theo}
+\begin{proo*}
+	TODO
+\end{proo*}
 
-We will denote the invertable elements of a ring $R$ as $R^*$, then $\GL_1(\mathbb{C}) = \mathbb{C}^*$. Then $\mathbb{C}^* = \mathbb{C}\backslash \{0\}$ and not the dual space of $\mathbb{C}$ as is traditional.
+These basic results on the trace of a matrix will be used extensively in our study of character theory.
+\begin{prop}
+\label{7}
+	Let $A,B \in \M_n(F)$. Then
+	\begin{mitem}
+		\item $\Tr(A + B) = \Tr(A) + \Tr(B)$,
+		\item $\Tr(AB) = \Tr(BA)$.
+	\end{mitem}
+
+	Also, if $T$ is invertible then $\Tr(TAT^{-1}) = \Tr(A)$.
+\end{prop}
+\begin{proo*}
+TODO
+\end{proo*}
+
+Projections will be required for our proof of Maschke's Theorem.
+\begin{defi}[Projection \cite{2}]
+	Linear map $\pi$ from $V$ to a subspace $W$ is called a \textit{projection} if it satisfies $\pi^2 = \pi$, $\Im(\pi) = W$, $\pi:_W = \Id_W$.
+\end{defi}
+\begin{theo}
+	Given a projection $\pi$ of $V$ onto a subspace $W$, we have $V = \Ker(\pi) \oplus \Im(\pi)$.
+%	\label{projtheo}
+\end{theo}
+\begin{proo*}
+	TODO
+\end{proo*}
+\begin{prop}
+	Given a projection $\pi : V \to W$, we have $\Tr(\pi) = \dim(W)$. \label{Trproj}
+\end{prop}
+\begin{proo*}
+TODO
+\end{proo*}
+
+
+
+
+Unitary maps will give rise to unitary representations, which we will examine when introducing representation theory.
+\begin{defi}[Unitary map]
+	A linear map $L : V \to W$ between inner pro spaces $V,W$ is said to be \textit{unitary} if $\langle v_1, v_2\rangle  = \langle L(v_1), L(v_2) \rangle\;\text{ for all } v_1,v_2 \in V$.
+	We denote the unitary maps of a vector space $V$ as $\U(V)$, and for maps over an $n$-dimensional vector space over $\mathbb{C}$, we have $\U(V) \cong U_n(\mathbb{C}) \coloneqq \Brace{A \in \M_n(\mathbb{C}) \;:\; A^\dagger = A^{-1}}$ 
+\end{defi}
 
 \begin{exam}[\cite{1}]
-	For the maps $\GL_1(\mathbb{C}) = \mathbb{C}^*$, a complex number $z$ is unitary if $\bar{z} = z^1 \implies z\bar{z} = \abs{z}^2 = 1 \implies z \in \mathbb{T}$, where $\mathbb{T} = \Brace{z \in \mathbb{C}\;\vert\;\abs{z} = 1}$ is the unit circle. Then $U_1(\mathbb{C}) = \mathbb{T}$
+	For the maps in $\GL_1(\mathbb{C})$, a complex number $z$ is unitary if $\bar{z} = z^1 \text{ implies } z\bar{z} = \abs{z}^2 = 1 \text{ implies } z \in \mathbb{T}$, where $\mathbb{T} = \Brace{z \in \mathbb{C}\;:\;\abs{z} = 1}$ is the unit circle. Then $\U_1(\mathbb{C}) = \mathbb{T}$
+	\label{unitaryexam}
 \end{exam}
-
-\begin{theo}[Caley-Hamilton \cite{1}]
-	Let $A$ be a matrix with characteristic polynomial $p_A(x)$. Then $p_A(A) = 0$.
-\end{theo}
-
-\begin{defi}[Minimal polynomial \cite{1}]
-	For an endomorphism $A \in \End(V)$, the minimal polynomial of $A$, $m_A(x)$ is the smallest degree monic polynomial $f(x)$ such that $f(A) = 0$
-\end{defi}
-
-\begin{theo}[\cite{1}]
-	A matrix $A \in \M_n(\mathbb{C})$ is diagonalizable if and only if all factors of $m_A(x)$ have multiplicity $1$.
-\end{theo}
-
-\begin{theo}[Spectral theorem \cite{1}]
-	For a self adjoint $A \in \M_n(\mathbb{C})$, there exists a unitary matrix $U \in U_n(\mathbb{C})$ such that $U^* AU$ is diagonal. The eigenvalues of $A$ are real.
-\end{theo}
-
-TODO prove
+\fi
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.6.29)  21 JUL 2021 14:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.6.29)  10 SEP 2021 22:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,7 +762,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 (/usr/share/texmf-dist/tex/latex/titlesec/titleps.sty
 Package: titleps 2019/10/16 v2.13 Page styles
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 36.
+Package hyperref Info: Option `colorlinks' set `true' on input line 34.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2020/12/31 v3.16 programmable bibliographies (PK/MW)
@@ -1005,24 +1005,31 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
 ))
+\c@menumi=\count452
+\c@menumii=\count453
+\enitdp@menum=\count454
+\c@mitemi=\count455
+\c@mitemii=\count456
+\enitdp@mitem=\count457
+
 (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count452
+\lst@mode=\count458
 \lst@gtempboxa=\box110
 \lst@token=\toks45
-\lst@length=\count453
+\lst@length=\count459
 \lst@currlwidth=\dimen300
-\lst@column=\count454
-\lst@pos=\count455
+\lst@column=\count460
+\lst@pos=\count461
 \lst@lostspace=\dimen301
 \lst@width=\dimen302
-\lst@newlines=\count456
-\lst@lineno=\count457
+\lst@newlines=\count462
+\lst@lineno=\count463
 \lst@maxwidth=\dimen303
 
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count458
-\lst@skipnumbers=\count459
+\c@lstnumber=\count464
+\lst@skipnumbers=\count465
 \lst@framebox=\box111
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
@@ -1033,45 +1040,48 @@ Package: listings 2020/03/24 1.8d (Carsten Heinz)
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-\c@defi=\count460
-\c@proo=\count461
-\c@mananswinner=\count462
+\c@defi=\count466
+\c@proo=\count467
+\c@mananswinner=\count468
 )
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count463
-\@quotereset=\count464
+\@quotelevel=\count469
+\@quotereset=\count470
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count465
+\l__color_backend_stack_int=\count471
 \l__pdf_internal_box=\box112
 ) (./Project.aux
 
 LaTeX Warning: Label `1' multiply defined.
 
+
+LaTeX Warning: Label `mehbasisch' multiply defined.
+
 )
 \openout1 = `Project.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1109,16 +1119,16 @@ LaTeX Font Info:    ... okay on input line 16.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count466
+\scratchcounter=\count472
 \scratchdimen=\dimen304
 \scratchbox=\box113
-\nofMPsegments=\count467
-\nofMParguments=\count468
+\nofMPsegments=\count473
+\nofMParguments=\count474
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count469
+\MPscratchCnt=\count475
 \MPscratchDim=\dimen305
-\MPnumerator=\count470
-\makeMPintoPDFobject=\count471
+\MPnumerator=\count476
+\makeMPintoPDFobject=\count477
 \everyMPtoPDFconversion=\toks47
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1133,7 +1143,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 16.
+Package hyperref Info: Link coloring ON on input line 22.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1144,11 +1154,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count472
+\c@section@level=\count478
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 22.
+LaTeX Info: Redefining \pageref on input line 22.
+LaTeX Info: Redefining \nameref on input line 22.
 
 (./Project.out) (./Project.out)
 \@outlinefile=\write5
@@ -1185,81 +1195,267 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Project.bbl' found.
 
 (./Project.bbl)
-Package biblatex Info: Reference section=0 on input line 16.
-Package biblatex Info: Reference segment=0 on input line 16.
-\c@lstlisting=\count473
-LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
+Package biblatex Info: Reference section=0 on input line 22.
+Package biblatex Info: Reference segment=0 on input line 22.
+\c@lstlisting=\count479
+<img//logo.png, id=91, 592.29979pt x 802.82544pt>
+File: img//logo.png Graphic file (type png)
+<use img//logo.png>
+Package pdftex.def Info: img//logo.png  used on input line 26.
+(pdftex.def)             Requested size: 132.23418pt x 179.23141pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
 
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 19
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 36
 .
 
 (/usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) (./Project.toc)
+) [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img//logo.png>] (./Proje
+ct.toc)
 \tf@toc=\write6
 \openout6 = `Project.toc'.
 
- [1
+
+(./Chapters/declaration.tex [2]
+Underfull \hbox (badness 10000) in paragraph at lines 28--30
+
+ []
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (ext4): dest
-ination with the same identifier (name{page.1}) has been already used, duplicat
-e ignored
-<to be read again> 
-                   \relax 
-l.40 \newpage
-              [1] (./Chapters/background.tex [2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 31--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
+
+ []
+
+<img//sig.png, id=131, 948.54375pt x 511.9125pt>
+File: img//sig.png Graphic file (type png)
+<use img//sig.png>
+Package pdftex.def Info: img//sig.png  used on input line 43.
+(pdftex.def)             Requested size: 132.23418pt x 71.36263pt.
+) [3 <./img//sig.png>] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+(./Chapters/reptheo.tex [2]
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+  
+ []
+
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 52--53
- 
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--66
+  
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 90--92
- 
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+  
  []
 
-[5]) (./Chapters/reptheo.tex [6]
 
-LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
- 11.
-
-
-LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
- 11.
-
-
-LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
- 11.
-
-
-LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
- 11.
-
-[7]
 Underfull \hbox (badness 10000) in paragraph at lines 77--78
- 
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
- 
+  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
- 
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+  
  []
 
-[9] [10] [11]) (./Chapters/fgmodules.tex [12]
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+  
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
+  
+ []
+
+
+LaTeX Font Warning: Command \Large invalid in math mode on input line 108.
+
+
+LaTeX Font Warning: Command \Large invalid in math mode on input line 110.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+  
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+  
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 172--175
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+  
+ []
+
+[9]
+Overfull \hbox (1.20847pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/12 which is also an iso-mor-phism and $\OML/cmm/m/it/12 ^^Z[]T \OT
+1/cmr/m/n/12 = \OML/cmm/m/it/12 T^^Z[][]^^Z[]T[] \OT1/cmr/m/n/12 = \OML/cmm/m/i
+t/12 T[]^^Z[][]^^Z[] \OMS/cmsy/m/n/12 ^^X
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--229
+  
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--265
+
+ []
+
+[11]
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 287.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 287.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 287.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 287.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 297.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 297.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 297.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 297.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 299.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 299.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 299.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 299.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--313
+
+ []
+
+[12]) (./Chapters/fgmodules.tex [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
@@ -1269,79 +1465,759 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
- 
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 10.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 10.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 10.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 10.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 21.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 21.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+  
+ []
+
+[14]
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 62.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 62.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
- 
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
+
  []
 
-[13]
-Overfull \hbox (12.66344pt too wide) in paragraph at lines 57--58
+[15]
+Overfull \hbox (24.89691pt too wide) in paragraph at lines 75--76
  []\OT1/cmr/m/n/12 More gen-er-ally, given $\OML/cmm/m/it/12 FG$\OT1/cmr/m/n/12
- -modules $\OML/cmm/m/it/12 V; W[]; [] ; W[]$ \OT1/cmr/m/n/12 with $\OML/cmm/m/
-it/12 V \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 W[] \OMS/cmsy/m/n/12 ^^H [] ^^H \OML
-/cmm/m/it/12 W[]$\OT1/cmr/m/n/12 , and bases $\OMS/cmsy/m/n/12 B[]\OML/cmm/m/it
-/12 ; []; [] ; []$
+ -modules $\OML/cmm/m/it/12 W[]; [] ; W[]$ \OT1/cmr/m/n/12 with $\OML/cmm/m/it/
+12 V \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 W[] \OMS/cmsy/m/n/12 ^^H [] ^^H \OML/cm
+m/m/it/12 W[]$\OT1/cmr/m/n/12 , and bases $\OMS/cmsy/m/n/12 B[]\OML/cmm/m/it/12
+ ; []; [] ; []$ 
  []
 
-[14] [15] [16]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 177.
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+  
+ []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 177.
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+  
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+
+ []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
- 
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
+  
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+  
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 218--220
- 
+  
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 234--236
+  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--226
-
+Underfull \hbox (badness 10000) in paragraph at lines 240--242
+  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
- 
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+  
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
+  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--244
- 
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
+  
  []
 
-[18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
- 
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--302
+  
  []
 
-[20]) (./Chapters/chartheo.tex [21]
-Underfull \hbox (badness 10000) in paragraph at lines 8--10
- 
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+  
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
- 
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
+  
  []
 
-[23] [24]) (./Chapters/chartables.tex [25]
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
- 
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
+  
  []
 
-) (./Chapters/orthrel.tex [26]) [27] [28] [29] (./Project.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
+  
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+  
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 383--384
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--402
+  
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 407--409
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
+  
+ []
+
+) (./Chapters/chartheo.tex [26]
+Underfull \hbox (badness 10000) in paragraph at lines 10--12
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 41--43
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
+  
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+  
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 125--128
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+  
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--189
+  
+ []
+
+[31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 245--247
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
+  
+ []
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 258.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 258.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 258.
+
+
+LaTeX Warning: Command \textasteriskcentered invalid in math mode on input line
+ 258.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--262
+  
+ []
+
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
+  
+ []
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 324--327
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--340
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--350
+  
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 357--359
+  
+ []
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 384--386
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+  
+ []
+
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
+  
+ []
+
+[39]) (./Chapters/chartables.tex [40]
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 33--46
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--46
+  
+ []
+
+[41]
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 59--74
+ []$  
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 108--121
+ []$  
+ []
+
+[43] [44]
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--163
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+  
+ []
+
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 180--182
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--199
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 200--211
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--211
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 219--230
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--230
+  
+ []
+
+[46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 258--260
+  
+ []
+
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
+  
+ []
+
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--348
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
+  
+ []
+
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 368--370
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+  
+ []
+
+[51]
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 395--407
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--407
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 408--409
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 410--419
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 410--419
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 422--431
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--431
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 433--435
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 436--449
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 436--449
+  
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 468--477
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--477
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 480--489
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 480--489
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--497
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 498--509
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 498--509
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 510--511
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 512--525
+ []$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 512--525
+  
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 535--537
+  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
+  
+ []
+
+[54]
+Overfull \hbox (25.83539pt too wide) in paragraph at lines 565--566
+[]$\OML/cmm/m/it/12 g[] \OT1/cmr/m/n/12 = [][] = []\OML/cmm/m/it/12 ;$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 568--570
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 571--583
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 571--583
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 586--595
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 586--595
+  
+ []
+
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 597--599
+  
+ []
+
+
+Overfull \hbox (53.45274pt too wide) in paragraph at lines 600--615
+ []$[]$  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 600--615
+  
+ []
+
+) [56]
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
+
+ []
+
+[57] [58] (./Project.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1349,7 +2225,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Project.out' has not changed.
-(rerunfilecheck)             Checksum: 15A3AB318F2F1DDAA72A0BA444D1A30C;3148.
+(rerunfilecheck)             Checksum: B4656B79C6192D40F371D55DDD5C63F0;3235.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                Project
@@ -1360,33 +2236,33 @@ Package logreq Info: Writing requests to 'Project.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33208 strings out of 478994
- 610487 string characters out of 5864751
- 1359916 words of memory out of 5000000
- 49956 multiletter control sequences out of 15000+600000
- 422024 words of font info for 97 fonts, out of 8000000 for 9000
+ 33463 strings out of 478994
+ 614111 string characters out of 5864751
+ 1369436 words of memory out of 5000000
+ 50102 multiletter control sequences out of 15000+600000
+ 418436 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 106i,16n,106p,1190b,1753s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
-2.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/
-texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Project.pdf (30 pages, 273303 bytes).
+ 106i,16n,106p,1336b,1713s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Project.pdf (62 pages, 569678 bytes).
 PDF statistics:
- 597 PDF objects out of 1000 (max. 8388607)
- 541 compressed objects within 6 object streams
- 185 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1000 PDF objects out of 1000 (max. 8388607)
+ 904 compressed objects within 10 object streams
+ 294 named destinations out of 1000 (max. 500000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

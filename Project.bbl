@@ -19,6 +19,190 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{9}{book}{}
+      \name{author}{1}{}{%
+        {{hash=cbe06224a5f7d5fd4ffba046f57570fd}{%
+           family={Curtis},
+           familyi={C\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Mathematical Society}%
+      }
+      \strng{namehash}{cbe06224a5f7d5fd4ffba046f57570fd}
+      \strng{fullhash}{cbe06224a5f7d5fd4ffba046f57570fd}
+      \strng{bibnamehash}{cbe06224a5f7d5fd4ffba046f57570fd}
+      \strng{authorbibnamehash}{cbe06224a5f7d5fd4ffba046f57570fd}
+      \strng{authornamehash}{cbe06224a5f7d5fd4ffba046f57570fd}
+      \strng{authorfullhash}{cbe06224a5f7d5fd4ffba046f57570fd}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0821890026}
+      \field{title}{Pioneers of Representation Theory: Frobenius, Burnside, Schur, and Brauer}
+      \field{year}{1999}
+    \endentry
+    \entry{10}{book}{}
+      \name{author}{1}{}{%
+        {{hash=3e2a5b7bbd19d413f84d15f51379018d}{%
+           family={Wussing},
+           familyi={W\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Dover}%
+      }
+      \strng{namehash}{3e2a5b7bbd19d413f84d15f51379018d}
+      \strng{fullhash}{3e2a5b7bbd19d413f84d15f51379018d}
+      \strng{bibnamehash}{3e2a5b7bbd19d413f84d15f51379018d}
+      \strng{authorbibnamehash}{3e2a5b7bbd19d413f84d15f51379018d}
+      \strng{authornamehash}{3e2a5b7bbd19d413f84d15f51379018d}
+      \strng{authorfullhash}{3e2a5b7bbd19d413f84d15f51379018d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0486458687}
+      \field{title}{The Genesis of the Abstract Group Concept}
+      \field{year}{2007}
+    \endentry
+    \entry{1}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8d5284399bf71b2b4215ea708b8141f2}{%
+           family={Steinberg},
+           familyi={S\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{fullhash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{bibnamehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{authorbibnamehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{authornamehash}{8d5284399bf71b2b4215ea708b8141f2}
+      \strng{authorfullhash}{8d5284399bf71b2b4215ea708b8141f2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781461407751}
+      \field{title}{Represesenation Theory of Finite Groups}
+      \field{year}{2012}
+    \endentry
+    \entry{14}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0af6c88c0574de12ccced2ab8c4b253c}{%
+           family={Gorenstein},
+           familyi={G\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Mathematical Society Bulletin}%
+      }
+      \strng{namehash}{0af6c88c0574de12ccced2ab8c4b253c}
+      \strng{fullhash}{0af6c88c0574de12ccced2ab8c4b253c}
+      \strng{bibnamehash}{0af6c88c0574de12ccced2ab8c4b253c}
+      \strng{authorbibnamehash}{0af6c88c0574de12ccced2ab8c4b253c}
+      \strng{authornamehash}{0af6c88c0574de12ccced2ab8c4b253c}
+      \strng{authorfullhash}{0af6c88c0574de12ccced2ab8c4b253c}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Classification of Finite Simple Groups I. Simple Groups and Local Analysis}
+      \field{year}{1979}
+    \endentry
+    \entry{11}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8d872c59f93056e63ec885bebf712644}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={H\bibnamedelima F},
+           giveni={H\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Physics}%
+      }
+      \strng{namehash}{8d872c59f93056e63ec885bebf712644}
+      \strng{fullhash}{8d872c59f93056e63ec885bebf712644}
+      \strng{bibnamehash}{8d872c59f93056e63ec885bebf712644}
+      \strng{authorbibnamehash}{8d872c59f93056e63ec885bebf712644}
+      \strng{authornamehash}{8d872c59f93056e63ec885bebf712644}
+      \strng{authorfullhash}{8d872c59f93056e63ec885bebf712644}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0750305045}
+      \field{title}{Groups, Representations and Physics}
+      \field{year}{1998}
+    \endentry
+    \entry{12}{book}{}
+      \name{author}{1}{}{%
+        {{hash=840ab46f8cbb16dc4a486f6f06cf9ad5}{%
+           family={Jeevanjee},
+           familyi={J\bibinitperiod},
+           given={Nadir},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{840ab46f8cbb16dc4a486f6f06cf9ad5}
+      \strng{fullhash}{840ab46f8cbb16dc4a486f6f06cf9ad5}
+      \strng{bibnamehash}{840ab46f8cbb16dc4a486f6f06cf9ad5}
+      \strng{authorbibnamehash}{840ab46f8cbb16dc4a486f6f06cf9ad5}
+      \strng{authornamehash}{840ab46f8cbb16dc4a486f6f06cf9ad5}
+      \strng{authorfullhash}{840ab46f8cbb16dc4a486f6f06cf9ad5}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9783319147932}
+      \field{title}{An Introduction to Tensors and Group Theory for Physicists}
+      \field{year}{2015}
+    \endentry
+    \entry{13}{book}{}
+      \name{author}{3}{}{%
+        {{hash=4252c880b67c885ff0ae35b0aa535a04}{%
+           family={Davidoff},
+           familyi={D\bibinitperiod},
+           given={Guiliana},
+           giveni={G\bibinitperiod}}}%
+        {{hash=02646eacc4c6de451af9108071677884}{%
+           family={Sarnak},
+           familyi={S\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d4a8d1785461564a09d95e0f74160dc8}{%
+           family={Valette},
+           familyi={V\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b2dff90effb3d82ad823b11ff38e900c}
+      \strng{fullhash}{f1e38c27a6b8e92f91c6f8cbd900c302}
+      \strng{bibnamehash}{f1e38c27a6b8e92f91c6f8cbd900c302}
+      \strng{authorbibnamehash}{f1e38c27a6b8e92f91c6f8cbd900c302}
+      \strng{authornamehash}{b2dff90effb3d82ad823b11ff38e900c}
+      \strng{authorfullhash}{f1e38c27a6b8e92f91c6f8cbd900c302}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780521531436}
+      \field{title}{Elementary Number Theory, Group Theory, and Ramanujan Graphs}
+      \field{year}{2003}
+    \endentry
     \entry{2}{book}{}
       \name{author}{2}{}{%
         {{hash=edd39085ad668628baaaf4fb67477bcb}{%
@@ -49,32 +233,7 @@
       \field{title}{Representations and Characters of Groups}
       \field{year}{2001}
     \endentry
-    \entry{1}{book}{}
-      \name{author}{1}{}{%
-        {{hash=8d5284399bf71b2b4215ea708b8141f2}{%
-           family={Steinberg},
-           familyi={S\bibinitperiod},
-           given={Benjamin},
-           giveni={B\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{8d5284399bf71b2b4215ea708b8141f2}
-      \strng{fullhash}{8d5284399bf71b2b4215ea708b8141f2}
-      \strng{bibnamehash}{8d5284399bf71b2b4215ea708b8141f2}
-      \strng{authorbibnamehash}{8d5284399bf71b2b4215ea708b8141f2}
-      \strng{authornamehash}{8d5284399bf71b2b4215ea708b8141f2}
-      \strng{authorfullhash}{8d5284399bf71b2b4215ea708b8141f2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{9781461407751}
-      \field{title}{Represesenation Theory of Finite Groups}
-      \field{year}{2012}
-    \endentry
-    \entry{3}{book}{}
+    \entry{3}{misc}{}
       \name{author}{1}{}{%
         {{hash=e44e8aa84e9f28cddf6f819a6cd007e5}{%
            family={Chua},
@@ -82,21 +241,19 @@
            given={Dexter},
            giveni={D\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Cambridge University Class}%
-      }
       \strng{namehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
       \strng{fullhash}{e44e8aa84e9f28cddf6f819a6cd007e5}
       \strng{bibnamehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
       \strng{authorbibnamehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
       \strng{authornamehash}{e44e8aa84e9f28cddf6f819a6cd007e5}
       \strng{authorfullhash}{e44e8aa84e9f28cddf6f819a6cd007e5}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Part III notes}
-      \field{year}{2015}
+      \field{howpublished}{\url{https://dec41.user.srcf.net/notes/II_L/representation_theory.pdf}}
+      \field{note}{(Cambridge University Class, 2015)}
+      \field{title}{Part II Represesenation Theory Notes}
     \endentry
     \entry{4}{book}{}
       \name{author}{1}{}{%
@@ -115,13 +272,103 @@
       \strng{authorbibnamehash}{425fe599f8ceab54c238fad5c81c0301}
       \strng{authornamehash}{425fe599f8ceab54c238fad5c81c0301}
       \strng{authorfullhash}{425fe599f8ceab54c238fad5c81c0301}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{139780387715674}
-      \field{title}{GTM Abstract Algebra}
+      \field{title}{Abstract Algebra}
       \field{year}{2007}
+    \endentry
+    \entry{6}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b93ab48c1cd71e8b15de7dfda65905b5}{%
+           family={Serre},
+           familyi={S\bibinitperiod},
+           given={Jean},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{b93ab48c1cd71e8b15de7dfda65905b5}
+      \strng{fullhash}{b93ab48c1cd71e8b15de7dfda65905b5}
+      \strng{bibnamehash}{b93ab48c1cd71e8b15de7dfda65905b5}
+      \strng{authorbibnamehash}{b93ab48c1cd71e8b15de7dfda65905b5}
+      \strng{authornamehash}{b93ab48c1cd71e8b15de7dfda65905b5}
+      \strng{authorfullhash}{b93ab48c1cd71e8b15de7dfda65905b5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0387901906}
+      \field{title}{Linear Representations of Finite Groups}
+      \field{year}{1977}
+    \endentry
+    \entry{16}{book}{}
+      \name{author}{2}{}{%
+        {{hash=205bfcbd8ec5b58401ee1d5cbd94a5de}{%
+           family={Fulton},
+           familyi={F\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+        {{hash=38017df6aee91d3bb1c985bade8eb930}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{dc874865e376c50bda90a6157bd8e260}
+      \strng{fullhash}{dc874865e376c50bda90a6157bd8e260}
+      \strng{bibnamehash}{dc874865e376c50bda90a6157bd8e260}
+      \strng{authorbibnamehash}{dc874865e376c50bda90a6157bd8e260}
+      \strng{authornamehash}{dc874865e376c50bda90a6157bd8e260}
+      \strng{authorfullhash}{dc874865e376c50bda90a6157bd8e260}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780387974958}
+      \field{title}{Representation Theory: A First Course}
+      \field{year}{1991}
+    \endentry
+    \entry{15}{book}{}
+      \name{author}{3}{}{%
+        {{hash=87b25e8dcade8306fe2077e492475d2a}{%
+           family={Misra},
+           familyi={M\bibinitperiod},
+           given={Kailash\bibnamedelima C},
+           giveni={K\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=3771c3ef05ec8b66920c844bb30d9e0b}{%
+           family={Nakano},
+           familyi={N\bibinitperiod},
+           given={Daniel\bibnamedelima K},
+           giveni={D\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=e0fb5d67524ada61537a12c64a366aca}{%
+           family={Parshall},
+           familyi={P\bibinitperiod},
+           given={Brian\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Mathematical Society}%
+      }
+      \strng{namehash}{a7da8aa115ec5f3cc712485be65f1bc0}
+      \strng{fullhash}{94e074bf606bdabdbaa477a9130728f4}
+      \strng{bibnamehash}{94e074bf606bdabdbaa477a9130728f4}
+      \strng{authorbibnamehash}{94e074bf606bdabdbaa477a9130728f4}
+      \strng{authornamehash}{a7da8aa115ec5f3cc712485be65f1bc0}
+      \strng{authorfullhash}{94e074bf606bdabdbaa477a9130728f4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{2012026116}
+      \field{title}{Recent Developments in Lie Algebras, Groups and Representation Theory}
+      \field{year}{2012}
     \endentry
   \enddatalist
 \endrefsection

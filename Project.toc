@@ -1,42 +1,44 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Glossary of Notation}{1}{section.1}%
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Introduction}{2}{section.2}%
+\contentsline {subsection}{\numberline {1.1}Overview of Project}{1}{subsection.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Background}{3}{section.3}%
+\contentsline {subsection}{\numberline {1.2}An Overview of the History of Representation Theory}{1}{subsection.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Group Theory}{3}{subsection.3.1}%
+\contentsline {section}{\numberline {2}Representation Theory}{3}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}The Linear Algebra Recap and the General Linear Group}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {2.1}Group Representations}{3}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Representation Theory}{7}{section.4}%
+\contentsline {subsection}{\numberline {2.2}Representation Reducibility}{8}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Group Representations}{7}{subsection.4.1}%
+\contentsline {section}{\numberline {3}$FG$-Modules}{14}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Maschke's Theorem and Reducibility}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {3.1}Basic Definitions}{14}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}$FG$-Modules}{13}{section.5}%
+\contentsline {subsection}{\numberline {3.2}Maschke's Theorem}{19}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Basic Definitions}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {3.3}Schur's Lemma}{24}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Maschke's Theorem for $FG$-Modules}{17}{subsection.5.2}%
+\contentsline {section}{\numberline {4}Character Theory}{27}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Schur's Lemma}{20}{subsection.5.3}%
+\contentsline {subsection}{\numberline {4.1}Basic Definitions and Results}{27}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Character Theory}{22}{section.6}%
+\contentsline {subsection}{\numberline {4.2}Inner Products on Characters}{33}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Basic Definitions and Results}{22}{subsection.6.1}%
+\contentsline {section}{\numberline {5}Character Tables}{41}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}The Regular Character}{24}{subsection.6.2}%
+\contentsline {subsection}{\numberline {5.1}Basic Definitions}{41}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Inner products of Characters}{25}{subsection.6.3}%
+\contentsline {subsection}{\numberline {5.2}Orthogonality Relations}{43}{subsection.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Character Tables}{26}{section.7}%
+\contentsline {subsection}{\numberline {5.3}Lifting Characters}{45}{subsection.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Orthogonality Relations}{27}{section.8}%
+\contentsline {subsection}{\numberline {5.4}Linear Characters}{48}{subsection.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Conclusion}{28}{section.9}%
+\contentsline {subsection}{\numberline {5.5}Further Examples}{53}{subsection.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}References}{29}{section.10}%
+\contentsline {section}{\numberline {6}Conclusion}{57}{section.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}References}{58}{section.7}%

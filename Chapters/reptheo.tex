@@ -3,225 +3,323 @@
 \newpage
 \section{Representation Theory}
 \subsection{Group Representations}
-\begin{defi}[Group representation \cite{1}]
-	A representation of a group $G$ is a group homomorphism $\phi : G \to \GL(V)$ for some finite dimensional vector space $V$. The degree of $\phi$ is defined to be the dimension of $V$.
+In this subsection we introduce representation theory in its most simple form. To examine the uses in depth we will need to develop more structure, which we do in later sections. Given a space $V$ with an algebraic structure, an endomorphism is defined to be a homomorphism from $V$ to itself. We denote $\End(V) \coloneqq \Hom(V,V)$ to be the set of all endomorphisms on $V$. If an endomorphism is an isomorphism, then it is called an automorphism. At its core, representation theory for finite groups seeks to `represent' a group by mapping group elements to automorphisms of a vector space. We denote the set of all automorphisms on a vector space $V$ by $\Aut(V) \coloneqq \Brace{\phi \in \End(V)\;|\;\phi \text{ is an isomorphism}}$.
+
+\begin{defi}[General linear group {\cite[page 3]{1}}]
+	Let $V$ be a vector space. We define
+	$$\GL(V) \coloneqq \Aut(V)$$
+	to be the set of invertible linear endomorphisms on $V$. It is clear from the properties of compostion that $\GL(V)$ is a group under compostion. We call $\GL(V)$ the \textit{general linear group} of vector space $V$.\label{1}
 \end{defi}
 
-\begin{rema}
-	Recall the group action on a set $X$ is a map $\textasteriskcentered \cdot \textasteriskcentered : G \times X \to X$ such that
-	\begin{enumerate}
-		\item $1 \cdot x = x$ $\forall x \in X$,
-		\item $g \cdot (g' \cdot x) = gg' \cdot x$ $\forall g,g' \in G,\,x \in X$.
-	\end{enumerate}
+Linear maps of finite-dimensional vector spaces can be written as matrices with respect to a chosen basis. For an $n$-dimensional vector space over a field $F$, the group of invertible $n\times n$ square matrices $\GL_n(F) \coloneqq \Brace{X \in M_n(F) \;:\; X \text{ is invertible}}$ is isomorphic to the general linear group $\GL(V)$ as defined above. We will most often be dealing with finite-dimensional vector spaces and so will prefer to view the general linear group in the matrix form.
 
-	We can then regard a representation as a form of group action since for a representation $\phi : G \to \GL(V)$ we satisfy the axioms of a group action
-	\begin{enumerate}
-		\item $\phi(1)v = Iv = v$ $\forall v \in V$, where $1$ and $I$ are the identities of $G$ and $GL(V)$ respectively,
-		\item $\phi(g)\phi(g')v = \phi(gg')$ $\forall g,g' \in G,\,v \in V$.
-	\end{enumerate}
-\end{rema}
-
-\begin{defi}[Trivial representation \cite{1}]
-	Any group can be given the trivial representation $\phi : G \to \GL_1(\mathbb{C})$ such that $\phi(g) = 1 \;\forall g \in G$. 
+\begin{defi}[Group representation {\cite[Definition 3.1.1]{1}}]
+	A \textit{group representation} of a group $G$ is a group homomorphism $\rho : G \to \GL(V)$ for some vector space $V$. The degree of $\rho$ is defined to be the dimension of $V$.
 \end{defi}
 
-\begin{defi}[Zero representation \cite{1}]
-	Any group can be given the zero representation $\phi : G \to \GL_1(\mathbb{C})$ such that $\phi(g) = 0 \; \forall g \in G$.
+For this project we write `representation' in lieu of `group representation' since we only focus on group representations. This is important to note as there are many other kinds of representations for other algebraic structures, for example a Lie algebra representation where the representation map is a Lie algebra homomorphism into $\End(V)$ for some vector space $V$.\\
+
+	We remark that a representation defines a group action since for a group $G$, a vector space $V$, and a representation $\rho : G \to \GL(V)$ we have
+	\begin{menum}
+		\item $\rho(1_G)v = \Id_V(v) = v$ for all $v \in V$,
+		\item $\rho(g_1)\rho(g_2)v = \rho(g_1g_2)v$ for all $g_1,g_2 \in G,\,v \in V$.\\
+	\end{menum}
+
+For a representation $\rho : G \to \GL(V)$, and a group element $g \in G$ we will write $\rho_g$ instead of $\rho(g)$. 
+
+\begin{defi}[Trivial representation {\cite[Example 3.1.3]{1}}]
+	Any group $G$ can be given the \textit{trivial representation} $\rho^{(\text{triv})} : G \to \GL_1(\mathbb{C})$ such that $\rho^{(\text{triv})}_{g} = 1$ for all $g \in G$. \\
 \end{defi}
 
-\begin{exam}[\cite{1}]
-	$\phi : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ such that $\phi([m]) = e^{2\pi i m/n} \;\forall [m] \in \mathbb{Z}/n\mathbb{Z}$ is a representation.
+Representations will allow us to represent individual group elements by linear maps. If no two group elements share the same linear map then the representation is called `faithful', or defined more formally:
+
+\begin{defi}[Faithful representation {\cite[Excercise 8.8]{1}}]
+	Let $G$ be a group and $V$ a vector space. A representation $\rho : G \to \GL(V)$ is called \textit{faithful} if it is injective, i.e has trivial kernel: given $g \in G$, $\rho_g = \Id_V$ implies  $g = 1_G$.
+\end{defi}
+
+We provide a concrete example of a faithful representation below. Note that $\GL_1(\mathbb{C})$ is the group $\mathbb{C}\backslash\Brace{0}$ under usual multiplication.
+
+\begin{exam}[{\cite[Example 3.1.6]{1}}]
+	Let $G = \mathbb{Z}/n\mathbb{Z}$. Let $\rho : G \to \GL_1(\mathbb{C})$ be the representation defined by $\rho_{m} = e^{2\pi i m/n}$ for all $m \in G$. We know that $e^{2\pi i m/n} = 1$ if and only if $m/n \in \mathbb{Z}$, which implies $m = 0$ and $\rho$ is faithful.
 \end{exam}
 
-\begin{defi}[Representation equivalence \cite{1}]
-	Two representations $\phi : G \to \GL(V)$ and $\psi : G \to \GL(W)$ are said to be equivalent $\phi \sim \psi$ if there exists a linear isomorphism $T : V \to W$ such that $\psi(g)T =T\phi(g)\;\forall g \in G$, and we have the following commutative diagram
+We can determine whether a representation is faithful by examining its image.
+
+\begin{prop}[{\cite[Proposition 3.7]{2}}]
+	Let $G$ be a finite group and let $\rho : G \to \GL(V)$ be a representation. Then $\rho$ is faithful if and only if its image $\Im(\rho)$ is isomorphic to $G$.
+\end{prop}
+\begin{proo*}[{\cite[Proposition 3.7]{2}}]
+	The kernel of $\rho$ is a normal subgroup $\Ker(\rho) \trianglelefteq G$, then by the first isomorphism theorem $G/\Ker(\rho) \cong \Im(\rho)$. Then $\rho$ is faithful if and only if $\Ker(\rho) = \Brace{1_G}$ implying $G \cong \Im(\rho)$. Conversely, if $G \cong \Im(\rho)$ then $\abs{G} = \abs{\Im(\rho)}$. Also $[G : \Ker(\rho)] = \dfrac{\abs{G}}{\abs{\Ker(\rho)}} = \abs{\Im(\rho)}$ and $\abs{\Ker(\rho)} = 1$, implying $\rho$ is faithful.\\
+\end{proo*}
+
+
+
+From group theory the reader may already be familiar with permutation matrices as a way to represent the elements of the symmetric group $S_n$. We can provide $S_n$ with a representation where permutation matrices are the automorphisms obtained from the group elements.
+
+\begin{exam}[Standard representation of $S_n$ {\cite[Example 3.1.9]{1}}]
+	Let $G = S_n$ and $V$ be an $n$-dimensional vector space over $\mathbb{C}$ with basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$. Let $\rho : G \to \GL_n(\mathbb{C})$ be the representation such that $\rho_\sigma(e_i) = e_{\sigma(i)}$ for all permutations $\sigma \in S_n$ and $1 \leqslant i \leqslant n$. The matrix for $\rho_\sigma$ is given by permuting the rows of the identity matrix $\I_n$ by $\sigma$. For example when $n = 4$, given a permutation (written in cycle notation) $\sigma = (1432)$, we have
+	$$\rho_\sigma = \begin{pmatrix} 0 & 1 & 0 & 0 \\
+									0 & 0 & 1 & 0\\
+									0 & 0 & 0 & 1\\
+									1 & 0 & 0 & 0\end{pmatrix}.$$
+	Notice that $\rho_{\sigma}(e_1 + e_2 + \cdots + e_n) = e_{\sigma(1)} + e_{\sigma(2)} + \cdots + e_{\sigma(n)} = e_1 + e_2 + \cdots + e_n$ for all $\sigma \in S_n$ (since addition is commutative) and (by scalability of linear $\rho_\sigma$), we have $\rho_\sigma(\lambda(e_1 + e_2 + \cdots + e_n)) = \lambda(e_1 + e_2 + \cdots + e_n)$ for all $\lambda \in \mathbb{C},\;\sigma \in S_n$. Hence $\mathbb{C}(e_1 + e_2 + \cdots + e_n)$ is constant under $\rho_\sigma$ for all $\sigma \in S_n$.\\
+\end{exam}
+
+In the above example we can see a subspace which is closed under the representation. This provides some motivation for defining a subrepresentation of a representation.
+
+\begin{defi}[$G$-invariant subspace {\cite[Definition 3.1.10]{1}}]
+	Let $G$ be a group and $V$ a vector space. For a representation $\rho : G \to \GL(V)$, a linear subspace $W \leqslant V$ is said to be \textit{$G$-invariant} if $\rho_g(w) \in W$ for all $g \in G,\, w \in W$.
+\end{defi}
+
+\begin{defi}[Subrepresentation {\cite[page 10]{3}}]
+	Let $G$ be a group. For a representation $\rho : G \to \GL(V)$ and a $G$-invariant subspace $W \leqslant V$, a representation $\rho\vert_W : G \to \GL(W)$ can be obtained by restricting the endomorphisms obtained from $\rho$ to $W$ with $(\rho\vert_W)_g(w) \in W$ for all $w \in W,\;g \in G$. We say that $\rho\vert_W$ is a \textit{subrepresentation} of $\rho$.\\
+
+	To avoid confusion we emphasize that $\rho\vert_W$ is a slight abuse of notation. We are not specifically restricting $\rho$ to $W$ since $\rho$ is a function on $G$. We are instead restricting all of the endomorphisms $\rho_g$ that we obtain from $\rho$. That is $(\rho\vert_W)_g \coloneqq \rho_g\vert_W$.\\
+
+	Given a representation $\rho : G \to \GL(V)$, there are always two subrepresentations: $\rho$ itself, and the zero representation $\rho\vert_\Brace{0} : G \to \GL(\Brace{0})$.\\
+\end{defi}
+
+In this project, we will see how representations and their subrepresentations can be used to classify groups, and for this purpose it is useful define the term proper subrepresentation.
+
+\begin{defi}[Proper $G$-invariant subspace/subrepresentation]
+	Let $G$ be a group and let $W \leqslant V$ be a $G$-invariant subspace. The subspace $W$ is said to be \textit{proper} if $W \neq V$.  We call the subrepresentation $\rho\vert_{W} : G \to \GL(W)$ of $\rho : G \to \GL(V)$ proper if $W$ is a proper $G$-invariant subspace.\\
+\end{defi}
+
+We can generate new representations by taking the direct sum of representations.
+
+\begin{defi}[Direct sum of representations {\cite[Definition 3.1.11]{1}}]
+\label{directsumofrep}
+	Let $G$ be a group and $V_1$ and $V_2$ be vector spaces over field $F$. Given representations $\rho^{(1)} : G \to \GL(V_1)$ and $\rho^{(2)} : G \to \GL(V_2)$, we can obtain another representation of $G$ which maps to $\GL(V_1 \oplus V_2)$ using the \textit{direct sum}. We write the direct sum of these representations as $\rho^{(1)} \oplus \rho^{(2)} : G \to \GL(V_1 \oplus V_2)$ given by $(\rho^{(1)} \oplus \rho^{(2)})_g(v_1+v_2) = \rho^{(1)}_g(v_1)+\rho^{(2)}_g(v_2)$ for all $g\in G$, with $(v_1+v_2) \in V_1 \oplus V_2$ and $v_1 \in V_1,v_2 \in V_2$.\\
+
+	If $V_1$ is of dimension $n_1$ and $V_2$ is of dimension $n_2$, and both are over a field $F$ such that $\rho^{(1)} : G \to \GL_{n_1}(F)$ and $\rho^{(2)} : G \to \GL_{n_2}(F)$, then
+	$$\rho^{(1)} \oplus \rho^{(2)} : G \to \GL_{n_1 + n_2}(V_1 \oplus V_2)$$
+	with matrix form
+	$$ (\rho^{(1)} \oplus \rho^{(2)})_g =
+	\begin{pmatrix}
+		\rho^{(1)}_g & 0\\ 0 & \rho^{(2)}_g	
+	\end{pmatrix},$$
+	which is the $(n_1 + n_2)$ square matrix formed by stacking $\rho^{(1)}_g$ and $\rho^{(2)}_g$ next to each other on the diagonal, with $0$ in the other entries.\\
+
+	Similarly, we can take the finite direct sum $\rho \coloneqq \rho^{(1)} \oplus \cdots \oplus \rho^{(m)}$ of $m$ representations $\rho^{(i)} : G \to \GL(V_i)$ for all $1 \leqslant i \leqslant m$, such that
+	$\rho : G \to \GL(V_1 \oplus \cdots \oplus V_m)$ and
+	$$\quad \rho_g(v_1+\cdots+v_m) = \rho^{(1)}_g(v_1)+\cdots+\rho^{(m)}_g(v_m) \quad \text{ for all } g \in G, v_i \in V_i.$$
+	Suppose $V_i$ is a finite-dimensional vector space with dimension $n_i$ for all $1 \leqslant i \leqslant m$, then the matrix form of $\rho$ is given by the $n_1 + n_2 + \cdots + n_m$ diagonal square matrix
+		$$\rho_g = \begin{pmatrix} 
+	    \rho_g^{(1)} &  &\Large{\text{0}} \\
+	     & \ddots & \\
+	    \Large{\text{0}} &  &\rho^{(m)}_g 
+		\end{pmatrix} \in \GL_{n_1 + \cdots + n_m}(F) \quad \text{ for all } g \in G.$$
+\end{defi}
+
+Since the direct sum of representations uses the direct sum of the underlying vector spaces, it is clear that the degree of the direct sum of representations is the sum of their respective degrees. In the below example, we form a degree 2 representation by direct summing two degree 1 representations.
+
+\begin{exam}[{\cite[Example 3.1.12]{1}}]
+	Let $\rho^{(1)} : \mathbb{Z}/n\mathbb{Z} \to \GL_1(\mathbb{C})$ and $\rho^{(2)} : \mathbb{Z}/n\mathbb{Z} \to \GL_1(\mathbb{C})$ be representations, such that $\rho^{(1)}_{m} = e^{2\pi i m/n}$ and $\rho^{(2)}_{m} = e^{-2\pi i m/n}$ for all $m \in \mathbb{Z}/n\mathbb{Z}$. Then
+	$$(\rho^{(1)} \oplus \rho^{(2)})_{m} = \begin{pmatrix}e^{2\pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix}.$$\\
+\end{exam}
+
+Given a group $G$ with a generating set $S$ and a representation $\rho$ of $G$, we can generate $\rho_g$ for any $g \in G$ by the elements of $\Brace{\rho_s\;:\;s \in S}$.
+
+\begin{prop}[{\cite[page 16]{1}}]
+	If a group $G$ is generated by a set $S$ then a representation on $G$ is determined by its values on $S$.
+\end{prop}
+\begin{proo*}
+	This follows clearly from the properties of a homomorphism. Let $G = \langle S\rangle$, and take a general element $g = \prod\limits_{i \in I_S} s_i$  as the product of elements in $S$ for some indexing set $I_S$. A representation $\rho : G \to \GL(V)$ gives
+	$$\rho_g = \prod\limits_{i \in I_S} \rho_{s_i},$$\\
+	and we can generate any $\rho_g$ from elements in $\Brace{\rho_s\;:\;s \in S}$.\hfill $\blacksquare$
+\end{proo*}
+
+In the following example we combine our ideas of direct summing of representations and generating representations.
+
+\begin{exam}[{\cite[Example 3.1.14]{1}}]
+	\label{1}
+	$S_3$ can be generated by two elements: $S_3 = \langle (123),(12)\rangle.$\\
+
+	Let $\rho : S_3 \to \GL_2(\mathbb{C})$ be the representation such that 
+	$$\rho_{(12)} = \begin{pmatrix}-1 & -1\\0 & 1\end{pmatrix},\quad \rho_{(123)} = \begin{pmatrix}-1 & -1\\ 1 & 0\end{pmatrix},$$
+	and let $\rho^\text{(triv)} : S_3 \to \GL_1(\mathbb{C})$ be the trivial representation $\rho_\sigma = 1$ for all $\sigma \in S_3$. Then
+	$$(\rho \oplus \rho^\text{(triv)})_{(12)} = \begin{pmatrix}-1 & -1 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{pmatrix},\quad (\rho \oplus \rho^\text{(triv)})_{(123)} = \begin{pmatrix}-1 & -1 & 0\\1 & 0 & 0\\0 & 0 & 1\end{pmatrix}.$$
+\end{exam}
+
+\newpage
+\subsection{Representation Reducibility}
+A main goal, when dealing with many areas of abstract algebra, is to find ways to methodically decompose some algebraic structure into a simpler form, showing that it is made up of smaller structures which cannot be decomposed any further. In representation theory we aim to find out if we can decompose a representation into a direct sum of non-zero proper subrepresentations. In this subsection we introduce the reader to this theory.
+
+\begin{defi}[Irreducible representation {\cite[Definition 3.1.15]{1}}]
+	Let $G$ be a group and $V$ a vector space. A non-zero representation $\rho : G \to \GL(V)$ is \textit{irreducible} if it contains no non-zero proper submodules, or equivalently the only $G$-invariant subspaces of $V$ are $\Brace{0}$ and $V$ itself. Otherwise $\rho$ is reducible.
+\end{defi}
+
+Irreducible representations are analogous to prime numbers in number theory. They come together to form more complicated reducible representations.
+
+\begin{prop}[{\cite[Example 3.1.16]{1}}]
+	Let $G$ be a group. A degree 1 representation $\rho : G \to \GL_1(\mathbb{C})$ is clearly irreducible since $V = \mathbb{C}$ has dimension $1$ and hence no non-zero proper $G$-invariant subspaces.
+\end{prop}
+
+\begin{prop}[{\cite[page 18, 3.1.19]{1}}]
+	Let $G$ be a finite group and $V$ a vector space. Let $\rho : G \to \GL_2(\mathbb{C})$ be a complex degree 2 representation, then $\rho$ is irreducible if and only if there is no common eigenvector $v \in V$ for all automorphisms $\rho_g,$ where $g \in G$.
+\end{prop}
+\begin{proo*}
+	Suppose $\rho$ is reducible. Then there exists a non-zero proper $G$-invariant linear subspace $W < V$. Then since $\dim(V) = 2$, we have $\dim(W) = 1$. Then there exists a vector $v \in V$ such that $W = \mathbb{C}\Brace{v}$. Then for all $g \in G$, we have $\rho_g(v) \in W$ and hence $\rho_g(v) = \lambda v$ for some $\lambda \in \mathbb{C}$, and $V$ is a common eigenvector. Conversely, suppose that the automorphisms $\Brace{\rho_g \;:\; g \in G}$ have a common eigenvector $v \in V$. Then the space defined by $W = \mathbb{C}\Brace{v}$ is a linear subspace of $V$ with dimension $1$. For any element $g \in G$ we have $\rho_g(v) = \lambda v$ for some $\lambda \in \mathbb{C}$. Then $\rho_g(W) = \rho_g(\mathbb{C}\Brace{v}) = \lambda\mathbb{C}\Brace{v} = \mathbb{C}\Brace{v} = W$ and $W$ is a $G$-invariant subspace. Hence $\rho$ is reducible.\hfill$\blacksquare$
+\end{proo*}
+
+\begin{prop}[{\cite[page 11]{3}}]
+	Every irreducible complex representation of $G = D_6 = \gen{x,y\;\vert\;x^3,\, y^2,\,(yx)^2}$ has degree less than or equal to $2$.
+\end{prop}
+\begin{proo*}[{\cite[page 11]{3}}]
+	Let $\rho : G \to \GL(V)$ be an irreducible representation. Let $r = x,x^2$ be a rotation, and $s = y, yx, yx^2$ be a reflection. Any choice of rotation and reflection generates the entirety of $D_6$. Since $\rho_r$ is an automorphism it is invertible and has to have an eigenvalue. Let $v$ be an eigenvector of $\rho_r$ with corresponding eigenvalue $\lambda_v \neq 0$, i.e $\phi_r(v) = \lambda_vv$. Let $W = \Span(v,\rho_{s}(v)) \leqslant V$. Notice that by $y^2 = (yx)^2 = 1_G$ we have
+	$$\rho_s\rho_s(v) = \rho_{1_G}(v) = v \in W,$$
+	also
+	$$\rho_r\rho_s(v) = \rho_s\rho_{r^{-1}}(v) = \lambda^{-1}_v\rho_{s}(v) \in W,$$
+	and both $\rho_r(v) = \lambda_vv$ and $\rho_s(v)$ are in $W$. Then $W$ is $G$-invariant, and since $V \neq \Brace{0}$ is irreducible, $W = V$ and $\dim(V) = 2$.
+	\hfill $\blacksquare$\\
+\end{proo*}
+
+The definition of complete reducibility is motivated by a goal of describing a reducible representation as the direct sum of irreducible subrepresentations, similar to how we can describe a composite natural numbers as a product of prime numbers.
+
+\begin{defi}[Completely reducible {\cite[Definition 3.1.21]{1}}]
+	A representation $\rho : G \to \GL(V)$ is \textit{completely reducible} if $V = V_1 \oplus V_2 \oplus \cdots \oplus V_n$, where $V_i$ are $G$-invariant subspaces and $\rho\vert_{V_i}$ is irreducible for each $1 \leqslant i \leqslant n$.\\
+\end{defi}
+Our comparison between irreducible subrepresentations and prime numbers has some limitations. Given a composite number you can always find a unique prime decompostion, but in representaion theory a reducible representation is not always completely reducible.\\
+
+Another important property of a representation is whether or not it is decomposable.
+
+\begin{defi}[Decomposable representation {\cite[Definition 3.1.22]{1}}]
+	Let $G$ be a group, $V$ a vector space, and $\rho : G \to \GL(V)$ be a non-zero representation. Then we call $\rho$ \textit{decomposable} if $V = V_1 \oplus V_2$ where $V_1,V_2$ are proper $G$-invariant subspaces. Otherwise $\rho$ is said to be indecomposable.\\
+\end{defi}
+
+
+
+In this project we will examine reducibility properties of representations. It is common for there to be many different representations of a finite group $G$, and representation equivalence will provide us with a way to determine if the same reducibility properties hold for so called `equivalent' representations.
+\begin{defi}[Representation equivalence {\cite[Definition 3.1.7]{1}}]
+	Two representations $\rho^{(1)} : G \to \GL(V)$ and $\rho^{(2)} : G \to \GL(W)$ are said to be \textit{equivalent}, written $\rho^{(1)} \sim \rho^{(2)}$, if there exists a linear isomorphism $T : V \to W$ such that $\rho^{(2)}_gT =T\rho^{(1)}_g$ for all $g \in G$. We can write this as the following commutative diagram:
 	$$
 	\begin{tikzcd}
-		V \arrow{r}{\phi(g)} \arrow[swap]{d}{T} & V \arrow{d}{T} \\%
-		W \arrow{r}{\psi(g)}&W 
+		V \arrow{r}{\rho^{(1)}_g} \arrow[swap]{d}{T} & V \arrow{d}{T} \\%
+		W \arrow{r}{\rho^{(2)}_g}&W 
 	\end{tikzcd}
 	$$
 \end{defi}
 
-\begin{prop}[\cite{2}]
+\begin{prop}
 	Representation equivalence is an equivalence relation.
 \end{prop}
 
 \begin{proo*}
-		Let $\phi^1 : G \to \GL(V_1)$, $\phi^2 : G \to \GL(V_2)$, and $\phi^3 : G \to \GL(V_3)$ be representations.
-	\begin{itemize}
-		\item Reflexive: Let $\Id$ be the identity map $\Id(e_i) = e_i$, which is a linear isomorphism. Then $\phi_g \Id = \Id\phi_g \forall g \in G$ and $\phi \sim \phi$.
-		\item Symmetric: Suppose $\phi^1 \sim \phi^2$ with linear isomorphism $T$, then $\exists T^{-1}$ which is also an isomorphism and $\phi^1_g T = T\phi^2_g \implies \phi^2_gT^{-1} = T^{-1}\phi^1_g \implies \phi^2 \sim \phi^1$.
-		\item Transitive: Let $\phi^1 \sim \phi^2$ with isomorphism $T_{12}$ and $\phi^2 \sim \phi^3$ with $T_{23}$. Then $T_{12} \circ T_{23}$ is also a linear isomorphism and $\phi^1_gT_{12}T_{23} = T_{12}\phi^2_g T_{23} = T_{12} T_{23} \phi^3_g\; \forall g \in G\implies \phi^1 \sim \phi^3$. $\blacksquare$
-	\end{itemize}
+		Let $V_1,V_2,V_3$ be vector spaces and let $\rho^{(1)} : G \to \GL(V_1)$, $\rho^{(2)} : G \to \GL(V_2)$, $\rho^{(3)} : G \to \GL(V_3)$ be representations.
+	\begin{mitem}
+		\item Reflexive: Let $\Id_V$ be the identity map $\Id_V(e_i) = e_i$, which is a linear isomorphism. Then $\rho^{(1)}_g \Id_V = \Id_V\rho^{(1)}_g$ for all $g \in G$. Hence $\rho^{(1)} \sim \rho^{(1)}$.
+		\item Symmetric: Suppose $\rho^{(1)} \sim \rho^{(2)}$ with linear isomorphism $T$, then there exists a $T^{-1}$ which is also an isomorphism and $\rho^{(1)}_g T = T\rho^{(2)}_g \text{ implies } \rho^{(2)}_gT^{-1} = T^{-1}\rho^{(1)}_g \text{ implies } \rho^{(2)} \sim \rho^{(1)}$.
+		\item Transitive: Let $\rho^{(1)} \sim \rho^{(2)}$ with isomorphism $T_{12}$ and $\rho^{(2)} \sim \rho^{(3)}$ with $T_{23}$. Then $T_{12} \circ T_{23}$ is also a linear isomorphism and $\rho^{(1)}_gT_{12}T_{23} = T_{12}\rho^{(2)}_g T_{23} = T_{12} T_{23} \rho^{(3)}_g$ for all $g \in G\text{ implies } \rho^{(1)} \sim \rho^{(3)}$. \hfill $\blacksquare$\\
+	\end{mitem}
 \end{proo*}
 
-\begin{exam}[\cite{1}]
-	Let $\phi : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
-	$$\phi([m]) = \begin{pmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{pmatrix},$$
-	the rotation matrix by angle $2\pi m/n$, and let $\psi : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
-	$$\psi([m]) = \begin{pmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix}.$$
-	We have $\phi \sim \psi$.
-\end{exam}
+Below we show an example of two equivalent representations.
 
-\begin{proo*}[\cite{1}]
-	Let $T = \begin{pmatrix}i & -i\\1 & 1\end{pmatrix}$. Then
+\begin{exam}[{\cite[Example 3.1.8]{1}}]
+	Let $\rho^{(1)} : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
+	$$\rho^{(1)}_{m} = \begin{pmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{pmatrix},$$
+	the rotation matrix by angle $2\pi m/n$, and let $\rho^{(2)} : \mathbb{Z}/n\mathbb{Z} \to \GL_2(\mathbb{C})$ with
+	$$\rho^{(2)}_{m} = \begin{pmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix}.$$
+	Let $T = \begin{pmatrix}i & -i\\1 & 1\end{pmatrix}$. Then if $m \in \mathbb{Z}/n\mathbb{Z}$ is an arbitrary element,
 \begin{align*}	
-	\psi([m])T = &\begin{pmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix} \begin{pmatrix}i & -i\\1 & 1\end{pmatrix} = \begin{pmatrix}e^{2 \pi i m/n}i & -e^{2 \pi i m/n}i \\ e^{-2 \pi i m/n} & e^{-2 \pi i m/n}\end{pmatrix}\\ = &\begin{pmatrix}-\sin(2\pi i m/n) + i\cos(2\pi i m/n) & \sin(2\pi i m/n) - i\cos(2\pi i m/n)\\ \cos(2\pi i m/n) - i \sin(2\pi i m/n) & \cos(2\pi i m/n) - i \sin(2\pi i m/n)\end{pmatrix}\\
-	= & \begin{pmatrix}i & -i\\1 & 1\end{pmatrix}\begin{pmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{pmatrix} =  T\phi([m]). \;\blacksquare
+	\rho^{(2)}_{m}T = &\begin{pmatrix}e^{2 \pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix} \begin{pmatrix}i & -i\\1 & 1\end{pmatrix} = \begin{pmatrix}e^{2 \pi i m/n}i & -e^{2 \pi i m/n}i \\ e^{-2 \pi i m/n} & e^{-2 \pi i m/n}\end{pmatrix}\\ = &\begin{pmatrix}-\sin(2\pi i m/n) + i\cos(2\pi i m/n) & \sin(2\pi i m/n) - i\cos(2\pi i m/n)\\ \cos(2\pi i m/n) - i \sin(2\pi i m/n) & \cos(2\pi i m/n) - i \sin(2\pi i m/n)\end{pmatrix}\\
+	= & \begin{pmatrix}i & -i\\1 & 1\end{pmatrix}\begin{pmatrix}\cos\Paren{{2 \pi m}/{n}} & -\sin\Paren{{2 \pi m}/{n}}\\ \sin\Paren{{2 \pi m}/{n}} & \cos\Paren{{2 \pi m}/{n}}\end{pmatrix} =  T\rho^{(1)}_{m}.
 \end{align*}
+	Then we have $\rho^{(1)} \sim \rho^{(2)}$.\\
+\end{exam}
+
+
+Decomposablity, complete reducibility, and reducibility are properties that is invariant under representation equivalence, as we state in the following three propositions.
+
+
+\begin{prop}[{\cite[Lemma 3.1.23]{1}}]
+	Let $G$ be a group and $\rho : G \to \GL(V)$ be a representation. Then $\rho$ is decomposable if it is equivalent to a  decomposable representation.
+\end{prop}
+\begin{proo*}[{\cite[Lemma 3.1.23]{1}}]
+	Let $G$ be a group and $\phi : G \to \GL(W)$ be a decomposable representation such that $\phi \sim \rho$.
+ Then there exists a linear isomorphism $T : V \to W$ such that $\rho_g = T^{-1}\phi_gT$ for all $g \in G$. We know that $W = W_1 \oplus W_2$ where $W_1,W_2$ are proper $G$-invariant subspaces. We have the following commutative diagram:
+	$$
+	\begin{tikzcd}
+		V \arrow{r}{\rho_g} \arrow[swap]{d}{T} & V \arrow{d}{T} \\%
+		W \arrow{r}{\phi_g}&W 
+	\end{tikzcd}
+	$$
+	and $T\rho_g = \phi_gT$ for all $g \in G$. Let  $V_1 = T^{-1}(W_1)$ and $V_2 = T^{-1}(W_2)$. For $v \in V$, we have $T(v) = w_1 + w_2$ for $w_1 \in W_1$ and $w_2 \in W_2$. Then $v = T^{-1}w_1 + T^{-1}w_2 \in V_1 + V_2$, hence $V = V_1 + V_2$. Let $v \in V_1 \cap V_2$, then $T(v) \in W_1 \cap W_2 = \{0\}$ and since $T$ is injective we have $v = 0$, hence $V = V_1 \oplus V_2$. Now we need only show $V_1,V_2$ are $G$-invariant. Let $v \in V_i$, then $T(v) \in W_i$ for each $i = 1,2$. Then $\rho_g(v) = T^{-1}\phi_gT(v)$ for all $g \in G$. Then $T(v) \in W_i$ implies $\phi_gT(v) \in W_i$ since $W_i$ is $G$-invariant. Then $\rho_g(v) = T^{-1}\phi_gT(v) \in V_i$ for all $g \in G$, and $V_i$ is $G$-invariant for each $i = 1,2$. \hfill$\blacksquare$
 \end{proo*}
 
 
-\begin{defi}[Symmetric Group]
-	Recall that the symmetric group $S_n$ is the group of all bijections from a set of $n$ elements to itself, with the group operation of composition of bijections. The group is of order $n!$ since there are $n!$ permutations of $n$ elements.\\
+We cite without proof Propositions \ref{meh10001} and \ref{meh1000}.
+\begin{prop}[{\cite[Lemma 3.1.24]{1}}]
+\label{meh10001}
+	Let $G$ be a group, $V$ a vector space, and $\rho : G \to \GL(V)$ a representation. Then $\rho$ is reducible if it is equivalent to a reducible representation.
+\end{prop}
 
-	We write elements of $S_n$ in cycle notation: for example when $n=6$\; $\sigma = (2\;1\;3)(4)(5\;6)$ is the element which sends the $3$rd element to the 1st\; 1st to the 2nd\; 2nd to the 3rd\; 4th to 4th\; and 5th to 6th (and vice versa). Then we can write
-	$\sigma(1,2,3,4,5,6) = (\sigma(1),\sigma(2),\sigma(3),\sigma(4),\sigma(5),\sigma(6)) = (3,1,2,4,6,5)$.
+\begin{prop}[{\cite[Lemma 3.1.25]{1}}]
+\label{meh1000}
+	Let $G$ be a group, and $\rho : G \to \GL(V)$ a representation. Then $\rho$ is completely reducible if it is equivalent to a completely reducible representation.\\
+\end{prop}
+
+
+
+Let $V$ be an $n$-dimensional vector space over $F$, let $G$ be a group, and let $\phi : G \to \GL(V)$ be a representation. Choosing a basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$ of $V$, we have that $\phi$ is equivalent to some matrix representation $\rho = T\phi T^{-1} : G \to \GL_n(F)$ where $T : V \to F^n$ is the linear isomorphism taking the chosen basis elements of $V$ to their indices in the column vector in $F^n$. This means that so long as the vector space for a given representation is of finite dimension, we can consider automorphisms in matrix form and the properties we wish to examine which are constant across equivalent representations will hold \cite[page 21]{1}.\\
+
+
+
+
+Through equivalence, unitary representations allow us to understand the structure of many other representations. We will first recall unitary maps from linear algebra.
+
+\begin{defi}[Unitary map {\cite[Definition 2.2.4]{1}}]
+	Recall that a linear map $L : V \to W$ between inner product spaces $V,W$ is said to be \textit{unitary} if $\langle v_1, v_2\rangle  = \langle L(v_1), L(v_2) \rangle$ for all $v_1,v_2 \in V$.
+	We denote the unitary automorphisms of a vector space $V$ as $\U(V)$ which is a subgroup of $\GL(V)$. For maps over an $n$-dimensional vector space $V$ over $\mathbb{C}$, we can choose a basis of $V$ and have $\U(V) \cong U_n(\mathbb{C}) \coloneqq \Brace{A \in \M_n(\mathbb{C}) \;:\; A^\dagger = A^{-1}}$ 
 \end{defi}
 
-\begin{exam}[Standard representation of $S_n$ \cite{1}]
-	Let $\phi : S_n \to \GL_n(\mathbb{C})$ such that $\phi_\sigma(e_i) = e_{\sigma(i)}$ $\forall \sigma \in S_n$\; $1 \leqslant i \leqslant n$. The matrix for $\phi_\sigma$ is given by permuting the columns of $I$ by $\sigma$\; for example when $n = 4$\; $\sigma = (1\;4\;3\;2)$ gives
-	$$\phi_\sigma = \begin{pmatrix} 0 & 1 & 0 & 0 \\
-									0 & 0 & 1 & 0\\
-									0 & 0 & 0 & 1\\
-									1 & 0 & 0 & 0\end{pmatrix}.$$
-	Notice that $\phi_{\sigma}(e_1 + e_2 + \cdots + e_n) = e_{\sigma(1)} + e_{\sigma(2)} + \cdots + e_{\sigma(n)} = e_1 + e_2 + \cdots + e_n\; \forall \sigma \in S_n$ since addition is commutative. Then by scalability of linear $\phi_\sigma$, we have $\phi_\sigma(\alpha(e_1 + e_2 + \cdots + e_n)) = \alpha(e_1 + e_2 + \cdots + e_n)\; \forall \alpha \in \mathbb{C},\;\sigma \in S_n$. Hence $\mathbb{C}(e_1 + e_2 + \cdots + e_n)$ is invariant under $\phi_\sigma\;\forall \sigma \in S_n$.
-\end{exam}
+	For the maps in $\GL_1(\mathbb{C})$, a complex number $z$ is unitary if $\bar{z} =  {z}^{-1}$ then  $z\bar{z} = \abs{z}^2 = 1$ and $z \in \mathbb{T}$, where $\mathbb{T} = \Brace{z \in \mathbb{C}\;:\;\abs{z} = 1}$ is the unit circle. Then $\U_1(\mathbb{C}) = \mathbb{T}$ \cite[page 20]{1}.
 
-\begin{defi}[$G$-invariant subspace \cite{1}]
-	For a representation $\phi : G \to \GL(V)$, a (linear) subspace $W \leqslant V$ is said to be $G$-invariant if and only if $\phi_g(w) \in W$ $\forall g \in G,\, w \in W$.
+\begin{defi}[Unitary representation {\cite[Definition 3.2.1]{1}}]
+	A representation $\rho : G \to \GL(V)$ where $V$ is an inner product space is said to be \textit{unitary} if $\rho_g$ is unitary for all $g \in G$. Since $\U_1(\mathbb{C}) = \mathbb{T}$, a one-dimensional unitary representation is a homomorphism $\rho : G \to \mathbb{T}$.
 \end{defi}
 
-\begin{defi}[Subrepresentation \cite{1}]
-	For a representation $\phi : G \to \GL(V)$ and a $G$-invariant subspace $W \leqslant V$, a representation $\phi\vert_W : G \to \GL(W)$ can be obtained by restricting $\phi$ to $W$ with $(\phi\vert_W)_g(w) = \phi_g(w) \in W$ $\forall w \in W,\;g \in G$. We say that $\phi\vert_W$ is a subrepresentation of $\phi$.
-\end{defi}
-
-\begin{defi}[Proper subrepresentation]
-	A subrepresentation $\phi^W : G \to \GL(W)$ of $\phi^V : G \to \GL(V)$ is said to be proper if $W \neq \Paren{0},V$.
-\end{defi}
-
-\begin{defi}[Direct sum of representations \cite{1}]
-\label{directsumofrep}
-	Given representations $\phi^1 : G \to \GL(V_1)$ and $\phi^2 : G \to \GL(V_2)$, we can find another representation $\phi^1 \oplus \phi^2 : G \to \GL(V_1 \oplus V_2)$ given by $(\phi^1 \oplus \phi^2)_g(v_1,v_2) = (\phi^1_g(v_1),\phi^2_g(v_2))\;\forall g\in G,\,v_1 \in V_1, v_2 \in V_2$.\\
-
-	If $V_1$ is of dimension $n_1$ and $V_2$ is of dimension $n_2$, and both are over $\mathbb{C}$ such that $\phi^1 : G \to \GL_{n_1}(\mathbb{C})$ and $\phi^2 : G \to \GL_{n_2}(\mathbb{C})$, then
-	$$\phi^1 \oplus \phi^2 : G \to \GL_{n_1 + n_2}(V_1 \oplus V_2)$$
-	with matrix form
-	$$ (\phi^1 \oplus \phi^2)_g =
-	\begin{pmatrix}
-		\phi^1_g & 0\\ 0 & \phi^2_g	
-	\end{pmatrix},$$
-	which is the $(n_1 + n_2)$ square matrix formed by stacking $\phi_g$ and $\psi_g$ next to each other on the diagonal, with $0$ in the other entries.
-\end{defi}
-
-\begin{exam}[ \cite{1}]
-	Let $\phi^1 : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ and $\phi^2 : \mathbb{Z}/n\mathbb{Z} \to \mathbb{C}^*$ such that $\phi^1_{[m]} = e^{2\pi i m/n}$ and $\phi^2_{[m]} = e^{-2\pi i m/n}$. Then
-	$$(\phi^1 \oplus \phi^2)_{[m]} = \begin{pmatrix}e^{2\pi i m/n} & 0 \\\ 0 & e^{-2 \pi i m/n}\end{pmatrix}.$$
-\end{exam}
-
-\begin{lemm}[\cite{1}]
-	If a group $G$ is generated by a set $S$ then a representation on $G$ is determined by its values on $S$, since representations are a homeomorphism.
-\end{lemm}
-\begin{proo*}
-	For $G = \langle S = \Brace{s_1,s_2,\dots} \rangle$, and $x = \prod\limits_{i \in I_S} s_i$ a product of elements in $S$, a representation $\phi : G \to \GL(V)$ gives
-	$\phi_x = \prod\limits_{i \in I_S} \phi_{s_i}$. $\blacksquare$
+\begin{prop}[{\cite[Proposition 3.2.3]{1}}]
+	Let $G$ be a group and $V$ be a finite-dimensional vector space. A unitary representation $\rho : G \to \GL(V)$ is either irreducible or decomposable.
+	\label{unitaryiseither}
+\end{prop}
+\begin{proo*}[{\cite[Proposition 3.2.3]{1}}]
+	If $\rho$ is irreducible then it is clearly indecomposable. Suppose $\rho$ is reducible. Then there exists some non-zero proper $G$-invariant subspace $W \leqslant V$. We know that $V = W \oplus W^\perp$ for some orthogonal complement $W^\perp$. We need to show that $W^\perp$ is $G$-invariant. Let $w^\perp \in W^\perp$, $w \in W$, and $g \in G$. Since $\rho$ is unitary on the inner product $\gen{\textasteriskcentered,\textasteriskcentered}$ we have
+	$$\gen{\rho_g(w^\perp),w} = \gen{\rho_{g^{-1}}\rho_{g}(w^\perp),\rho_{g^{-1}}(w)} = \gen{\rho_{1_G}(w^\perp),\rho_{g^{-1}}(w)} = \gen{w^\perp,\rho_{g^{-1}}(w)} = 0,$$
+	with the equality to $0$ given since $\rho_{g^{-1}}(w) \in W$. Then $w^\perp \in W^\perp$, and $W^{\perp}$ is $G$-invariant. Hence $\rho$ is decomposable. \hfill$\blacksquare$
 \end{proo*}
 
-\begin{exam}[ \cite{1}]
-	\label{1}
-	$S_3$ can be generated by two elements: $S_3 = \langle (1\;2\;3),(1\;2)\rangle.$\\
-
-	Let $\phi : S_3 \to \GL_2(\mathbb{C})$ be the representation such that 
-	$$\phi_{(1\;2)} = \begin{pmatrix}-1 & -1\\0 & 1\end{pmatrix},\quad \phi_{(1\;2\;3)} = \begin{pmatrix}-1 & -1\\ 1 & 0\end{pmatrix},$$
-	and let $\psi : S_3 \to \mathbb{C}^*$ be the trivial representation $\phi_\sigma = 1\;\forall \sigma \in S_3$. Then
-	$$(\phi \oplus \psi)_{(1\;2)} = \begin{pmatrix}-1 & -1 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{pmatrix},\quad (\phi \oplus \psi)_{(1\;2\;3)} = \begin{pmatrix}-1 & -1 & 0\\1 & 0 & 0\\0 & 0 & 1\end{pmatrix}.$$
-\end{exam}
-
-\begin{defi}[Faithful representation \cite{1}]
-	A representation $\phi : G \to \GL(V)$ is faithful if and only if it is injective: $\phi_g = I \implies g = 1$ where $I$ is the identity of $\GL(V)$ and 1 is the identity of $G$.
-\end{defi}
-
-\newpage
-\subsection{Maschke's Theorem and Reducibility}
-\begin{defi}[Irreducible representation \cite{1}]
-	A non-zero representation $\phi : G \to \GL(V)$ is irreducible if and only if the only $G$-invariant subspaces of $V$ are $\Brace{0}$ and $V$.
-\end{defi}
-
-Irreducible representations are analagous to prime numbers in number theory, or simple groups in group theory. 
-
-\begin{lemm}[\cite{1}]
-	Any degree 1 representation $\phi : G \to \mathbb{C}^*$ is irreducible since $\mathbb{C}$ has no proper subspaces.
-\end{lemm}
-
-\begin{prop}[\cite {1}]
-	For a degree 2 representation $\phi : G \to \GL(V)$, $\phi$ is irreducible if and only if there is no common eigenvector $v$ $\forall \phi_g,\;g \in G$.
+\begin{prop}[{\cite[Proposition 3.2.4]{1}}]
+	Every non-zero complex finite degree representation of a finite group $G$ is equivalent to a unitary representation.
+	\label{unitaryeqtofinite}
 \end{prop}
+\begin{proo*}[{\cite[Proposition 3.2.4]{1}}]
+	Let $G$ be a finite group, $V$ an $n$-dimensional vector space over $\mathbb{C}$, and $\phi : G \to \GL(V)$ be a representation. Choosing a basis $\mathcal{B} = \Brace{e_1,\dots,e_n}$ of $V$, we have that $\phi$ is equivalent to some matrix representation $\rho : G \to \GL_n(\mathbb{C})$. Define the map $(\textasteriskcentered,\textasteriskcentered) : \mathbb{C}^n \times \mathbb{C}^n \to \mathbb{C}$ such that for $v_1,v_2 \in \mathbb{C}^n$ and $g \in G$ we have
+	$$(v_1,v_2) \coloneqq \sum_{g\in G}\gen{\rho_g(v_1),\rho_g(v_2)},$$
+	where $\gen{\textasteriskcentered,\textasteriskcentered}$ is the standard inner product on $\mathbb{C}^n$. This can easily be verified to be an inner product. Furthermore, given an element $h \in G$ we have
+	$$(\rho_g(v_1),\rho_g(v_2)) = \sum_{g \in G}\gen{\rho_g\rho_h(v_1),\rho_g\rho_h(v_2)} = \sum_{g \in G}\gen{\rho_{gh}(v_1),\rho_{gh}(v_2)}.$$
+	Notice that fixing some $h \in G$, the set $\Brace{gh\;:\;g \in G}$ is equal to $G$. Then
+	$$(\rho_g(v_1),\rho_g(v_2))  = \sum_{gh \in G}\gen{\rho_{gh}(v_1),\rho_{gh}(v_2)} = (v_1,v_2)$$
+	and $\phi$ is equivalent to the unitary representation $\rho$. \hfill $\blacksquare$
+\end{proo*}
 
-\begin{defi}[Completely reducible \cite{1}]
-	A representation $\phi : G \to \GL(V)$ is completely reducible if and only if $V = V_1 \oplus V_2 + \cdots + V_n$, where $V_i$ are $G$-invariant subspaces and $\phi\vert_{V_i}$ are irreducible $\forall 1 \leqslant i \leqslant n$.
-\end{defi}
-
-\begin{prop}[\cite{1}]
-	The following are equivalent:
-	\begin{enumerate}
-		\item $\phi : G \to \GL(V)$ is completely reducible.
-		\item $\phi \sim \phi^1 \oplus \phi^2 \oplus \cdots \oplus \phi^n$ where $\phi^i$ is irreducible $\forall 1 \leqslant i \leqslant n$.
-	\end{enumerate}
-\end{prop}
-
-
-\begin{defi}[Decomposable representation \cite{1}]
-	Let $\phi : G \to \GL(V)$ be a non-zero representation. $\phi$ is decomposable if and only if $V = V_1 \oplus V_2$ where $V_1,V_2$ are non-zero $G$-invariant subspaces. Otherwise $\phi$ is said to be indecomposable.
-\end{defi}
-
-\begin{lemm}[\cite{1}]
-	If $\phi : G \to \GL(V)$ is equivalent to a decomposable representation then $\phi$ is decomposable.
-\end{lemm}
-
-\begin{lemm}[\cite{1}]
-	If $\phi : G \to \GL(V)$ is equivalent to an indecomposable representation then $\phi$ is indecomposable.
-\end{lemm}
-
-\begin{lemm}[\cite{1}]
-	If $\phi : G \to \GL(V)$ is equivalent to a completely reducible representation then $\phi$ is completely reducible.
-\end{lemm}
-
-
-\begin{defi}[Unitary representation \cite{1}]
-	A representation $\phi : G \to \GL(V)$ where $V$ is an inner product space is said to be unitary if and only if $\phi_g$ is unitary $\forall g \in G$. Since $U_1(\mathbb{C}) = \mathbb{T}$, a one dimensional unitary representation is a homomorphism $\phi : G \to \mathbb{T}$.
-\end{defi}
-
-\begin{exam}[\cite{1}]
-	Let $\phi : \mathbb{R} \to \mathbb{T}$ such that $\phi_t = e^{2 \pi i t}$. Then $\phi_{t+s} = e^{2 \pi i (t+s)} = \phi_t\phi_s$, hence $\phi$ is a representation.
-\end{exam}
-
-\begin{prop}[\cite {1}]
-	A unitary representation $\phi : G \to \GL(V)$ is either irreducible or decomposable.
-\end{prop}
-
-\begin{prop}[\cite {1}]
-	Every representation of a finite group $G$ is equivalent to a unitary representation.
-\end{prop}
-
-\begin{coro}[\cite{1}]
+Since a representation equivalent to an irreducible/decomposable representation is itself irreducible/decomposable, and Proposition \ref{unitaryeqtofinite} tells us every non-zero complex finite degree representation of a finite group is equivalent to a unitary representation, Proposition \ref{unitaryiseither} provides us with the following Corollary: 
+\begin{coro}[{\cite[Corollary 3.2.5]{1}}]
 \label{2}
-	Every  non-zero representation $\phi : G \to \GL(V)$ of a finite group is either irreducible or decomposable.
+	Every non-zero complex finite degree representation $\rho : G \to \GL(V)$ of a finite group $G$ is either irreducible or decomposable.
 \end{coro}
+This means that a non-zero complex finite degree representation of a finite group is indecomposabile if and only if it is irreducibile. What if we consider more general representations for arbitrary vector spaces and groups?
+Irreducibility always trivially implies indecomposability since a decomposable representation has at least two non-zero proper subrepresentations, though for more general representations indecomposability does not necessarily imply irreducibility. We will examine this in an example in the next section.\\
 
-\begin{prop}[\cite {1}]
-	Every irreducible representation is indecomposable, though the contrary is not true in general.
-\end{prop}
-
-\begin{theo}[Maschke \cite{1}]
-	Every representation of a finite group is completely reducible. \label{4}
+\begin{theo}[{\cite[Theorem 3.2.8]{1}}]
+	Every non-zero finite degree complex representation of a finite group is completely reducible. \label{4}
 \end{theo}
-\begin{proo*}[\cite{1}]
-	Let $\phi : G \to \GL(V)$ be a representation of a finite group $G$. We proceed by induction on the degree of $\phi$. If $\dim V = 1$ then $\phi$ is irreducible since $V$ has no non-zero proper subspaces. We assume true our inductive hypothesis that $\phi$ is irreducible for some $\dim V = k \in \mathbb{N}$. Then let $\phi : G \to \GL(V)$ for $\dim V = k +1$. If $\phi$ is irreducible then it is completely reducible, if not it is decomposable by Corollary \ref{2}. Then $V = V_1 \oplus V_2$ with $0 \neq V_1,V_2$ are $G$-invariant subspaces, and by the inductive hypothesis $\dim V_1,\dim V_2 < \dim V \implies \phi\vert_{V_1},\phi\vert_{V_2}$ are completely reducible. Then $V_1 = U_1 \oplus \cdots \oplus U_{n_U}$ and $V_2 = W_1 \oplus \cdots \oplus W_{n_W}$ where $U_i$ and $W_j$ are $G$-invariant and the subrepresentations $\phi\vert_{U_i},\phi\vert_{W_j}$ are irreducible $\forall\, 1 \leqslant i \leqslant n_U,\;1\leqslant j \leqslant n_W$. Then $V = U_1 \oplus \cdots \oplus U_{n_U} \oplus W_1 \oplus \cdots \oplus W_{n_W}$ and $\phi$ is completely reducible. $\blacksquare$
+\begin{proo*}[{\cite[Theorem 3.2.8]{1}}]
+	Let $\rho : G \to \GL(V)$ be a representation of a finite group $G$. We proceed by induction on the degree of $\rho$. If $\dim(V) = 1$ then $\rho$ is irreducible since $V = \mathbb{C}$ has no non-zero proper subspaces. We assume true our inductive hypothesis: that $\rho$ is irreducible up to some $\dim(V) = k \in \mathbb{N}$. Then let $\rho : G \to \GL(V)$ for $\dim(V) = k +1$. If $\rho$ is irreducible then it is completely reducible and we are done, if not it is decomposable by Corollary \ref{2}. Then $V = V_1 \oplus V_2$ for non-zero $G$-invariant subspaces $V_1,V_2$. By the inductive hypothesis $\dim(V_1),\dim(V_2)< \dim(V)$ which implies $\rho\vert_{V_1},\rho:_{V_2}$ are completely reducible. Then $V_1 = U_1 \oplus \cdots \oplus U_{n_U}$ and $V_2 = W_1 \oplus \cdots \oplus W_{n_W}$ where $U_i$ and $W_j$ are $G$-invariant and the subrepresentations $\rho\vert_{U_i},\rho\vert_{W_j}$ are irreducible for all $1 \leqslant i \leqslant n_U,\;1\leqslant j \leqslant n_W$. Then $V = U_1 \oplus \cdots \oplus U_{n_U} \oplus W_1 \oplus \cdots \oplus W_{n_W}$ and $\rho$ is completely reducible. \hfill$\blacksquare$
 \end{proo*}
 
 \begin{exam}
-	By Maschke's theorem, every representation of $\mathbb{Z}/n\mathbb{Z}$ is completely reducible $\forall n \in \mathbb{N}$.
+	By Theorem \ref{4}, every finite degree complex representation of $\mathbb{Z}/n\mathbb{Z}$ is completely reducible for all $n \in \mathbb{N}$.
 \end{exam}
 \end{document}
 
